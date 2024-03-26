@@ -44,7 +44,7 @@ env = environ.FileAwareEnv(
     DD_SESSION_COOKIE_SAMESITE=(str, 'Lax'),
     DD_APPEND_SLASH=(bool, True),
     DD_TIME_ZONE=(str, 'UTC'),
-    DD_LANG=(str, 'en-us'),
+    DD_LANG=(str, 'ru'),
     DD_TEAM_NAME=(str, 'Security Team'),
     DD_ADMINS=(str, 'DefectDojo:dojo@localhost,Admin:admin@localhost'),
     DD_WHITENOISE=(bool, False),
@@ -53,7 +53,7 @@ env = environ.FileAwareEnv(
     DD_TEST_RUNNER=(str, 'django.test.runner.DiscoverRunner'),
     DD_URL_PREFIX=(str, ''),
     DD_ROOT=(str, root('dojo')),
-    DD_LANGUAGE_CODE=(str, 'en-us'),
+    DD_LANGUAGE_CODE=(str, 'ru'),
     DD_SITE_ID=(int, 1),
     DD_USE_I18N=(bool, True),
     DD_USE_TZ=(bool, True),
@@ -337,13 +337,34 @@ TIME_ZONE = env('DD_TIME_ZONE')
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = env('DD_LANGUAGE_CODE')
-
+LANGUAGE_CODE = 'ru'
 SITE_ID = env('DD_SITE_ID')
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = env('DD_USE_I18N')
+USE_I18N = True
+USE_L10N = True
+
+
+
+
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('ru', 'Russian'),  # Пример добавления русского языка
+    # Добавьте другие языки здесь
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',  # Путь, где будут храниться файлы перевода
+]
+
+
+
+
 
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = env('DD_USE_TZ')
@@ -1021,9 +1042,9 @@ if SAML2_ENABLED:
         ],
         # you can set multilanguage information here
         'organization': {
-            'name': [('Yaco Sistemas', 'es'), ('Yaco Systems', 'en')],
-            'display_name': [('Yaco', 'es'), ('Yaco', 'en')],
-            'url': [('http://www.yaco.es', 'es'), ('http://www.yaco.com', 'en')],
+            'name': [('Yaco Sistemas', 'ru'), ('Yaco Systems', 'ru')],
+            'display_name': [('Yaco', 'ru'), ('Yaco', 'ru')],
+            'url': [('http://www.yaco.es', 'ru'), ('http://www.yaco.com', 'ru')],
         },
         'valid_for': 24,  # how long is our metadata valid
     }
