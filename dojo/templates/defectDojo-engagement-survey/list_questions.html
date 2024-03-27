@@ -8,7 +8,7 @@
         <div class="col-md-10">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    {{ name }}
+                    Вопросники
                 </div>
             </div>
             {% if questions %}
@@ -19,9 +19,9 @@
                     <table id="groups" class="tablesorter-bootstrap table table-condensed table-striped">
                         <thead>
                         <tr>
-                            <th>Text</th>
-                            <th>Optional</th>
-                            <th>Type</th>
+                            <th>Текст</th>
+                            <th>Опции</th>
+                            <th>Тип</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -52,14 +52,14 @@
             <div class="panel panel-default filters">
                 {% if filtered.form %}
                     {% if "dojo.add_question"|has_configuration_permission:request %}
-                        <div class="panel-heading">Actions</div>
+                        <div class="panel-heading">Действия</div>
                         <div class="panel-body centered">
                             <a class="btn btn-sm btn-secondary" href="{% url 'create_question' %}">
-                                Create Question
+                                Создать вопрос
                             </a>
                         </div>
                     {% endif %}
-                    <div class="panel-heading">Filters</div>
+                    <div class="panel-heading">Фильтры</div>
                     <form method="get" class="panel-body">
                         {% for field in filtered.form.visible_fields %}
                             <div class="form-group">

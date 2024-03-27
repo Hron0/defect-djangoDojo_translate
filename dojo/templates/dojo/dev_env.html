@@ -8,7 +8,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading tight">
                     <h3 class="has-filters">
-                        Environment List
+                        Список окружающей среды
                         <div class="dropdown pull-right">
                             <button id="show-filters" data-toggle="collapse" data-target="#the-filters" class="btn btn-primary toggle-filters"> <i class="fa-solid fa-filter"></i> <i class="caret"></i> </button>
                             {% if "dojo.add_development_environment"|has_configuration_permission:request %}
@@ -21,7 +21,7 @@
                                 aria-labelledby="dropdownMenu1">
                                     <li role="presentation">
                                         <a href="{%  url 'add_dev_env' %}">
-                                            <i class="fa-solid fa-plus"></i> New Environment </a>
+                                            <i class="fa-solid fa-plus"></i> Новая среда </a>
                                     </li>
                             </ul>
                             {% endif %}
@@ -62,7 +62,7 @@
                     {% include "dojo/paging_snippet.html" with page=devs page_size=True%}
                 </div>
             {% else %}
-                <p class="text-center">No environments found.</p>
+                <p class="text-center">Окружения не найдено.</p>
             {% endif %}
         </div>
 

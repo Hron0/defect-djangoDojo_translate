@@ -8,7 +8,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading tight">
                     <h3 class="has-filters">
-                        Tool Configurations
+                        Конфигурации инструментов
                         <div class="dropdown pull-right">
                             {% if "dojo.add_tool_configuration"|has_configuration_permission:request %}
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1"
@@ -20,7 +20,7 @@
                                 aria-labelledby="dropdownMenu1">
                                     <li role="presentation">
                                         <a href="{% url 'add_tool_config' %}">
-                                            <i class="fa-solid fa-plus"></i> Add Tool Configuration
+                                            <i class="fa-solid fa-plus"></i> Добавить конфигурацию инструмента
                                         </a>
                                     </li>
                             </ul>
@@ -40,10 +40,10 @@
                            class="tablesorter-bootstrap table table-condensed table-striped">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Description</th>
+                            <th>Имя</th>
+                            <th>Описание</th>
                             <th>URL</th>
-                            <th>Category</th>
+                            <th>Категория</th>
                         </tr>
                         </thead>
                         <tbody>

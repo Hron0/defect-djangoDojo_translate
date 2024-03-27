@@ -8,7 +8,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading tight">
                     <h3 class="has-filters">
-                        Note Type List
+                        Список типов заметок
                         <div class="dropdown pull-right">
                             <button id="show-filters" data-toggle="collapse" data-target="#the-filters" class="btn btn-primary toggle-filters"> <i class="fa-solid fa-filter"></i> <i class="caret"></i> </button>
                             {% if "dojo.add_note_type"|has_configuration_permission:request %}
@@ -21,7 +21,7 @@
                                 aria-labelledby="dropdownMenu1">
                                     <li role="presentation">
                                         <a href="{% url 'add_note_type' %}">
-                                            <i class="fa-solid fa-plus"></i> Add Note Type
+                                            <i class="fa-solid fa-plus"></i> Добавить тип заметки
                                         </a>
                                     </li>
                             </ul>
@@ -45,11 +45,11 @@
                         <thead>
                         <tr>
                             {% comment %} The display field is translated in the function. No need to translate here as well{% endcomment %}
-                            <th>{% dojo_sort request 'Note Type' 'name' 'asc' %}</th>
-                            <th> Description</th>
-                            <th> Single/Multiple</th>
-                            <th> Mandatory/Optional</th>
-                            <th> Active/Disabled</th>
+                            <th>{% dojo_sort request 'Тип заметки' 'name' 'asc' %}</th>
+                            <th> Описание</th>
+                            <th> Одиночный/Множественный</th>
+                            <th> Обязательный/Дополнительный</th>
+                            <th> Активный/Отключенный</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -59,23 +59,23 @@
                               <td><a>{{ nt.description }}</a></td>
                               <td>
                                 {% if nt.is_single %}
-                                  <a>Single</a>
+                                  <a>Одиночный</a>
                                 {% else %}
-                                  <a>Multiple</a>
+                                  <a>Множественный</a>
                                 {% endif %}
                               </td>
                               <td>
                                 {% if nt.is_mandatory %}
-                                  <a>Mandatory</a>
+                                  <a>Обязательный</a>
                                 {% else %}
-                                <a>Optional</a>
+                                <a>Дополнительный</a>
                                 {% endif %}
                               </td>
                               <td>
                                 {% if nt.is_active %}
-                                  <a>Active</a>
+                                  <a>Активный</a>
                                 {% else %}
-                                <a>Disabled</a>
+                                <a>Отключенный</a>
                                 {% endif %}
                               </td>
                               {% if "dojo.change_note_type"|has_configuration_permission:request %}
@@ -84,17 +84,17 @@
                                             <div class="btn-group" role="group">
                                                 <a class="btn btn-sm btn-warning"
                                                    href="{% url 'edit_note_type' nt.id %}">
-                                                    <i class="fa-solid fa-file"></i> Edit Note Type
+                                                    <i class="fa-solid fa-file"></i> Изменить тип заметки
                                                 </a>
                                                 {% if nt.is_active %}
                                                 <a class="btn btn-sm btn-danger"
                                                    href="{% url 'disable_note_type' nt.id %}">
-                                                    <i class="fa-solid fa-xmark"></i> Disable Note Type
+                                                    <i class="fa-solid fa-xmark"></i> Отключить тип заметки
                                                 </a>
                                                 {% else %}
                                                 <a class="btn btn-sm btn-success"
                                                    href="{% url 'enable_note_type' nt.id %}">
-                                                    <i class="fa-solid fa-check"></i> Enable Note Type
+                                                    <i class="fa-solid fa-check"></i> Включить тип заметки
                                                 </a>
                                                 {% endif %}
                                             </div>
@@ -111,7 +111,7 @@
                     {% include "dojo/paging_snippet.html" with page=nts page_size=True %}
                 </div>
             {% else %}
-                <p class="text-center">No Note types found.</p>
+                <p class="text-center">Типы заметок не найдены.</p>
             {% endif %}
         </div>
     </div>

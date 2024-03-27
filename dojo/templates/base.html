@@ -345,28 +345,28 @@
                                             <ul class="nav nav-second-level">
                                                 <li>
                                                     <a href="{% url 'endpoint' %}">
-                                                        {% trans "All Endpoints" %}
+                                                        Все конечные точки
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{% url 'endpoint_host' %}">
-                                                        {% trans "All Hosts" %}
+                                                        Все хосты
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{% url 'vulnerable_endpoints' %}">
-                                                        {% trans "Vulnerable Endpoints" %}
+                                                        Уязвимые конечные точки
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{% url 'vulnerable_endpoint_hosts' %}">
-                                                        {% trans "Vulnerable Hosts" %}
+                                                        Уязвимые хосты
                                                     </a>
                                                 </li>
                                                 {% if request.user.is_superuser %}
                                                     <li>
                                                         <a href="{% url 'endpoint_migrate' %}">
-                                                            {% trans "Migrate Endpoints" %}
+                                                            Перенос конечных точек
                                                         </a>
                                                     </li>
                                                 {% endif %}

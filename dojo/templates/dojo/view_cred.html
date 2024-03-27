@@ -9,7 +9,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading tight">
                     <h3 class="has-filters">
-                        Credential Manager
+                        Менеджер учетных данных
                         {% if "DB_KEY"|get_config_setting == True and "dojo.add_cred_user"|has_configuration_permission:request %}
                         <div class="dropdown pull-right">
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1"
@@ -21,7 +21,7 @@
                                 aria-labelledby="dropdownMenu1">
                                     <li role="presentation">
                                         <a href="{% url 'add_cred' %}">
-                                            <i class="fa-solid fa-plus"></i> Add Credential
+                                            <i class="fa-solid fa-plus"></i> Добавить учетные данные
                                         </a>
                                     </li>
                             </ul>
@@ -41,12 +41,12 @@
                            class="tablesorter-bootstrap table table-bordered table-condensed table-striped">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Username</th>
-                            <th>Role</th>
-                            <th>Environment</th>
-                            <th>Valid</th>
-                            <th>Details</th>
+                            <th>Имя</th>
+                            <th>Имя пользователя</th>
+                            <th>Роль</th>
+                            <th>Окружение</th>
+                            <th>Действительность</th>
+                            <th>Подробности</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -62,14 +62,14 @@
                                 <td>
                                     <div class="btn-group">
                                         <a class="btn btn-sm btn-secondary"
-                                           href="{% url 'view_cred_details' conf.id  %}">View</a>
+                                           href="{% url 'view_cred_details' conf.id  %}">Просмотр</a>
                                         {% if "dojo.change_cred_user"|has_configuration_permission:request %}
                                         <a class="btn btn-sm btn-warning"
-                                           href="{% url 'edit_cred' conf.id  %}">Edit</a>
+                                           href="{% url 'edit_cred' conf.id  %}">Изменить</a>
                                         {% endif %}
                                         {% if "dojo.delete_cred_user"|has_configuration_permission:request %}
                                         <a class="btn btn-sm btn-danger delete-finding"
-                                           href="{% url 'delete_cred' conf.id  %}">Delete</a>
+                                           href="{% url 'delete_cred' conf.id  %}">Удалить</a>
                                         {% endif %}
                                         </div>
                                 </td>
@@ -82,10 +82,10 @@
                     {% include "dojo/paging_snippet.html" with page=confs page_size=True %}
                 </div>
             {% else %}
-                <p class="text-center">No credentials configured.</p>
+                <p class="text-center">Учетные данные не сконфигурированы.</p>
             {% endif %}
             {% if "DB_KEY"|get_config_setting == False %}
-            <p class="text-center"><strong>Please configure a randomly generated key called DB_KEY and add to settings.py in dojo/settings/.</strong></p></br>
+            <p class="text-center"><strong>Пожалуйста, настройте случайно сгенерированный ключ с именем DB_KEY и добавьте его в settings.py в dojo/settings/.</strong></p></br>
             {% endif %}
         </div>
     </div>

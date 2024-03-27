@@ -9,7 +9,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading tight">
                     <h3 class="has-filters">
-                        Engineers
+                        Инженеры
                         <div class="dropdown pull-right">
                             <button id="show-filters" data-toggle="collapse" data-target="#the-filters" class="btn btn-primary toggle-filters"> <i class="fa-solid fa-filter"></i> <i class="caret"></i> </button>
                         </div>
@@ -28,19 +28,19 @@
                         class="tablesorter-bootstrap table table-condensed table-striped">
                         <tr>
                             {% comment %} The display field is translated in the function. No need to translate here as well{% endcomment %}
-                            <th class="nowrap">{% dojo_sort request 'First Name' 'first_name' %}</th>
+                            <th class="nowrap">{% dojo_sort request 'Имя' 'first_name' %}</th>
                             {% comment %} The display field is translated in the function. No need to translate here as well{% endcomment %}
-                            <th class="nowrap">{% dojo_sort request 'Last Name' 'last_name' %}</th>
+                            <th class="nowrap">{% dojo_sort request 'Фамилия' 'last_name' %}</th>
                             {% comment %} The display field is translated in the function. No need to translate here as well{% endcomment %}
-                            <th class="nowrap">{% dojo_sort request 'User Name' 'username' 'asc' %}</th>
+                            <th class="nowrap">{% dojo_sort request 'Имя пользователя' 'username' 'asc' %}</th>
                             {% comment %} The display field is translated in the function. No need to translate here as well{% endcomment %}
-                            <th class="nowrap">{% dojo_sort request 'Email' 'email' %}</th>
+                            <th class="nowrap">{% dojo_sort request 'Электронная почта' 'email' %}</th>
                             {% comment %} The display field is translated in the function. No need to translate here as well{% endcomment %}
-                            <th class="nowrap">{% dojo_sort request 'Last Login' 'last_login'%}</th>
+                            <th class="nowrap">{% dojo_sort request 'Последний вход' 'last_login'%}</th>
                             {% comment %} The display field is translated in the function. No need to translate here as well{% endcomment %}
-                            <th class="nowrap, text-center">{% dojo_sort request 'Active' 'is_active' %}</th>
+                            <th class="nowrap, text-center">{% dojo_sort request 'Активный' 'is_active' %}</th>
                             {% comment %} The display field is translated in the function. No need to translate here as well{% endcomment %}
-                            <th class="nowrap, text-center">{% dojo_sort request 'Superuser' 'is_superuser' %}</th>
+                            <th class="nowrap, text-center">{% dojo_sort request 'Суперпользователь' 'is_superuser' %}</th>
                         </tr>
                         {% for u in users %}
                             <tr>
@@ -63,7 +63,7 @@
                     {% include "dojo/paging_snippet.html" with page=users page_size=True %}
                 </div>
             {% else %}
-                <h5> No Users </h5>
+                <h5> Нет пользователей </h5>
             {% endif %}
         </div>
     </div>

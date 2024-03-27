@@ -775,27 +775,27 @@ msgstr "Требует, чтобы пароли пользователей со�
 
 #: dojo/models.py:557
 msgid "Password must contain one lowercase letter"
-msgstr ""
+msgstr "Пароль должен содержать одну строчную букву."
 
 #: dojo/models.py:558
 msgid "Requires user passwords to contain at least one lowercase letter (a-z)."
-msgstr ""
+msgstr "Требует, чтобы пароли пользователей содержали хотя бы одну строчную букву (a-z)."
 
 #: dojo/models.py:562
 msgid "Password must contain one uppercase letter"
-msgstr ""
+msgstr "Пароль должен содержать одну заглавную букву."
 
 #: dojo/models.py:563
 msgid "Requires user passwords to contain at least one uppercase letter (A-Z)."
-msgstr ""
+msgstr "Требует, чтобы пароли пользователей содержали хотя бы одну заглавную букву (A-Z)."
 
 #: dojo/models.py:567
 msgid "Password must not be common"
-msgstr ""
+msgstr "Пароль не должен быть общим."
 
 #: dojo/models.py:568
 msgid "Requires user passwords to not be part of list of common passwords."
-msgstr ""
+msgstr "Требует, чтобы пароли пользователей не входили в список общих паролей."
 
 #: dojo/models.py:598
 msgid "This role determines the permissions of the user to manage the group."
@@ -1192,54 +1192,54 @@ msgstr "В строке запроса вопросительный знак д�
 msgid ""
 "The fragment identifier which follows the hash mark. The hash mark should be "
 "omitted. For example 'section-13', 'paragraph-2'."
-msgstr ""
+msgstr "Идентификатор фрагмента, следующий за решеткой. "
 
 #: dojo/models.py:1597 dojo/templates/base.html:293
 #: dojo/templates/base.html:694 dojo/templates/dojo/simple_search.html:44
 #: dojo/templates/dojo/view_test.html:329
 #: dojo/templates/dojo/view_test.html:513
 msgid "Findings"
-msgstr ""
+msgstr "Выводы"
 
 #: dojo/models.py:1600
 msgid ""
 "Add tags that help describe this endpoint. Choose from the list or add new "
 "tags. Press Enter key to add."
-msgstr ""
+msgstr "Добавьте теги, которые помогут описать эту конечную точку. "
 
 #: dojo/models.py:1953
 msgid "SonarQube issue key"
-msgstr ""
+msgstr "Ключ проблемы SonarQube"
 
 #: dojo/models.py:1954
 msgid "SonarQube issue status"
-msgstr ""
+msgstr "Состояние проблемы SonarQube"
 
 #: dojo/models.py:1955
 msgid "SonarQube issue type"
-msgstr ""
+msgstr "Тип проблемы SonarQube"
 
 #: dojo/models.py:1994
 msgid ""
 "Add tags that help describe this test. Choose from the list or add new tags. "
 "Press Enter key to add."
-msgstr ""
+msgstr "Добавьте теги, которые помогут описать этот тест. "
 
 #: dojo/models.py:2000 dojo/models.py:2145
 msgid "Build ID that was tested, a reimport may update this field."
-msgstr ""
+msgstr "Идентификатор сборки, который был протестирован, при повторном импорте это поле может быть обновлено."
 
 #: dojo/models.py:2002 dojo/models.py:2147
 msgid "Commit hash tested, a reimport may update this field."
-msgstr ""
+msgstr "Хеш-фиксация проверена, при повторном импорте это поле может быть обновлено."
 
 #: dojo/models.py:2004 dojo/models.py:2149
 msgid "Tag or branch that was tested, a reimport may update this field."
-msgstr ""
+msgstr "Тег или ветвь, которая была протестирована, при повторном импорте это поле может быть обновлено."
 
 #: dojo/models.py:2005 dojo/templates/dojo/view_test.html:122
 msgid "API Scan Configuration"
-msgstr ""
+msgstr "Конфигурация сканирования API"
 
 #: dojo/models.py:2196 dojo/templates/dojo/alerts.html:17
 #: dojo/templates/dojo/simple_search.html:229
@@ -1247,11 +1247,11 @@ msgstr ""
 #: dojo/templates/dojo/simple_search.html:455 dojo/templates/dojo/users.html:67
 #: dojo/templates/dojo/view_user.html:76
 msgid "Title"
-msgstr ""
+msgstr "Название"
 
 #: dojo/models.py:2197
 msgid "A short description of the flaw."
-msgstr ""
+msgstr "Краткое описание недостатка."
 
 #: dojo/models.py:2199 dojo/templates/dojo/findings_list_snippet.html:129
 #: dojo/templates/dojo/pt_counts.html:245
@@ -1262,7 +1262,7 @@ msgstr ""
 #: dojo/templates/dojo/view_test.html:933
 #: dojo/templates/dojo/view_test.html:1329
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #: dojo/models.py:2200
 msgid "The date the flaw was discovered."
@@ -1955,66 +1955,66 @@ msgstr "Это сообщение о закрытии будет отображ�
 
 #: dojo/models.py:3740
 msgid "The style of banner to display. (info, success, warning, danger)"
-msgstr ""
+msgstr "Стиль отображаемого баннера. "
 
 #: dojo/models.py:3744
 msgid "Dismissable?"
-msgstr ""
+msgstr "Уволить?"
 
 #: dojo/models.py:3745
 msgid "Ticking this box allows users to dismiss the current announcement"
-msgstr ""
+msgstr "Установив этот флажок, пользователи смогут закрыть текущее объявление."
 
 #: dojo/models.py:3756
 msgid ""
 "This message will be displayed on the login page. It can contain basic html "
 "tags, for example <a href='https://www.fred.com' style='color: #337ab7;' "
 "target='_blank'>https://example.com</a>"
-msgstr ""
+msgstr "Это сообщение будет отображаться на странице входа в систему. "
 
 #: dojo/models.py:3760 dojo/models.py:3801
 msgid "Enter a name to give to this configuration"
-msgstr ""
+msgstr "Введите имя для этой конфигурации."
 
 #: dojo/models.py:3761
 msgid "Enter your Github API Key"
-msgstr ""
+msgstr "Введите свой ключ API Github."
 
 #: dojo/models.py:3769
 msgid "GitHub issue URL"
-msgstr ""
+msgstr "URL-адрес проблемы GitHub"
 
 #: dojo/models.py:3791
 msgid "Github project"
-msgstr ""
+msgstr "Проект Github"
 
 #: dojo/models.py:3791
 msgid "Specify your project location. (:user/:repo)"
-msgstr ""
+msgstr "Укажите местоположение вашего проекта. "
 
 #: dojo/models.py:3792
 msgid "Github Configuration"
-msgstr ""
+msgstr "Конфигурация Github"
 
 #: dojo/models.py:3794
 msgid ""
 "Notes added to findings will be automatically added to the corresponding "
 "github issue"
-msgstr ""
+msgstr "Примечания, добавленные к выводам, будут автоматически добавлены в соответствующий выпуск GitHub."
 
 #: dojo/models.py:3802
 msgid "JIRA URL"
-msgstr ""
+msgstr "URL-адрес JIRA"
 
 #: dojo/models.py:3802
 msgid ""
 "For more information how to configure Jira, read the DefectDojo "
 "documentation."
-msgstr ""
+msgstr "Дополнительную информацию о настройке Jira можно найти в документации DefectDojo."
 
 #: dojo/models.py:3820
 msgid "You can define extra issue types in settings.py"
-msgstr ""
+msgstr "Вы можете определить дополнительные типы задач в settings.py."
 
 #: dojo/models.py:3824 dojo/models.py:3899
 msgid ""
@@ -2473,7 +2473,7 @@ msgstr "Продукт и связи удалены."
 #: dojo/product/views.py:918
 #, python-format
 msgid "Deletion of %(name)s"
-msgstr ""
+msgstr "Удаление %(name)s"
 
 #: dojo/product/views.py:920
 #, python-format
@@ -2943,7 +2943,7 @@ msgstr "Диспетчер учетных данных"
 
 #: dojo/templates/base.html:513
 msgid "GitHub"
-msgstr ""
+msgstr "Гитхаб"
 
 #: dojo/templates/base.html:520 dojo/templates/dojo/simple_search.html:457
 #: dojo/templates/dojo/view_product_details.html:483
@@ -3393,7 +3393,8 @@ msgstr "Количество принятых к риску ошибок по н
 #: dojo/templates/dojo/dashboard-metrics.html:105
 #, python-format
 msgid "Top %(length)s Products By Bug Severity"
-msgstr ""
+msgstr "Продукты с наибольшим процентом %(length)s по серьезности ошибок"
+
 
 #: dojo/templates/dojo/dashboard-metrics.html:117
 msgid "Total Findings In Period By Severity"
@@ -3540,7 +3541,7 @@ msgstr "Недели отображаются только при наличии
 #: dojo/templates/dojo/delete_alerts.html:5
 #, python-format
 msgid "Delete All alerts %(product)s"
-msgstr ""
+msgstr "Удалить все оповещения %(product)s"
 
 #: dojo/templates/dojo/delete_alerts.html:6
 msgid "Delete all alerts will remove all alerts from this instance"
@@ -3565,7 +3566,7 @@ msgstr "Удалить оповещение"
 #: dojo/templates/dojo/delete_benchmark.html:5
 #, python-format
 msgid "Delete Benchmarks for %(product)s"
-msgstr ""
+msgstr "Удалить контрольные показатели для %(product)s"
 
 #: dojo/templates/dojo/delete_benchmark.html:7
 msgid ""
@@ -3626,7 +3627,7 @@ msgstr "Сохранить"
 #: dojo/templates/dojo/edit_product_type.html:19
 #, python-format
 msgid "Edit Product Type %(name)s"
-msgstr ""
+msgstr "Изменить тип продукта %(name)s"
 
 #: dojo/templates/dojo/edit_product_type.html:25
 msgid "Edit product type"
@@ -4200,10 +4201,10 @@ msgstr "Оповещение"
 #: dojo/templates/dojo/paging_snippet.html:8
 #, python-format
 msgid ""
-"\n"
-"    Showing entries %(start_index)s to %(end_index)s of %(count)s\n"
+""
+"    Showing entries %(start_index)s to %(end_index)s of %(count)s"
 "    "
-msgstr ""
+msgstr "Показаны записи от %(start_index)s до %(end_index)s из %(count)s"
 
 #: dojo/templates/dojo/paging_snippet.html:32
 msgid "Page Size"
@@ -4950,7 +4951,7 @@ msgstr "добавить результат к этому тесту."
 #: dojo/templates/dojo/view_user.html:8
 #, python-format
 msgid "User %(full_name)s"
-msgstr ""
+msgstr "Пользователь %(full_name)s"
 
 #: dojo/templates/dojo/view_user.html:70
 msgid "Contact Information"
@@ -5019,7 +5020,7 @@ msgstr "(сохраняю...)"
 #: dojo/templatetags/display_tags.py:227
 #, python-format
 msgid "Checklist is %(level)s full (pass: %(total_viewed)s, total: %(total)s)"
-msgstr ""
+msgstr "Контрольный список заполнен на %(level)s (пройдено: %(total_viewed)s, всего: %(total)s)"
 
 #: dojo/test/views.py:201
 msgid "Note added successfully."
@@ -5060,8 +5061,8 @@ msgstr "Тест: %(test_type_name)s (%(product_name)s)"
 #, python-format
 msgid ""
 "Set aside for test %(test_type_name)s, on product %(product_name)s. "
-"Additional detail can be found at %(detail_url)s"
-msgstr ""
+"Additional detail can be found"
+msgstr "Отложено для теста %(test_type_name)s для продукта %(product_name)s. "
 
 #: dojo/test/views.py:596
 #, python-format
@@ -5178,123 +5179,123 @@ msgstr "Пароль должен содержать хотя бы 1 специ�
 msgid ""
 "Hello {name}! Your last login was {naturaltime(last_login)} ({last_login."
 "strftime(\"%Y-%m-%d %I:%M:%S %p\")})"
-msgstr ""
+msgstr "Привет, {name}! "
 
 #: dojo/user/views.py:87
 msgid "API Key generated successfully."
-msgstr ""
+msgstr "Ключ API сгенерирован успешно."
 
 #: dojo/user/views.py:154
 msgid "You have logged out successfully."
-msgstr ""
+msgstr "Вы успешно вышли из системы."
 
 #: dojo/user/views.py:188
 msgid "Alerts removed."
-msgstr ""
+msgstr "Оповещения удалены."
 
 #: dojo/user/views.py:248
 msgid "Only superusers are allowed to change their global role."
-msgstr ""
+msgstr "Только суперпользователям разрешено изменять свою глобальную роль."
 
 #: dojo/user/views.py:255
 msgid "Profile updated successfully."
-msgstr ""
+msgstr "Профиль успешно обновлен."
 
 #: dojo/user/views.py:257
 #, python-format
 msgid "User Profile - %(user_full_name)s"
-msgstr ""
+msgstr "Профиль пользователя - %(user_full_name)s"
 
 #: dojo/user/views.py:281
 msgid "Your password has been changed."
-msgstr ""
+msgstr "Ваш пароль изменен."
 
 #: dojo/user/views.py:291
 msgid "All Users"
-msgstr ""
+msgstr "Все пользователи"
 
 #: dojo/user/views.py:307
 msgid "Add User"
-msgstr ""
+msgstr "Добавить пользователя"
 
 #: dojo/user/views.py:321
 msgid "Only superusers are allowed to add superusers. User was not saved."
-msgstr ""
+msgstr "Только суперпользователям разрешено добавлять суперпользователей. "
 
 #: dojo/user/views.py:326
 msgid ""
 "Only superusers are allowed to add users with a global role. User was not "
 "saved."
-msgstr ""
+msgstr "Только суперпользователям разрешено добавлять пользователей с глобальной ролью. "
 
 #: dojo/user/views.py:345
 msgid "User added successfully."
-msgstr ""
+msgstr "Пользователь успешно добавлен."
 
 #: dojo/user/views.py:351
 msgid "User was not added successfully."
-msgstr ""
+msgstr "Пользователь не был добавлен."
 
 #: dojo/user/views.py:370
 msgid "View User"
-msgstr ""
+msgstr "Просмотреть пользователя"
 
 #: dojo/user/views.py:381
 msgid "Edit User"
-msgstr ""
+msgstr "Редактировать пользователя"
 
 #: dojo/user/views.py:413
 msgid "Only superusers are allowed to edit superusers. User was not saved."
-msgstr ""
+msgstr "Только суперпользователям разрешено редактировать суперпользователей. "
 
 #: dojo/user/views.py:418
 msgid ""
 "Only superusers are allowed to edit users with a global role. User was not "
 "saved."
-msgstr ""
+msgstr "Только суперпользователям разрешено редактировать пользователей с глобальной ролью. "
 
 #: dojo/user/views.py:430
 msgid "User saved successfully."
-msgstr ""
+msgstr "Пользователь успешно сохранен."
 
 #: dojo/user/views.py:435
 msgid "User was not saved successfully."
-msgstr ""
+msgstr "Пользователь не был успешно сохранен."
 
 #: dojo/user/views.py:454
 msgid "You may not delete yourself."
-msgstr ""
+msgstr "Вы не можете удалить себя."
 
 #: dojo/user/views.py:465
 msgid "Only superusers are allowed to delete superusers. User was not removed."
-msgstr ""
+msgstr "Только суперпользователям разрешено удалять суперпользователей. "
 
 #: dojo/user/views.py:470
 msgid ""
 "Only superusers are allowed to delete users with a global role. User was not "
 "removed."
-msgstr ""
+msgstr "Только суперпользователям разрешено удалять пользователей с глобальной ролью. "
 
 #: dojo/user/views.py:477
 msgid "User and relationships removed."
-msgstr ""
+msgstr "Пользователь и связи удалены."
 
 #: dojo/user/views.py:482
 #, python-format
 msgid "User cannot be deleted: %(error)s"
-msgstr ""
+msgstr "Невозможно удалить пользователя: %(error)s"
 
 #: dojo/user/views.py:573
 msgid "Groups added successfully."
-msgstr ""
+msgstr "Группы успешно добавлены."
 
 #: dojo/user/views.py:577
 msgid "Add Group Member"
-msgstr ""
+msgstr "Добавить члена группы"
 
 #: dojo/user/views.py:593
 msgid "Permissions updated."
-msgstr ""
+msgstr "Разрешения обновлены."
 
 #: dojo/utils.py:686
 msgid "Home"

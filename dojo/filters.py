@@ -400,7 +400,7 @@ class FindingFilterWithTags(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Tag name contains')
+    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Имя тега контейнера')
 
     not_tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -414,7 +414,7 @@ class FindingFilterWithTags(DojoFilter):
         field_name='test__tags__name',
         to_field_name='name',
         exclude=True,
-        label='Test without tags',
+        label='Тест без тегов',
         queryset=Test.tags.tag_model.objects.all().order_by('name'),
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
@@ -437,7 +437,7 @@ class FindingFilterWithTags(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -719,10 +719,10 @@ class ProductComponentFilter(DojoFilter):
 class ComponentFilter(ProductComponentFilter):
     test__engagement__product__prod_type = ModelMultipleChoiceFilter(
         queryset=Product_Type.objects.none(),
-        label="Product Type")
+        label="Тип продукта")
     test__engagement__product = ModelMultipleChoiceFilter(
         queryset=Product.objects.none(),
-        label="Product")
+        label="Продукт")
 
     def __init__(self, *args, **kwargs):
         super(ComponentFilter, self).__init__(*args, **kwargs)
@@ -736,16 +736,16 @@ class EngagementDirectFilter(DojoFilter):
     name = CharFilter(lookup_expr='icontains', label='Engagement name contains')
     lead = ModelChoiceFilter(queryset=Dojo_User.objects.none(), label="Lead")
     version = CharFilter(field_name='version', lookup_expr='icontains', label='Engagement version')
-    test__version = CharFilter(field_name='test__version', lookup_expr='icontains', label='Test version')
+    test__version = CharFilter(field_name='test__version', lookup_expr='icontains', label='Версия теста')
 
     product__name = CharFilter(lookup_expr='icontains', label='Product name contains')
     product__prod_type = ModelMultipleChoiceFilter(
         queryset=Product_Type.objects.none(),
-        label="Product Type")
+        label="Тип продукта")
     test__engagement__product__lifecycle = MultipleChoiceFilter(
-        choices=Product.LIFECYCLE_CHOICES, label='Product lifecycle', null_label='Empty')
+        choices=Product.LIFECYCLE_CHOICES, label='Жизненный цикл продукта', null_label='Empty')
     status = MultipleChoiceFilter(choices=ENGAGEMENT_STATUS_CHOICES,
-                                              label="Status")
+                                              label="Статус")
 
     tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -754,7 +754,7 @@ class EngagementDirectFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Tag name contains')
+    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Имя тега содержит')
 
     not_tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -764,9 +764,9 @@ class EngagementDirectFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
-    has_tags = BooleanFilter(field_name='tags', lookup_expr='isnull', exclude=True, label='Has tags')
+    has_tags = BooleanFilter(field_name='tags', lookup_expr='isnull', exclude=True, label='Теги')
 
     o = OrderingFilter(
         # tuple-mapping retains order
@@ -802,16 +802,16 @@ class EngagementFilter(DojoFilter):
     engagement__name = CharFilter(lookup_expr='icontains', label='Engagement name contains')
     engagement__lead = ModelChoiceFilter(queryset=Dojo_User.objects.none(), label="Lead")
     engagement__version = CharFilter(field_name='engagement__version', lookup_expr='icontains', label='Engagement version')
-    engagement__test__version = CharFilter(field_name='engagement__test__version', lookup_expr='icontains', label='Test version')
+    engagement__test__version = CharFilter(field_name='engagement__test__version', lookup_expr='icontains', label='Версия теста')
 
     name = CharFilter(lookup_expr='icontains', label='Product name contains')
     prod_type = ModelMultipleChoiceFilter(
         queryset=Product_Type.objects.none(),
-        label="Product Type")
+        label="Тип продукта")
     engagement__product__lifecycle = MultipleChoiceFilter(
-        choices=Product.LIFECYCLE_CHOICES, label='Product lifecycle', null_label='Empty')
+        choices=Product.LIFECYCLE_CHOICES, label='Жизненный цикл продукта', null_label='Empty')
     engagement__status = MultipleChoiceFilter(choices=ENGAGEMENT_STATUS_CHOICES,
-                                              label="Status")
+                                              label="Статус")
 
     tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -820,7 +820,7 @@ class EngagementFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Tag name contains')
+    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Имя тега содержит')
 
     not_tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -830,7 +830,7 @@ class EngagementFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
     has_tags = BooleanFilter(field_name='tags', lookup_expr='isnull', exclude=True, label='Has tags')
 
@@ -861,11 +861,11 @@ class EngagementFilter(DojoFilter):
 class ProductEngagementFilter(DojoFilter):
     lead = ModelChoiceFilter(queryset=Dojo_User.objects.none(), label="Lead")
     version = CharFilter(lookup_expr='icontains', label='Engagement version')
-    test__version = CharFilter(field_name='test__version', lookup_expr='icontains', label='Test version')
+    test__version = CharFilter(field_name='test__version', lookup_expr='icontains', label='Версия теста')
 
     name = CharFilter(lookup_expr='icontains')
     status = MultipleChoiceFilter(choices=ENGAGEMENT_STATUS_CHOICES,
-                                              label="Status")
+                                              label="Статус")
 
     target_start = DateRangeFilter()
     target_end = DateRangeFilter()
@@ -877,7 +877,7 @@ class ProductEngagementFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Tag name contains')
+    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Имя тега содержит')
 
     not_tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -887,7 +887,7 @@ class ProductEngagementFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
     o = OrderingFilter(
         # tuple-mapping retains order
@@ -960,11 +960,11 @@ class ApiEngagementFilter(DojoFilter):
 
 
 class ProductFilter(DojoFilter):
-    name = CharFilter(lookup_expr='icontains', label="Product Name")
-    name_exact = CharFilter(field_name='name', lookup_expr='iexact', label="Exact Product Name")
+    name = CharFilter(lookup_expr='icontains', label="Название продукта")
+    name_exact = CharFilter(field_name='name', lookup_expr='iexact', label="Точное название продукта")
     prod_type = ModelMultipleChoiceFilter(
         queryset=Product_Type.objects.none(),
-        label="Product Type")
+        label="Тип продукта")
     business_criticality = MultipleChoiceFilter(choices=Product.BUSINESS_CRITICALITY_CHOICES, null_label="Empty")
     platform = MultipleChoiceFilter(choices=Product.PLATFORM_CHOICES, null_label="Empty")
     lifecycle = MultipleChoiceFilter(choices=Product.LIFECYCLE_CHOICES, null_label="Empty")
@@ -994,11 +994,11 @@ class ProductFilter(DojoFilter):
     #     label="tags (AND)"
     # )
 
-    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label="Tag contains")
+    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label="Содержит тег")
 
     # tags__name = CharFilter(
     #     lookup_expr='icontains',
-    #     label="Tag contains",
+    #     label="Содержит тег",
     # )
 
     # tags__all = ModelMultipleChoiceFilter(
@@ -1054,9 +1054,9 @@ class ProductFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
-    outside_of_sla = ProductSLAFilter(label="Outside of SLA")
+    outside_of_sla = ProductSLAFilter(label="Вне SLA")
 
     has_tags = BooleanFilter(field_name='tags', lookup_expr='isnull', exclude=True, label='Has tags')
 
@@ -1087,7 +1087,7 @@ class ProductFilter(DojoFilter):
 
     )
 
-    # tags = CharFilter(lookup_expr='icontains', label="Tags")
+    # tags = CharFilter(lookup_expr='icontains', label="Теги")
 
     def __init__(self, *args, **kwargs):
         self.user = None
@@ -1127,7 +1127,7 @@ class ApiProductFilter(DojoFilter):
     user_records = NumberInFilter(field_name='user_records', lookup_expr='in')
     regulations = NumberInFilter(field_name='regulations', lookup_expr='in')
 
-    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Tag name contains')
+    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Имя тега содержит')
     tags = CharFieldInFilter(field_name='tags__name', lookup_expr='in',
                              help_text='Comma separated list of exact tags')
 
@@ -1206,8 +1206,8 @@ class ApiFindingFilter(DojoFilter):
     steps_to_reproduce = CharFilter(lookup_expr='icontains')
     unique_id_from_tool = CharFilter(lookup_expr='icontains')
     title = CharFilter(lookup_expr='icontains')
-    product_name = CharFilter(lookup_expr='engagement__product__name__iexact', field_name='test', label='exact product name')
-    product_name_contains = CharFilter(lookup_expr='engagement__product__name__icontains', field_name='test', label='exact product name')
+    product_name = CharFilter(lookup_expr='engagement__product__name__iexact', field_name='test', label='точное название продукта')
+    product_name_contains = CharFilter(lookup_expr='engagement__product__name__icontains', field_name='test', label='точное название продукта')
     product_lifecycle = CharFilter(method=custom_filter, lookup_expr='engagement__product__lifecycle',
                                    field_name='test__engagement__product__lifecycle', label='Comma separated list of exact product lifecycles')
     # DateRangeFilter
@@ -1235,7 +1235,7 @@ class ApiFindingFilter(DojoFilter):
     reviewers = NumberInFilter(field_name='reviewers', lookup_expr='in')
     sast_source_line = NumberInFilter(field_name='sast_source_line', lookup_expr='in')
     sonarqube_issue = NumberInFilter(field_name='sonarqube_issue', lookup_expr='in')
-    test__test_type = NumberInFilter(field_name='test__test_type', lookup_expr='in', label='Test Type')
+    test__test_type = NumberInFilter(field_name='test__test_type', lookup_expr='in', label='Тип теста')
     test__engagement = NumberInFilter(field_name='test__engagement', lookup_expr='in')
     test__engagement__product = NumberInFilter(field_name='test__engagement__product', lookup_expr='in')
     test__engagement__product__prod_type = NumberInFilter(field_name='test__engagement__product__prod_type', lookup_expr='in')
@@ -1307,19 +1307,19 @@ class ApiFindingFilter(DojoFilter):
 
 
 class FindingFilter(FindingFilterWithTags):
-    # tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Tag name contains')
+    # tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Имя тега содержит')
     title = CharFilter(lookup_expr='icontains')
     date = DateRangeFilter()
-    on = DateFilter(field_name='date', lookup_expr='exact', label='On')
-    before = DateFilter(field_name='date', lookup_expr='lt', label='Before')
-    after = DateFilter(field_name='date', lookup_expr='gt', label='After')
+    on = DateFilter(field_name='date', lookup_expr='exact', label='На')
+    before = DateFilter(field_name='date', lookup_expr='lt', label='До')
+    after = DateFilter(field_name='date', lookup_expr='gt', label='После')
     last_reviewed = DateRangeFilter()
     last_status_update = DateRangeFilter()
     cwe = MultipleChoiceFilter(choices=[])
-    vulnerability_id = CharFilter(method=vulnerability_id_filter, label='Vulnerability Id')
+    vulnerability_id = CharFilter(method=vulnerability_id_filter, label='ID уязвимости')
     severity = MultipleChoiceFilter(choices=SEVERITY_CHOICES)
     test__test_type = ModelMultipleChoiceFilter(
-        queryset=Test_Type.objects.all(), label='Test Type')
+        queryset=Test_Type.objects.all(), label='Тип теста')
 
     duplicate = ReportBooleanFilter()
     is_mitigated = ReportBooleanFilter()
@@ -1340,17 +1340,17 @@ class FindingFilter(FindingFilterWithTags):
 
     test__engagement__product__prod_type = ModelMultipleChoiceFilter(
         queryset=Product_Type.objects.none(),
-        label="Product Type")
+        label="Тип продукта")
 
     test__engagement__product__lifecycle = MultipleChoiceFilter(
-        choices=Product.LIFECYCLE_CHOICES, label='Product lifecycle')
+        choices=Product.LIFECYCLE_CHOICES, label='Жизненный цикл продукта')
 
     test__engagement__product = ModelMultipleChoiceFilter(
         queryset=Product.objects.none(),
-        label="Product")
+        label="Продукт")
     test__engagement = ModelMultipleChoiceFilter(
         queryset=Engagement.objects.none(),
-        label="Engagement")
+        label="Вовлечение")
 
     endpoints__host = CharFilter(lookup_expr='icontains', label="Endpoint Host")
 
@@ -1358,12 +1358,12 @@ class FindingFilter(FindingFilterWithTags):
 
     test = ModelMultipleChoiceFilter(
         queryset=Test.objects.none(),
-        label="Test")
+        label="Тест")
 
     test__engagement__version = CharFilter(lookup_expr='icontains', label="Engagement Version")
-    test__version = CharFilter(lookup_expr='icontains', label="Test Version")
+    test__version = CharFilter(lookup_expr='icontains', label="Версия теста")
 
-    status = FindingStatusFilter(label='Status')
+    status = FindingStatusFilter(label='Статус')
 
     if is_finding_groups_enabled():
         finding_group = ModelMultipleChoiceFilter(
@@ -1387,7 +1387,7 @@ class FindingFilter(FindingFilterWithTags):
         has_jira_issue = BooleanFilter(field_name='jira_issue',
                                     lookup_expr='isnull',
                                     exclude=True,
-                                    label='Has JIRA')
+                                    label='Имеет JIRA')
         jira_creation = DateRangeFilter(field_name='jira_issue__jira_creation', label='JIRA Creation')
         jira_change = DateRangeFilter(field_name='jira_issue__jira_change', label='JIRA Updated')
         jira_issue__jira_key = CharFilter(field_name='jira_issue__jira_key', lookup_expr='icontains', label="JIRA issue")
@@ -1420,7 +1420,7 @@ class FindingFilter(FindingFilterWithTags):
         field_name='test__tags__name',
         to_field_name='name',
         exclude=True,
-        label='Test without tags',
+        label='Тест без тегов',
         queryset=Test.tags.tag_model.objects.all().order_by('name'),
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
@@ -1443,9 +1443,9 @@ class FindingFilter(FindingFilterWithTags):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
-    outside_of_sla = FindingSLAFilter(label="Outside of SLA")
+    outside_of_sla = FindingSLAFilter(label="Вне SLA")
 
     has_tags = BooleanFilter(field_name='tags', lookup_expr='isnull', exclude=True, label='Has tags')
 
@@ -1531,7 +1531,7 @@ class FindingFilter(FindingFilterWithTags):
 
 class AcceptedFindingFilter(FindingFilter):
     risk_acceptance__created__date = \
-        DateRangeFilter(label="Acceptance Date")
+        DateRangeFilter(label="Дата принятия")
 
     risk_acceptance__owner = \
         ModelMultipleChoiceFilter(
@@ -1545,7 +1545,7 @@ class AcceptedFindingFilter(FindingFilter):
 
 class SimilarFindingFilter(FindingFilter):
     hash_code = MultipleChoiceFilter()
-    vulnerability_ids = CharFilter(method=custom_vulnerability_id_filter, label='Vulnerability Ids')
+    vulnerability_ids = CharFilter(method=custom_vulnerability_id_filter, label='ID уязвимостей')
 
     class Meta(FindingFilter.Meta):
         model = Finding
@@ -1603,7 +1603,7 @@ class TemplateFindingFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Tag name contains')
+    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Имя тега содержит')
 
     not_tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -1613,7 +1613,7 @@ class TemplateFindingFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
     o = OrderingFilter(
         # tuple-mapping retains order
@@ -1644,7 +1644,7 @@ class TemplateFindingFilter(DojoFilter):
         field_name='test__tags__name',
         to_field_name='name',
         exclude=True,
-        label='Test without tags',
+        label='Тест без тегов',
         queryset=Test.tags.tag_model.objects.all().order_by('name'),
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
@@ -1667,7 +1667,7 @@ class TemplateFindingFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
     def __init__(self, *args, **kwargs):
         super(TemplateFindingFilter, self).__init__(*args, **kwargs)
@@ -1701,7 +1701,7 @@ class MetricsFindingFilter(FindingFilter):
     start_date = DateFilter(field_name='date', label='Start Date', lookup_expr=('gt'))
     end_date = DateFilter(field_name='date', label='End Date', lookup_expr=('lt'))
     date = MetricsDateRangeFilter()
-    vulnerability_id = CharFilter(method=vulnerability_id_filter, label='Vulnerability Id')
+    vulnerability_id = CharFilter(method=vulnerability_id_filter, label='ID уязвимости')
 
     not_tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -1711,7 +1711,7 @@ class MetricsFindingFilter(FindingFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
     def __init__(self, *args, **kwargs):
         if args[0]:
@@ -1733,15 +1733,15 @@ class MetricsEndpointFilter(FilterSet):
     date = MetricsDateRangeFilter()
     finding__test__engagement__product__prod_type = ModelMultipleChoiceFilter(
         queryset=Product_Type.objects.none(),
-        label="Product Type")
+        label="Тип продукта")
     finding__test__engagement = ModelMultipleChoiceFilter(
         queryset=Engagement.objects.none(),
-        label="Engagement")
+        label="Вовлечение")
     finding__test__engagement__version = CharFilter(lookup_expr='icontains', label="Engagement Version")
-    finding__severity = MultipleChoiceFilter(choices=SEVERITY_CHOICES, label="Severity")
+    finding__severity = MultipleChoiceFilter(choices=SEVERITY_CHOICES, label="Серьёзность")
 
     endpoint__host = CharFilter(lookup_expr='icontains', label="Endpoint Host")
-    finding_title = CharFilter(lookup_expr='icontains', label="Finding Title")
+    finding_title = CharFilter(lookup_expr='icontains', label="Название находки")
 
     tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -1750,7 +1750,7 @@ class MetricsEndpointFilter(FilterSet):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Tag name contains')
+    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Имя тега содержит')
 
     not_tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -1760,7 +1760,7 @@ class MetricsEndpointFilter(FilterSet):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
     not_tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -1774,7 +1774,7 @@ class MetricsEndpointFilter(FilterSet):
         field_name='test__tags__name',
         to_field_name='name',
         exclude=True,
-        label='Test without tags',
+        label='Тест без тегов',
         queryset=Test.tags.tag_model.objects.all().order_by('name'),
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
@@ -1797,9 +1797,9 @@ class MetricsEndpointFilter(FilterSet):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
-    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Tag name contains')
+    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Имя тега содержит')
 
     def __init__(self, *args, **kwargs):
         if args[0]:
@@ -1833,7 +1833,7 @@ class MetricsEndpointFilter(FilterSet):
 class EndpointFilter(DojoFilter):
     product = ModelMultipleChoiceFilter(
         queryset=Product.objects.none(),
-        label="Product")
+        label="Продукт")
     protocol = CharFilter(lookup_expr='icontains')
     userinfo = CharFilter(lookup_expr='icontains')
     host = CharFilter(lookup_expr='icontains')
@@ -1849,7 +1849,7 @@ class EndpointFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Tag name contains')
+    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Имя тега содержит')
 
     tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -1879,7 +1879,7 @@ class EndpointFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Tag name contains')
+    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Имя тега содержит')
 
     not_tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -1889,7 +1889,7 @@ class EndpointFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
     has_tags = BooleanFilter(field_name='tags', lookup_expr='isnull', exclude=True, label='Has tags')
 
@@ -1961,7 +1961,7 @@ class ApiRiskAcceptanceFilter(DojoFilter):
 
 class EngagementTestFilter(DojoFilter):
     lead = ModelChoiceFilter(queryset=Dojo_User.objects.none(), label="Lead")
-    version = CharFilter(lookup_expr='icontains', label='Version')
+    version = CharFilter(lookup_expr='icontains', label='Версия')
 
     if settings.TRACK_IMPORT_HISTORY:
         test_import__version = CharFilter(field_name='test_import__version', lookup_expr='icontains', label='Reimported Version')
@@ -1976,7 +1976,7 @@ class EngagementTestFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Tag name contains')
+    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Имя тега содержит')
 
     not_tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -1986,7 +1986,7 @@ class EngagementTestFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
     has_tags = BooleanFilter(field_name='tags', lookup_expr='isnull', exclude=True, label='Has tags')
 
@@ -2103,7 +2103,7 @@ class EndpointReportFilter(DojoFilter):
     path = CharFilter(lookup_expr='icontains')
     query = CharFilter(lookup_expr='icontains')
     fragment = CharFilter(lookup_expr='icontains')
-    finding__severity = MultipleChoiceFilter(choices=SEVERITY_CHOICES, label='Severity')
+    finding__severity = MultipleChoiceFilter(choices=SEVERITY_CHOICES, label='Серьёзность')
     finding__mitigated = ReportBooleanFilter(label='Finding Mitigated')
 
     tags = ModelMultipleChoiceFilter(
@@ -2113,7 +2113,7 @@ class EndpointReportFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Tag name contains')
+    tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Имя тега содержит')
 
     not_tags = ModelMultipleChoiceFilter(
         field_name='tags__name',
@@ -2123,7 +2123,7 @@ class EndpointReportFilter(DojoFilter):
         # label='tags', # doesn't work with tagulous, need to set in __init__ below
     )
 
-    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Not tag name contains', exclude=True)
+    not_tag = CharFilter(field_name='tags__name', lookup_expr='icontains', label='Не содержит имя тега', exclude=True)
 
     class Meta:
         model = Endpoint
@@ -2131,12 +2131,12 @@ class EndpointReportFilter(DojoFilter):
 
 
 class ReportFindingFilter(FindingFilterWithTags):
-    title = CharFilter(lookup_expr='icontains', label='Name')
+    title = CharFilter(lookup_expr='icontains', label='Имя')
     test__engagement__product = ModelMultipleChoiceFilter(
-        queryset=Product.objects.none(), label="Product")
+        queryset=Product.objects.none(), label="Продукт")
     test__engagement__product__prod_type = ModelMultipleChoiceFilter(
         queryset=Product_Type.objects.none(),
-        label="Product Type")
+        label="Тип продукта")
     test__engagement__product__lifecycle = MultipleChoiceFilter(choices=Product.LIFECYCLE_CHOICES, label="Product Lifecycle")
     severity = MultipleChoiceFilter(choices=SEVERITY_CHOICES)
     active = ReportBooleanFilter()
@@ -2150,7 +2150,7 @@ class ReportFindingFilter(FindingFilterWithTags):
     duplicate = ReportBooleanFilter()
     duplicate_finding = ModelChoiceFilter(queryset=Finding.objects.filter(original_finding__isnull=False).distinct())
     out_of_scope = ReportBooleanFilter()
-    outside_of_sla = FindingSLAFilter(label="Outside of SLA")
+    outside_of_sla = FindingSLAFilter(label="Вне SLA")
 
     file_path = CharFilter(lookup_expr='icontains')
 
@@ -2258,8 +2258,8 @@ class GroupFilter(DojoFilter):
 class TestImportFilter(DojoFilter):
     version = CharFilter(field_name='version', lookup_expr='icontains')
     version_exact = CharFilter(field_name='version', lookup_expr='iexact', label='Version Exact')
-    branch_tag = CharFilter(lookup_expr='icontains', label='Branch/Tag')
-    build_id = CharFilter(lookup_expr='icontains', label="Build ID")
+    branch_tag = CharFilter(lookup_expr='icontains', label='Ветка/Тег')
+    build_id = CharFilter(lookup_expr='icontains', label="ID сборки")
     commit_hash = CharFilter(lookup_expr='icontains', label="Commit hash")
 
     findings_affected = BooleanFilter(field_name='findings_affected', lookup_expr='isnull', exclude=True, label='Findings affected')

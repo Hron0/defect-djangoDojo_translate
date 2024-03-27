@@ -353,7 +353,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 LANGUAGES = [
-    ('en', 'English'),
     ('ru', 'Russian'),  # Пример добавления русского языка
     # Добавьте другие языки здесь
 ]

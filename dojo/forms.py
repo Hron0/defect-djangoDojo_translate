@@ -3009,7 +3009,7 @@ class LoginBanner(forms.Form):
 
     banner_message = forms.CharField(
         required=False,
-        label="Message to display on the login page"
+        label="Сообщение для отображения на странице входа в систему"
     )
 
     def clean(self):
