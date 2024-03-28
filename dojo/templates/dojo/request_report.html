@@ -8,17 +8,17 @@
             <div class="panel panel-default">
                 <div class="panel-heading tight">
                     <h3 class="has-filters">
-                        Generate
+                        Создать
                         {% if product_type %}
-                            Product Type
+                            Тип продукта
                         {% elif product %}
-                            Product
+                            Продукт
                         {% elif engagement %}
-                            Engagement
+                            Вовлечение
                         {% elif test %}
-                            Test
+                            Тест
                         {% endif %}
-                        Report
+                        Отчет
                         <div class="dropdown pull-right">
                             <button id="show-filters" data-toggle="collapse" data-target="#the-filters" class="btn btn-primary toggle-filters"> <i class="fa-solid fa-filter"></i> <i class="caret"></i> </button>
                         </div>
@@ -27,7 +27,7 @@
                 </div>
 
                 <div id="the-filters" class="is-filters panel-body {% if findings.form.has_changed %}in{% endif %}">
-                    <div class="dojo-filter-heading">Filters</div>
+                    <div class="dojo-filter-heading">Фильтры</div>
                     <div class="filter-set">
 
                         {% include "dojo/filter_snippet.html" with form=findings.form %}
@@ -37,11 +37,10 @@
 
                     <div class="alert alert-info" role="alert">
                         <span class="fa-solid fa-lightbulb" aria-hidden="true"></span>
-                        <span class=""><b>Hint:</b></span>
-                        To generate a report of all mitigated findings select: Active: Either, Verified: Either,
-                        Mitigated: Yes
+                        <span class=""><b>Подсказка:</b></span>
+                        Чтобы сгенерировать отчет по всем устраненным находкам, выберите: Активный: Любой, Подтвержденный: Любой, Устраненный: Да
                     </div>
-                    <div class="dojo-report-heading">Report Options</div>
+                    <div class="dojo-report-heading">Параметры отчета</div>
                     <div class="filter-set">
                         {% include "dojo/filter_snippet.html" with form=report_form submit='report' %}
                     </div>
@@ -55,7 +54,7 @@
             {% if findings %}
                 <div class="well">
                     <p>
-                        The findings listed below will be included in the report. Use the filters above to fine tune the results.
+                        Ниже приведены находки, которые будут включены в отчет. Используйте фильтры выше, чтобы настроить результаты.
                     </p>
                 </div>
                 <div class="clearfix">
@@ -66,13 +65,13 @@
                            class="tablesorter-bootstrap table table-bordered table-condensed table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Mitigated</th>
-                            <th>Severity</th>
-                            <th>EPSS Score / Percentile</th>
-                            <th>Product</th>
+                            <th>Заголовок</th>
+                            <th>Дата</th>
+                            <th>Статус</th>
+                            <th>Устраненный</th>
+                            <th>Тяжесть</th>
+                            <th>Оценка EPSS / Процентиль</th>
+                            <th>Продукт</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -103,7 +102,7 @@
                     {% include "dojo/paging_snippet.html" with page=paged_findings %}
                 </div>
             {% else %}
-                <p class="text-center">No findings found.</p>
+                <p class="text-center">Ни одной находки не найдено.</p>
             {% endif %}
         </div>
     </div>
