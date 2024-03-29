@@ -13,3 +13,6 @@ cd django-DefectDojo_v2
 
 # Получаем пароль для пользователя admin.
 docker compose logs initializer | grep "Admin password:"
+
+# Переходим по адресу 
+http://localhost:8080/
