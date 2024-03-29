@@ -1,10 +1,10 @@
 # Для страта вам потребуется Docker desktop.
 
 # Клонируем проект.
-git clone https://github.com/GUDVIN18/defect-djangoDojo_v2
+git clone https://github.com/HAKKer5/defect-djangoDojo_translate
 
 # Переходим в папку с проектом.
-cd defect-djangoDojo_v2
+cd defect-djangoDojo_translate
 
 # Сброка.
 ./dc-build.sh
