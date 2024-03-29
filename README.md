@@ -1,13 +1,15 @@
-# Для страта вам потребуется Docker desktop
+# Для страта вам потребуется Docker desktop.
 
-# Клонируем проект
+# Клонируем проект.
 git clone https://github.com/GUDVIN18/defect-djangoDojo_v2
+
+# Переходим в папку с проектом.
 cd django-DefectDojo_v2
 
-# Сброка
+# Сброка.
 ./dc-build.sh
-# ЗАпускаем все необходимые сервисы.
+# Запускаем все необходимые сервисы.
 ./dc-up-d.sh postgres-redis
 
-# Получаем пароль для пользователя admin
+# Получаем пароль для пользователя admin.
 docker compose logs initializer | grep "Admin password:"
