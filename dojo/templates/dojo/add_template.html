@@ -17,18 +17,18 @@
 {% endblock %}
 {% block content %}
     {{ block.super }}
-    <h3> {{ name }} {{ template }}</h3>
+    <h3> Добавить шаблон {{ template }}</h3>
 
     <form id="add_template" class="form-horizontal" method="post">{% csrf_token %}
         {% include "dojo/form_fields.html" with form=form %}
         <div class="form-group">
             {% if count > 0 %}
                 <div class="col-sm-offset-2 col-sm-10">
-                    <p>{{ count }} active, verified finding{{ count|pluralize }} match this template.</p>
+                    <p>{{ count }} активный, проверенный поиск{{ count|pluralize }} соответствуйте этому шаблону.</p>
                 </div>
             {% endif %}
             <div class="col-sm-offset-2 col-sm-10">
-                <button class="btn btn-primary" type="submit" name="add_template">Save Template</button>
+                <button class="btn btn-primary" type="submit" name="add_template">Сохранить шаблон</button>
             </div>
         </div>
     </form>
@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="hidden" name="id" value="{{ template.id }}"/>
-                        <button type="submit" class="btn btn-danger template-delete">Delete Template</button>
+                        <button type="submit" class="btn btn-danger template-delete">Удалить шаблон</button>
                     </div>
                 </div>
             </form>

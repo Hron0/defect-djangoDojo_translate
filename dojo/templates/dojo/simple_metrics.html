@@ -5,7 +5,7 @@
 {% block content %}
     {{ block.super }}
 
-    <h2> {{ name }}</h2>
+    <h2> Простые метрики</h2>
     <form class="simple_metrics" action="{% url 'simple_metrics' %}" method="post">{% csrf_token %}
         {{ form.as_p }}
         <input class="btn btn-primary" type="submit" value="{% trans 'Generate Metrics For Selected Month/Year' %}"/>

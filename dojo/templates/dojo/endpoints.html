@@ -9,7 +9,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading tight">
                     <h3 class="has-filters">
-                        {{ name }}
+                       Все конечные точки
                         <div class="dropdown pull-right">
                             <button id="show-filters" data-toggle="collapse" data-target="#the-filters" class="btn btn-primary toggle-filters"> <i class="fa-solid fa-filter"></i> <i class="caret"></i> </button>
                             {% if not product_tab or product_tab and product_tab.product|has_object_permission:"Endpoint_Add" %}
@@ -26,7 +26,7 @@
                                       {% else %}
                                         <a href="{% url 'add_product_endpoint' %}">
                                       {% endif %}
-                                            <i class="fa-solid fa-plus"></i> New Endpoint
+                                            <i class="fa-solid fa-plus"></i> Новая конечная точка
                                         </a>
                                     </li>
                             </ul>
@@ -47,13 +47,13 @@
                     {% endif %}
                         {% csrf_token %}
                         {% if not product_tab or product_tab and product_tab.product|has_object_permission:"Endpoint_Edit" %}
-						<button class="btn btn-sm btn-primary" type="submit" id="remedy_endpoint" title="Mitigate Endpoints">
-                Bulk Mitigate
+						<button class="btn btn-sm btn-primary" type="submit" id="remedy_endpoint" title="Обезопасить конечные точки">
+                Массовая обезопасить
             </button>
                         {% endif %}
                         {% if not product_tab or product_tab and product_tab.product|has_object_permission:"Endpoint_Delete" %}
-						<button type="button" class="btn btn-sm  btn-primary" data-toggle="tooltip" data-placement="bottom" title="Delete Endpoint">
-								<a class="white-color delete-bulk" href="#" alt="Delete Endpoints">
+						<button type="button" class="btn btn-sm  btn-primary" data-toggle="tooltip" data-placement="bottom" title="Удалить конечные точки">
+								<a class="white-color delete-bulk" href="#" alt="Удалить конечные точки">
 								<i class="fa-solid fa-trash"></i>
 								</a>
 						</button>
@@ -70,25 +70,22 @@
                            class="tablesorter-bootstrap table table-condensed table-striped table-hover">
                         <tr>
                             {% if not product_tab or product_tab and product_tab.product|has_object_permission:"Endpoint_Edit" %}
-                            <th class="centered" title="Select all visible endpoint." id="bulk_edit">
+                            <th class="centered" title="Выбрать все видимые конечные точки." id="bulk_edit">
                                 <form class="inline-form centered" action="#">
-                                    <input type="checkbox" title="Select All" name="select_all" id="select_all"></input>
+                                    <input type="checkbox" title="Выбрать все" name="select_all" id="select_all"></input>
                                 </form>
                             </th>
                             {% endif %}
                             {% if host_view %}
-                                {% comment %} The display field is translated in the function. No need to translate here as well{% endcomment %}    
-                                <th>{% dojo_sort request 'Host' 'host' %}</th>
+                                <th>{% dojo_sort request 'Хост' 'host' %}</th>
                             {% else %}
-                                {% comment %} The display field is translated in the function. No need to translate here as well{% endcomment %}    
-                                <th>{% dojo_sort request 'Endpoint' 'endpoint' %}</th>
+                                <th>{% dojo_sort request 'Конечная точка' 'endpoint' %}</th>
                             {% endif %}
                             {% if not product_tab %}
-                                {% comment %} The display field is translated in the function. No need to translate here as well{% endcomment %}    
-                                <th>{% dojo_sort request 'Product' 'product' 'asc' %}</th>
+                                <th>{% dojo_sort request 'Продукт' 'product' 'asc' %}</th>
                             {% endif %}
-							<th class="text-center" nowrap="nowrap">Active (Verified) Findings</th>
-							<th>Status</th>
+							<th class="text-center" nowrap="nowrap">Активные (проверенные) находки</th>
+							<th>Статус</th>
                         </tr>
 
                         {% for e in endpoints %}
@@ -96,7 +93,7 @@
                                 {% if not product_tab or product_tab and product_tab.product|has_object_permission:"Endpoint_Edit" %}
                                 <td class="centered">
                                     <form action="#">
-                                        <input type="checkbox" title= "Select_{{ e.id }}" name="select_{{ e.id }}"
+                                        <input type="checkbox" title= "Выбрать_{{ e.id }}" name="select_{{ e.id }}"
                                                id="{{ e.id }}"  class="select_one {{ e.id }}"></input>
                                     </form>
                                 </td>
@@ -105,7 +102,7 @@
                                   <td><a href="{% url 'view_endpoint_host' e.id %}">{{ e.host }}</a>
                                 {% else %}
                                 <td>
-                                  <a href="{% url 'view_endpoint' e.id %}">{{ e }}{% if e.is_broken %} <span data-toggle="tooltip" title="Endpoint is broken. Check documentation to look for fix process" >&#128681;</span>{% endif %}</a>
+                                  <a href="{% url 'view_endpoint' e.id %}">{{ e }}{% if e.is_broken %} <span data-toggle="tooltip" title="Конечная точка не работает. Проверьте документацию, чтобы найти процесс исправления." >&#128681;</span>{% endif %}</a>
                                 {% endif %}
                                   {% include "dojo/snippets/tags.html" with tags=e.tags.all %}
                                 </td>
@@ -125,15 +122,15 @@
                                 </td>
                                 <td>
                                   {% if host_view %}
-                                    {{ e.host_mitigated_endpoints_count }} / {{ e.host_endpoints_count }} mitigated endpoints
+                                    {{ e.host_mitigated_endpoints_count }} / {{ e.host_endpoints_count }} обезопасить конечные точки
                                   {% else %}
                                     {% if e.mitigated %}
-                                      Mitigated
+                                      Обезопасить
                                     {% else %}
                                       {% if e.active_findings_count > 0 %}
-                                        Vulnerable
+                                        Уязвимый
                                       {% else %}
-                                        No active findings
+                                        Нет активных находок
                                       {% endif %}
                                     {% endif %}
                                   {% endif %}
@@ -147,9 +144,9 @@
                 </div>
             {% else %}
                 {% if host_view %}
-                  <div id="no_hosts"><p class="text-center">No hosts found.</p></div>
+                  <div id="no_hosts"><p class="text-center">Хосты не найдены.</p></div>
                 {% else %}
-                  <div id="no_endpoints"><p class="text-center">No endpoints found.</p></div>
+                  <div id="no_endpoints"><p class="text-center">Конечные точки не найдены.</p></div>
                 {% endif %}
             {% endif %}
         </div>

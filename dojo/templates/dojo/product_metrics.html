@@ -11,7 +11,7 @@
         <div class="panel-heading tight">
             <div class="clearfix">
               <h3 class="has-filters">
-                  Metrics Overview
+                    Обзор метрик
                 <div class="dropdown pull-right ">
                     <button id="show-filters" data-toggle="collapse" data-target="#the-filters" class="btn btn-primary toggle-filters"> <i class="fa-solid fa-filter"></i> <i class="caret"></i> </button>
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1"
@@ -22,12 +22,12 @@
                     <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
                         <li role="presentation">
                             <a href="{% url 'view_product_metrics' prod.id %}?type=Finding">
-                                <i class="fa-solid fa-file-lines"></i> Measure Findings
+                                <i class="fa-solid fa-file-lines"></i> Измерить Находки
                             </a>
                         </li>
                         <li role="presentation">
                             <a href="{% url 'view_product_metrics' prod.id %}?type=Endpoint">
-                                <i class="fa-solid fa-file-lines"></i> Measure Affected Endpoints
+                                <i class="fa-solid fa-file-lines"></i> Измерить Затронутые Конечные Точки
                             </a>
                         </li>
                     </ul>
@@ -53,7 +53,7 @@
                                     <span class=" fa-2x">{{ verified_objs|length }}</span>
                                     <span><a
                                             href="{% url 'product_verified_findings' prod.id %}?test__engagement__product={{ prod.id }}"
-                                            title="Findings that are open/active and verified">Verified
+                                            title="Findings that are open/active and verified">Проверенный
                                         {{ view }}{{ verified_objs|length|pluralize }} <i
                                                 class="fa-solid fa-circle-right"></i></a>
                                     </span>
@@ -67,7 +67,7 @@
                     <div class="panel-footer">
                         <i title="Since {{ start_date }}."
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Verified since {{ start_date|date:"D., M. d, Y" }}</small>
+                        <small>Проверено с тех пор, как {{ start_date|date:"D., M. d, Y" }}</small>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                                 <div class="pull-right inline-block text-right">
                                     <span class=" fa-2x">{{ open_objs|length }}</span>
                                     <span><a href="{% url 'product_open_findings' prod.id %}?test__engagement__product={{ prod.id }}"
-                                        title="Findings that are open/active, but not (yet) verified">Open
+                                        title="Findings that are open/active, but not (yet) verified">Открыть
                                         {{ view }}{{ open_objs|length|pluralize }} <i
                                                 class="fa-solid fa-circle-right"></i></a>
                                     </span>
@@ -95,7 +95,7 @@
                     <div class="panel-footer">
                         <i title="Opened since {{ start_date }}"
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Opened since {{ start_date|date:"D., M. d, Y" }}</small>
+                        <small>Открыт с тех пор, как {{ start_date|date:"D., M. d, Y" }}</small>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                                     <span class="fa-2x">{{ accepted_objs|length }}</span>
                                     <span><a
                                             href="{% url 'accepted_findings' %}?test__engagement__product={{ prod.id }}"
-                                            title="Findings that have been accepted in a risk acceptance.">Risk Accepted
+                                            title="Findings that have been accepted in a risk acceptance.">Принятый риск
                                     {{ view }}s <i class="fa-solid fa-circle-right"></i></a>
                                 </span>
                                 </div>
@@ -123,7 +123,7 @@
                     <div class="panel-footer">
                         <i title="Accepted since {{ start_date }}"
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Risk Accepted since {{ start_date|date:"D., M. d, Y" }}</small>
+                        <small>Риск, принятый с тех пор, как {{ start_date|date:"D., M. d, Y" }}</small>
                     </div>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                                 <div class="text-right pull-right">
                                     <span class="fa-2x">{{ closed_objs|length }}</span>
                                     <span><a href="{% url 'closed_findings' %}?test__engagement__product={{ prod.id }}"
-                                             title="Findings that are closed and mitigated.">Closed
+                                             title="Findings that are closed and mitigated.">Закрытый
                                         {{ view }}{{ closed_objs|length|pluralize }} <i
                                                 class="fa-solid fa-circle-right"></i></a>
                                     </span>
@@ -151,7 +151,7 @@
                     <div class="panel-footer">
                         <i title="Closed since {{ start_date }}"
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Closed since {{ start_date|date:"D., M. d, Y" }}</small>
+                        <small>Закрыт с тех пор, как {{ start_date|date:"D., M. d, Y" }}</small>
                     </div>
                 </div>
             </div>
@@ -165,7 +165,7 @@
                                 <div class="text-right pull-right">
                                     <span class="fa-2x">{{ false_positive_objs|length }}</span>
                                     <span><a href="{% url 'product_false_positive_findings' prod.id %}?test__engagement__product={{ prod.id }}"
-                                             title="Findings that are marked as false postive.">False-postive
+                                             title="Findings that are marked as false postive.">Ложноположительный
                                         {{ view }}{{ false_positive_objs|length|pluralize }} <i
                                                 class="fa-solid fa-circle-right"></i></a>
                                     </span>
@@ -179,7 +179,7 @@
                     <div class="panel-footer">
                         <i title="Flagged since {{ start_date }}"
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Flagged since {{ start_date|date:"D., M. d, Y" }}</small>
+                        <small>Отмечен с тех пор, как {{ start_date|date:"D., M. d, Y" }}</small>
                     </div>
                 </div>
             </div>
@@ -194,7 +194,7 @@
                                     <span class=" fa-2x">{{ out_of_scope_objs|length }}</span>
                                     <span><a
                                             href="{% url 'product_out_of_scope_findings' prod.id %}?test__engagement__product={{ prod.id }}"
-                                            title="Findings that are marked as out of scope.">Out Of Scope
+                                            title="Findings that are marked as out of scope.">Вне сферы охвата
                                         {{ view }}{{ out_of_scope_objs|length|pluralize }} <i
                                                 class="fa-solid fa-circle-right"></i></a>
                                     </span>
@@ -208,7 +208,7 @@
                     <div class="panel-footer">
                         <i title="Since {{ start_date }}."
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Since {{ start_date|date:"D., M. d, Y" }}.</small>
+                        <small>С {{ start_date|date:"D., M. d, Y" }}.</small>
                     </div>
                 </div>
             </div>
@@ -222,7 +222,7 @@
                                 <div class="text-right pull-right">
                                     <span class="fa-2x">{{ all_objs|length }}</span>
                                     <span><a href="{% url 'product_all_findings' prod.id %}?test__engagement__product={{ prod.id }}"
-                                            title="All findings.">Total
+                                            title="All findings.">Весь
                                         {{ view }}{{ all_objs|length|pluralize }} <i
                                                 class="fa-solid fa-circle-right"></i></a>
                                     </span>
@@ -236,7 +236,7 @@
                     <div class="panel-footer">
                         <i title="Since {{ start_date }}"
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Since {{ start_date|date:"D., M. d, Y" }}</small>
+                        <small>С {{ start_date|date:"D., M. d, Y" }}</small>
                     </div>
                 </div>
             </div>
@@ -250,7 +250,7 @@
                                 <div class="pull-right inline-block text-right">
                                     <span class=" fa-2x">{{ inactive_objs|length }}</span>
                                     <span><a href="{% url 'product_inactive_findings' prod.id %}?test__engagement__product={{ prod.id }}"
-                                             title="Findings that are not active but not mitigated for some reason">Inactive
+                                             title="Findings that are not active but not mitigated for some reason">Неактивный
                                         {{ view }}{{ inactive_objs|length|pluralize }} <i
                                                 class="fa-solid fa-circle-right"></i></a>
                                     </span>
@@ -264,7 +264,7 @@
                     <div class="panel-footer">
                         <i title="Ingested since {{ start_date }}"
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Ingested since {{ start_date|date:"D., M. d, Y" }}</small>
+                        <small>Проглоченный с тех пор, как {{ start_date|date:"D., M. d, Y" }}</small>
                     </div>
                 </div>
             </div>
@@ -275,7 +275,7 @@
         <div class="panel-heading tight">
             <div class="clearfix">
                 <h3 class="pull-left">
-                    Detailed Metrics
+                    Подробные показатели
                 </h3>
 
                 <div class="dropdown pull-right">
@@ -293,27 +293,27 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Open Day to Day by Severity
+                        Открыт изо дня в день в зависимости от степени тяжести
                         <i title="Days are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                     </div>
                     <div class="panel-body text-center">
                         <div id="id_open_findings_burndown_loader" class="graph-loader">
                             <p><i class="fas fa-spinner fa-spin fa-2x"></i></p>
-                            <p>Loading Finding Burndown Metrics...</p>
+                            <p>Загрузка поисковых показателей выгорания...</p>
                         </div>
                         <div id="open_findings_burndown" class="graph"></div>
                     </div>
                     <div class="panel-footer">
                         <i class="text-info fa-solid fa-circle-info"></i>
-                        <small>Days are only displayed if findings are available.</small>
+                        <small>Дни отображаются только в том случае, если результаты доступны.</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Open, Closed, and Risk Accepted Week to Week
+                        Открытые, закрытые и принимаемые на себя риски из недели в неделю
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                     </div>
@@ -323,14 +323,14 @@
                     <div class="panel-footer">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Weeks are only displayed if findings are available.</small>
+                        <small>Недели отображаются только в том случае, если результаты доступны.</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Week to Week by Severity
+                        От недели к неделе в разбивке по степени тяжести
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                     </div>
@@ -340,14 +340,14 @@
                     <div class="panel-footer">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Weeks are only displayed if findings are available.</small>
+                        <small>Недели отображаются только в том случае, если результаты доступны.</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Critical Week to Week
+                        Критическая неделя за неделей
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                     </div>
@@ -357,14 +357,14 @@
                     <div class="panel-footer">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Weeks are only displayed if findings are available.</small>
+                        <small>Недели отображаются только в том случае, если результаты доступны.</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        High Week to Week
+                        Высокий уровень от недели к неделе
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                     </div>
@@ -374,14 +374,14 @@
                     <div class="panel-footer">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Weeks are only displayed if findings are available.</small>
+                        <small>Недели отображаются только в том случае, если результаты доступны.</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Medium Week to Week
+                        В среднем от недели к неделе
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                     </div>
@@ -391,14 +391,14 @@
                     <div class="panel-footer">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Weeks are only displayed if findings are available.</small>
+                        <small>Недели отображаются только в том случае, если результаты доступны.</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Finding Age
+                        Определение возраста
                     </div>
                     <div class="panel-body">
                         <div id="finding_age" class="graph"></div>
@@ -406,15 +406,15 @@
                     <div class="panel-footer">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Finding age of {{ open_objs|length|apnumber }} open
-                            finding{{ open_objs|length|pluralize }}</small>
+                        <small>Определение возраста {{ open_objs|length|apnumber }} открыть
+                            обнаружение{{ open_objs|length|pluralize }}</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-7">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Weekly activity of findings reported
+                        Еженедельная информация о результатах исследования
                             <i title="Weeks are only displayed if findings are available."
                             class="text-info fa-solid fa-circle-info"></i>
                     </div>
@@ -424,14 +424,14 @@
                     <div class="panel-footer">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Weeks are only displayed if findings are available.</small>
+                        <small>Недели отображаются только в том случае, если результаты доступны.</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Findings by Test Type
+                        Результаты в разбивке по типу теста
                         <i title="Test Types shown only if available."
                            class="text-info fa-solid fa-circle-info"></i>
                     </div>
@@ -441,7 +441,7 @@
                     <div class="panel-footer">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
-                        <small>Test Types shown only if available.</small>
+                        <small>Типы тестов отображаются только в том случае, если они доступны.</small>
                     </div>
                 </div>
             </div>
@@ -449,30 +449,30 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Open CWE Vulnerabilities
+                        Открытые уязвимости CWE
                     </div>
                     <div class="panel-body">
                         <div id="open_vulnerabilities" class="graph"></div>
                     </div>
                     <div class="panel-footer">
                         <i class="text-info fa-solid fa-circle-info"></i>
-                        <small>Showing {{ open_vulnerabilities|length|apnumber }}
-                            vulnerabilit{{ open_vulnerabilities|length|pluralize:"y,ies"}} from Open findings</small>
+                        <small>Показ {{ open_vulnerabilities|length|apnumber }}
+                            уязвимость{{ open_vulnerabilities|length|pluralize:"y,ies"}} из открытых данных</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Total CWE Vulnerabilities
+                        Общее количество уязвимостей CWE
                     </div>
                     <div class="panel-body">
                         <div id="all_vulnerabilities" class="graph"></div>
                     </div>
                     <div class="panel-footer">
                         <i class="text-info fa-solid fa-circle-info"></i>
-                        <small>Showing {{ all_vulnerabilities|length|apnumber }}
-                            vulnerabilit{{ all_vulnerabilities|length|pluralize:"y,ies"}} from all findings</small>
+                        <small>Показ {{ all_vulnerabilities|length|apnumber }}
+                            уязвимость{{ all_vulnerabilities|length|pluralize:"y,ies"}} из открытых данных</small>
                     </div>
                 </div>
             </div>

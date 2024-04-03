@@ -11,7 +11,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading tight">
                     <h3 class="has-filters">
-                        {{ view }} Engagements
+                        Обязательства
                         <div class="dropdown pull-right">
                             &nbsp;
                             <button class="btn btn-primary dropdown-toggle" type="button" id="downloadMenu"
@@ -89,54 +89,54 @@
                                                 {% if e|has_object_permission:"Test_Add" %}
                                                 <li role="presentation">
                                                     <a class="" href="{% url 'add_tests' e.id %}">
-                                                        <i class="fa-solid fa-plus"></i> Add Tests
+                                                        <i class="fa-solid fa-plus"></i> Добавление тестов
                                                     </a>
                                                 </li>
                                                 {% endif %}
                                                 {% if e|has_object_permission:"Import_Scan_Result" %}
                                                 <li role="presentation">
                                                     <a class="" href="{% url 'import_scan_results' e.id %}">
-                                                        <i class="fa-solid fa-upload"></i> Import Scan Results
+                                                        <i class="fa-solid fa-upload"></i> Импорт результатов сканирования
                                                     </a>
                                                 </li>
                                                 {% endif %}
                                                 <li class="divider"></li>
                                                 <li role="presentation">
                                                     <a href="{% url 'engagement_open_findings' e.id %}">
-                                                        <i class="fa-solid fa-file-lines"></i> View Active Findings
+                                                        <i class="fa-solid fa-file-lines"></i> Просмотр активных результатов
                                                     </a>
                                                 </li>
                                                 <li role="presentation">
                                                     <a href="{% url 'engagement_verified_findings' e.id %}">
-                                                        <i class="fa-solid fa-file-lines"></i> View Active and Verified Findings
+                                                        <i class="fa-solid fa-file-lines"></i> Просмотр активных и проверенных результатов
                                                     </a>
                                                 </li>
                                                 <li role="presentation">
                                                     <a href="{% url 'engagement_closed_findings' e.id %}">
-                                                        <i class="fa-solid fa-file-lines"></i> View Mitigated Findings
+                                                        <i class="fa-solid fa-file-lines"></i> Просмотр смягченных выводов
                                                     </a>
                                                 </li>
                                                 <li role="presentation">
                                                     <a href="{% url 'engagement_accepted_findings' e.id %}">
-                                                        <i class="fa-solid fa-file-lines"></i> View Accepted Findings
+                                                        <i class="fa-solid fa-file-lines"></i> Просмотр принятых выводов
                                                     </a>
                                                 </li>
                                                 <li role="presentation">
                                                     <a href="{% url 'engagement_all_findings' e.id %}">
-                                                        <i class="fa-solid fa-file-lines"></i> View All Findings
+                                                        <i class="fa-solid fa-file-lines"></i> Просмотреть все результаты
                                                     </a>
                                                 </li>
                                                 <li class="divider"></li>
                                                 <li role="presentation">
                                                     <a href="{% url 'engagement_report' e.id %}?title=&active=1&verified=1&false_p=2&duplicate=2">
-                                                        <i class="fa-solid fa-file-lines"></i> Engagement Report
+                                                        <i class="fa-solid fa-file-lines"></i> Отчет о взаимодействии
                                                     </a>
                                                 </li>
                                                 {% if e|has_object_permission:"Engagement_Delete" %}
                                                 <li class="divider"></li>
                                                 <li>
                                                     <a class="text-danger" href="{% url 'delete_engagement' e.id %}">
-                                                        <i class="fa-solid fa-trash"></i> Delete Engagement
+                                                        <i class="fa-solid fa-trash"></i> Удалить обязательство
                                                     </a>
                                                 </li>
                                                 {% endif %}
@@ -153,7 +153,7 @@
                                 <td> {{ e.target_start }} - {{ e.target_end }}
                                      {% if e.is_overdue and e.status != 'Completed' %}
                                         <span class="tag-label warning-color">
-                                             {{ e.target_end|overdue }} overdue
+                                             {{ e.target_end|overdue }} просроченный
                                          </span>
                                       {% endif %}
                                 </td>
@@ -191,7 +191,7 @@
                     {% include "dojo/paging_snippet.html" with page=engagements page_size=True %}
                 </div>
             {% else %}
-                <div id="no_engagements"><h5 class="text-center"> No active engagements </h5></div>
+                <div id="no_engagements"><h5 class="text-center"> Никаких активных действий </h5></div>
             {% endif %}
         </div>
     </div>

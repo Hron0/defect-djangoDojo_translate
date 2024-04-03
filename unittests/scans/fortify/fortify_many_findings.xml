@@ -9954,7 +9954,7 @@ public class CustomEndpoint implements Endpoint&lt;List&lt;String&gt;&gt; {
                             </MetaInfo>
                             <MetaInfo>
 <Name>Recommendations</Name>
-<Value>All endpoints exposing sensitive information or operations should be protected with the correct levels of authentication and authorization. It is always a good practice to require authentication even for internal servers as a security in-depth mechanism. Take into account that even in the case that the application is deployed internally, behind a firewall, an attacker may still be able to reach it using a Server-Side Request Forgery vulnerability found in a different application.</Value>
+<Value>Все конечные точки exposing sensitive information or operations should be protected with the correct levels of authentication and authorization. It is always a good practice to require authentication even for internal servers as a security in-depth mechanism. Take into account that even in the case that the application is deployed internally, behind a firewall, an attacker may still be able to reach it using a Server-Side Request Forgery vulnerability found in a different application.</Value>
                             </MetaInfo>
                             <AttributeValue>
 <Name>&lt;Unaudited&gt;</Name>

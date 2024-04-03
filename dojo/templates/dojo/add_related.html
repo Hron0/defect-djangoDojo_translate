@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>DefectDojo - {{ name }}</title>
+    <title>DefectDojo - добавить связанные</title>
 
 
     <!-- Bootstrap Core CSS -->
@@ -45,7 +45,7 @@
     <div class="row">
         <div class="col-lg-12">
             <form method="post" class="form-horizontal">
-                <legend>{{ name }}</legend>
+                <legend>добавить связанные</legend>
                 {% csrf_token %}
                 {% include "dojo/form_fields.html" with form=form %}
                 <div class="form-group">

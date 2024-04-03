@@ -64,8 +64,8 @@ FINDING_STATUS = (('verified', 'Verified'),
 
 vulnerability_ids_field = forms.CharField(max_length=5000,
     required=False,
-    label="Vulnerability Ids",
-    help_text="Ids of vulnerabilities in security advisories associated with this finding. Can be Common Vulnerabilities and Exposures (CVE) or from other sources."
+    label="Идентификаторы уязвимости",
+    help_text="Идентификаторы уязвимостей в консультациях по безопасности, связанные с этим выводом.Могут быть общими уязвимостью и воздействием (CVE) или из других источников."
                 "You may enter one vulnerability id per line.",
     widget=forms.widgets.Textarea(attrs={'rows': '3', 'cols': '400'}))
 
@@ -189,7 +189,7 @@ class Edit_Product_Type_MemberForm(forms.ModelForm):
 
 
 class Add_Product_Type_MemberForm(forms.ModelForm):
-    users = forms.ModelMultipleChoiceField(queryset=Dojo_User.objects.none(), required=True, label='Users')
+    users = forms.ModelMultipleChoiceField(queryset=Dojo_User.objects.none(), required=True, label="Пользователи")
 
     def __init__(self, *args, **kwargs):
         super(Add_Product_Type_MemberForm, self).__init__(*args, **kwargs)
@@ -205,7 +205,7 @@ class Add_Product_Type_MemberForm(forms.ModelForm):
 
 
 class Add_Product_Type_Member_UserForm(forms.ModelForm):
-    product_types = forms.ModelMultipleChoiceField(queryset=Product_Type.objects.none(), required=True, label='Product Types')
+    product_types = forms.ModelMultipleChoiceField(queryset=Product_Type.objects.none(), required=True, label="Типы продукта")
 
     def __init__(self, *args, **kwargs):
         super(Add_Product_Type_Member_UserForm, self).__init__(*args, **kwargs)
@@ -248,11 +248,11 @@ class ProductForm(forms.ModelForm):
     description = forms.CharField(widget=forms.Textarea(attrs={}),
                                   required=True)
 
-    prod_type = forms.ModelChoiceField(label='Product Type',
+    prod_type = forms.ModelChoiceField(label="Тип продукта",
                                        queryset=Product_Type.objects.none(),
                                        required=True)
 
-    sla_configuration = forms.ModelChoiceField(label='SLA Configuration',
+    sla_configuration = forms.ModelChoiceField(label="Конфигурация SLA",
                                         queryset=SLA_Configuration.objects.all(),
                                         required=True,
                                         initial='Default')
@@ -288,9 +288,9 @@ class DeleteProductForm(forms.ModelForm):
 
 
 class EditFindingGroupForm(forms.ModelForm):
-    name = forms.CharField(max_length=255, required=True, label='Finding Group Name')
-    jira_issue = forms.CharField(max_length=255, required=False, label='Linked JIRA Issue',
-                                 help_text='Leave empty and check push to jira to create a new JIRA issue for this finding group.')
+    name = forms.CharField(max_length=255, required=True, label="Нахождение названия группы")
+    jira_issue = forms.CharField(max_length=255, required=False, label="Связанный выпуск Jira",
+                                 help_text="Оставьте пустым и проверьте Push To Jira, чтобы создать новую проблему Jira для этой группы поиска.")
 
     def __init__(self, *args, **kwargs):
         super(EditFindingGroupForm, self).__init__(*args, **kwargs)
@@ -298,9 +298,9 @@ class EditFindingGroupForm(forms.ModelForm):
 
         self.fields['push_to_jira'] = forms.BooleanField()
         self.fields['push_to_jira'].required = False
-        self.fields['push_to_jira'].help_text = "Checking this will overwrite content of your JIRA issue, or create one."
+        self.fields['push_to_jira'].help_text="Проверка это будет перезаписать содержание вашей проблемы Jira или создаст ее."
 
-        self.fields['push_to_jira'].label = "Push to JIRA"
+        self.fields['push_to_jira'].label="Толк к Джире"
 
         if hasattr(self.instance, 'has_jira_issue') and self.instance.has_jira_issue:
             jira_url = jira_helper.get_jira_url(self.instance)
@@ -335,7 +335,7 @@ class Edit_Product_MemberForm(forms.ModelForm):
 
 
 class Add_Product_MemberForm(forms.ModelForm):
-    users = forms.ModelMultipleChoiceField(queryset=Dojo_User.objects.none(), required=True, label='Users')
+    users = forms.ModelMultipleChoiceField(queryset=Dojo_User.objects.none(), required=True, label="Пользователи")
 
     def __init__(self, *args, **kwargs):
         super(Add_Product_MemberForm, self).__init__(*args, **kwargs)
@@ -351,7 +351,7 @@ class Add_Product_MemberForm(forms.ModelForm):
 
 
 class Add_Product_Member_UserForm(forms.ModelForm):
-    products = forms.ModelMultipleChoiceField(queryset=Product.objects.none(), required=True, label='Products')
+    products = forms.ModelMultipleChoiceField(queryset=Product.objects.none(), required=True, label="Продукты")
 
     def __init__(self, *args, **kwargs):
         super(Add_Product_Member_UserForm, self).__init__(*args, **kwargs)
@@ -426,75 +426,75 @@ class ImportScanForm(forms.Form):
                                ("force_to_false", "Force to False")]
     scan_date = forms.DateTimeField(
         required=False,
-        label="Scan Completion Date",
-        help_text="Scan completion date will be used on all findings.",
+        label="Дата завершения сканирования",
+        help_text="Дата завершения сканирования будет использоваться на всех выводах.",
         widget=forms.TextInput(attrs={'class': 'datepicker'}))
-    minimum_severity = forms.ChoiceField(help_text='Minimum severity level to be imported',
+    minimum_severity = forms.ChoiceField(help_text="Минимальный уровень тяжести будет импортирован",
                                          required=True,
                                          choices=SEVERITY_CHOICES)
     active = forms.ChoiceField(required=True, choices=active_verified_choices,
-                               help_text='Force findings to be active/inactive, or default to the original tool')
+                               help_text="Принудительные результаты быть активными/неактивными или по умолчанию в исходном инструменте")
     verified = forms.ChoiceField(required=True, choices=active_verified_choices,
-                               help_text='Force findings to be verified/not verified, or default to the original tool')
+                               help_text="Полученные результаты, которые должны быть проверены/не проверены, или по умолчанию в исходном инструменте")
 
     # help_do_not_reactivate = 'Select if the import should ignore active findings from the report, useful for triage-less scanners. Will keep existing findings closed, without reactivating them. For more information check the docs.'
     # do_not_reactivate = forms.BooleanField(help_text=help_do_not_reactivate, required=False)
     scan_type = forms.ChoiceField(required=True, choices=get_choices_sorted)
     environment = forms.ModelChoiceField(
         queryset=Development_Environment.objects.all().order_by('name'))
-    endpoints = forms.ModelMultipleChoiceField(Endpoint.objects, required=False, label='Systems / Endpoints')
-    endpoints_to_add = forms.CharField(max_length=5000, required=False, label="Endpoints to add",
-                               help_text="The IP address, host name or full URL. You may enter one endpoint per line. "
+    endpoints = forms.ModelMultipleChoiceField(Endpoint.objects, required=False, label="Системы / конечные точки")
+    endpoints_to_add = forms.CharField(max_length=5000, required=False, label="Конечные точки добавить",
+                               help_text="IP -адрес, имя хоста или полный URL.Вы можете ввести одну конечную точку на строку."
                                          "Each must be valid.",
                                widget=forms.widgets.Textarea(attrs={'rows': '3', 'cols': '400'}))
-    version = forms.CharField(max_length=100, required=False, help_text="Version that was scanned.")
-    branch_tag = forms.CharField(max_length=100, required=False, help_text="Branch or Tag that was scanned.")
-    commit_hash = forms.CharField(max_length=100, required=False, help_text="Commit that was scanned.")
-    build_id = forms.CharField(max_length=100, required=False, help_text="ID of the build that was scanned.")
-    api_scan_configuration = forms.ModelChoiceField(Product_API_Scan_Configuration.objects, required=False, label='API Scan Configuration')
+    version = forms.CharField(max_length=100, required=False, help_text="Версия, которая была отсканирована.")
+    branch_tag = forms.CharField(max_length=100, required=False, help_text="Ветвь или тег, который был отсканирован.")
+    commit_hash = forms.CharField(max_length=100, required=False, help_text="Компет, который был отсканирован.")
+    build_id = forms.CharField(max_length=100, required=False, help_text="ID из сборки, которая была отсканирована.")
+    api_scan_configuration = forms.ModelChoiceField(Product_API_Scan_Configuration.objects, required=False, label="Конфигурация сканирования API")
     service = forms.CharField(max_length=200, required=False,
-        help_text="A service is a self-contained piece of functionality within a Product. "
+        help_text="Сервис-это автономная часть функциональности внутри продукта."
                   "This is an optional field which is used in deduplication and closing of old findings when set.")
-    source_code_management_uri = forms.URLField(max_length=600, required=False, help_text="Resource link to source code")
-    tags = TagField(required=False, help_text="Add tags that help describe this scan.  "
+    source_code_management_uri = forms.URLField(max_length=600, required=False, help_text="Ссылка на ресурс на исходный код")
+    tags = TagField(required=False, help_text="Добавьте теги, которые помогают описать это сканирование."
                     "Choose from the list or add new tags. Press Enter key to add.")
     file = forms.FileField(widget=forms.widgets.FileInput(
         attrs={"accept": ".xml, .csv, .nessus, .json, .jsonl, .html, .js, .zip, .xlsx, .txt, .sarif"}),
-        label="Choose report file",
+        label="Выберите файл отчета",
         allow_empty_file=True,
         required=False)
 
     # Close Old Findings has changed. The default is engagement only, and it requires a second flag to expand to the product scope.
     # Exposing the choice as two different check boxes.
     # If 'close_old_findings_product_scope' is selected, the backend will ensure that both flags are set.
-    close_old_findings = forms.BooleanField(help_text="Old findings no longer present in the new report get closed as mitigated when importing. "
+    close_old_findings = forms.BooleanField(help_text="Старые выводы больше не присутствуют в новом отчете, как смягчаются при смягчении при импорте."
                                                         "If service has been set, only the findings for this service will be closed. "
                                                         "This only affects findings within the same engagement.",
-                                            label="Close old findings within this engagement",
+                                            label="Близкие старые выводы в рамках этой помолвки",
                                             required=False,
                                             initial=False)
-    close_old_findings_product_scope = forms.BooleanField(help_text="Old findings no longer present in the new report get closed as mitigated when importing. "
+    close_old_findings_product_scope = forms.BooleanField(help_text="Старые выводы больше не присутствуют в новом отчете, как смягчаются при смягчении при импорте."
                                                         "If service has been set, only the findings for this service will be closed. "
                                                         "This only affects findings within the same product.",
-                                            label="Close old findings within this product",
+                                            label="Близкие старые результаты в этом продукте",
                                             required=False,
                                             initial=False)
     apply_tags_to_findings = forms.BooleanField(
-        help_text="If set to True, the tags will be applied to the findings",
-        label="Apply Tags to Findings",
+        help_text="Если установить True, теги будут применены к выводам",
+        label="Применить теги к выводам",
         required=False,
         initial=False
     )
     apply_tags_to_endpoints = forms.BooleanField(
-        help_text="If set to True, the tags will be applied to the endpoints",
-        label="Apply Tags to Endpoints",
+        help_text="Если установить True, теги будут применены к конечным точкам",
+        label="Применить теги к конечным точкам",
         required=False,
         initial=False
     )
 
     if is_finding_groups_enabled():
-        group_by = forms.ChoiceField(required=False, choices=Finding_Group.GROUP_BY_OPTIONS, help_text='Choose an option to automatically group new findings by the chosen option.')
-        create_finding_groups_for_all_findings = forms.BooleanField(help_text="If unchecked, finding groups will only be created when there is more than one grouped finding", required=False, initial=True)
+        group_by = forms.ChoiceField(required=False, choices=Finding_Group.GROUP_BY_OPTIONS, help_text="Выберите опцию для автоматической группировки новых результатов по выбранной опции.")
+        create_finding_groups_for_all_findings = forms.BooleanField(help_text="Если не контролировать, поиск групп будет создаваться только тогда, когда будет более одного сгруппированного вывода", required=False, initial=True)
 
     def __init__(self, *args, **kwargs):
         super(ImportScanForm, self).__init__(*args, **kwargs)
@@ -547,52 +547,52 @@ class ReImportScanForm(forms.Form):
                                ("force_to_false", "Force to False")]
     scan_date = forms.DateTimeField(
         required=False,
-        label="Scan Completion Date",
-        help_text="Scan completion date will be used on all findings.",
+        label="Дата завершения сканирования",
+        help_text="Дата завершения сканирования будет использоваться на всех выводах.",
         widget=forms.TextInput(attrs={'class': 'datepicker'}))
-    minimum_severity = forms.ChoiceField(help_text='Minimum severity level to be imported',
+    minimum_severity = forms.ChoiceField(help_text="Минимальный уровень тяжести будет импортирован",
                                          required=True,
                                          choices=SEVERITY_CHOICES[0:4])
     active = forms.ChoiceField(required=True, choices=active_verified_choices,
-                               help_text='Force findings to be active/inactive, or default to the original tool')
+                               help_text="Принудительные результаты быть активными/неактивными или по умолчанию в исходном инструменте")
     verified = forms.ChoiceField(required=True, choices=active_verified_choices,
-                             help_text='Force findings to be verified/not verified, or default to the original tool')
+                             help_text="Полученные результаты, которые должны быть проверены/не проверены, или по умолчанию в исходном инструменте")
 
     help_do_not_reactivate = 'Select if the import should ignore active findings from the report, useful for triage-less scanners. Will keep existing findings closed, without reactivating them. For more information check the docs.'
     do_not_reactivate = forms.BooleanField(help_text=help_do_not_reactivate, required=False)
-    endpoints = forms.ModelMultipleChoiceField(Endpoint.objects, required=False, label='Systems / Endpoints')
-    tags = TagField(required=False, help_text="Modify existing tags that help describe this scan.  "
+    endpoints = forms.ModelMultipleChoiceField(Endpoint.objects, required=False, label="Системы / конечные точки")
+    tags = TagField(required=False, help_text="Измените существующие теги, которые помогают описать это сканирование."
                     "Choose from the list or add new tags. Press Enter key to add.")
     file = forms.FileField(widget=forms.widgets.FileInput(
         attrs={"accept": ".xml, .csv, .nessus, .json, .jsonl, .html, .js, .zip, .xlsx, .txt, .sarif"}),
-        label="Choose report file",
+        label="Выберите файл отчета",
         allow_empty_file=True,
         required=False)
-    close_old_findings = forms.BooleanField(help_text="Select if old findings no longer present in the report get closed as mitigated when importing.",
+    close_old_findings = forms.BooleanField(help_text="Выберите, если старые выводы больше не присутствуют в отчете, становятся закрытыми при смягчении при импорте.",
                                             required=False, initial=True)
-    version = forms.CharField(max_length=100, required=False, help_text="Version that will be set on existing Test object. Leave empty to leave existing value in place.")
-    branch_tag = forms.CharField(max_length=100, required=False, help_text="Branch or Tag that was scanned.")
-    commit_hash = forms.CharField(max_length=100, required=False, help_text="Commit that was scanned.")
-    build_id = forms.CharField(max_length=100, required=False, help_text="ID of the build that was scanned.")
-    api_scan_configuration = forms.ModelChoiceField(Product_API_Scan_Configuration.objects, required=False, label='API Scan Configuration')
-    service = forms.CharField(max_length=200, required=False, help_text="A service is a self-contained piece of functionality within a Product. This is an optional field which is used in deduplication of findings when set.")
-    source_code_management_uri = forms.URLField(max_length=600, required=False, help_text="Resource link to source code")
+    version = forms.CharField(max_length=100, required=False, help_text="Версия, которая будет установлена на существующем испытательном объекте.Оставьте пустым, чтобы оставить существующую ценность на месте.")
+    branch_tag = forms.CharField(max_length=100, required=False, help_text="Ветвь или тег, который был отсканирован.")
+    commit_hash = forms.CharField(max_length=100, required=False, help_text="Компет, который был отсканирован.")
+    build_id = forms.CharField(max_length=100, required=False, help_text="ID из сборки, которая была отсканирована.")
+    api_scan_configuration = forms.ModelChoiceField(Product_API_Scan_Configuration.objects, required=False, label="Конфигурация сканирования API")
+    service = forms.CharField(max_length=200, required=False, help_text="Сервис-это автономная часть функциональности внутри продукта.Это необязательное поле, которое используется при дедуплировании выводов при установке.")
+    source_code_management_uri = forms.URLField(max_length=600, required=False, help_text="Ссылка на ресурс на исходный код")
     apply_tags_to_findings = forms.BooleanField(
-        help_text="If set to True, the tags will be applied to the findings",
-        label="Apply Tags to Findings",
+        help_text="Если установить True, теги будут применены к выводам",
+        label="Применить теги к выводам",
         required=False,
         initial=False
     )
     apply_tags_to_endpoints = forms.BooleanField(
-        help_text="If set to True, the tags will be applied to the endpoints",
-        label="Apply Tags to Endpoints",
+        help_text="Если установить True, теги будут применены к конечным точкам",
+        label="Применить теги к конечным точкам",
         required=False,
         initial=False
     )
 
     if is_finding_groups_enabled():
-        group_by = forms.ChoiceField(required=False, choices=Finding_Group.GROUP_BY_OPTIONS, help_text='Choose an option to automatically group new findings by the chosen option')
-        create_finding_groups_for_all_findings = forms.BooleanField(help_text="If unchecked, finding groups will only be created when there is more than one grouped finding", required=False, initial=True)
+        group_by = forms.ChoiceField(required=False, choices=Finding_Group.GROUP_BY_OPTIONS, help_text="Выберите опцию для автоматической группировки новых результатов по выбранной опции")
+        create_finding_groups_for_all_findings = forms.BooleanField(help_text="Если не контролировать, поиск групп будет создаваться только тогда, когда будет более одного сгруппированного вывода", required=False, initial=True)
 
     def __init__(self, *args, test=None, **kwargs):
         super(ReImportScanForm, self).__init__(*args, **kwargs)
@@ -633,23 +633,23 @@ class ReImportScanForm(forms.Form):
 class ImportEndpointMetaForm(forms.Form):
     file = forms.FileField(widget=forms.widgets.FileInput(
         attrs={"accept": ".csv"}),
-        label="Choose meta file",
+        label="Выберите мета -файл",
         required=True)  # Could not get required=True to actually accept the file as present
     create_endpoints = forms.BooleanField(
-        label="Create nonexisting Endpoint",
+        label="Создайте несуществующую конечную точку",
         initial=True,
         required=False,
-        help_text="Create endpoints that do not already exist",)
+        help_text="Создайте конечные точки, которых еще не существует",)
     create_tags = forms.BooleanField(
-        label="Add Tags",
+        label="Добавить теги",
         initial=True,
         required=False,
-        help_text="Add meta from file as tags in the format key:value",)
+        help_text="Добавить Meta из файла в качестве тегов в ключе формата: значение",)
     create_dojo_meta = forms.BooleanField(
-        label="Add Meta",
+        label="Добавить мета",
         initial=False,
         required=False,
-        help_text="Add data from file as Metadata. Metadata is used for displaying custom fields",)
+        help_text="Добавьте данные из файла в качестве метаданных.Метаданные используются для отображения пользовательских полей",)
 
     def __init__(self, *args, **kwargs):
         super(ImportEndpointMetaForm, self).__init__(*args, **kwargs)
@@ -662,35 +662,35 @@ class DoneForm(forms.Form):
 class UploadThreatForm(forms.Form):
     file = forms.FileField(widget=forms.widgets.FileInput(
         attrs={"accept": ".jpg,.png,.pdf"}),
-        label="Select Threat Model")
+        label="Выберите модель угроз")
 
 
 class MergeFindings(forms.ModelForm):
     FINDING_ACTION = (('', 'Select an Action'), ('inactive', 'Inactive'), ('delete', 'Delete'))
 
-    append_description = forms.BooleanField(label="Append Description", initial=True, required=False,
-                                            help_text="Description in all findings will be appended into the merged finding.")
+    append_description = forms.BooleanField(label="Добавить описание", initial=True, required=False,
+                                            help_text="Описание во всех выводах будет добавлено в объединенные выводы.")
 
-    add_endpoints = forms.BooleanField(label="Add Endpoints", initial=True, required=False,
-                                           help_text="Endpoints in all findings will be merged into the merged finding.")
+    add_endpoints = forms.BooleanField(label="Добавить конечные точки", initial=True, required=False,
+                                           help_text="Конечные точки во всех выводах будут объединены в объединенные выводы.")
 
-    dynamic_raw = forms.BooleanField(label="Dynamic Scanner Raw Requests", initial=True, required=False,
-                                           help_text="Dynamic scanner raw requests in all findings will be merged into the merged finding.")
+    dynamic_raw = forms.BooleanField(label="Динамические запросы сканера сканера", initial=True, required=False,
+                                           help_text="Dynamic Scanner RAW Запросы во всех выводах будут объединены с объединенным выводом.")
 
-    tag_finding = forms.BooleanField(label="Add Tags", initial=True, required=False,
-                                           help_text="Tags in all findings will be merged into the merged finding.")
+    tag_finding = forms.BooleanField(label="Добавить теги", initial=True, required=False,
+                                           help_text="Теги во всех выводах будут объединены в объединенные выводы.")
 
-    mark_tag_finding = forms.BooleanField(label="Tag Merged Finding", initial=True, required=False,
-                                           help_text="Creates a tag titled 'merged' for the finding that will be merged. If the 'Finding Action' is set to 'inactive' the inactive findings will be tagged with 'merged-inactive'.")
+    mark_tag_finding = forms.BooleanField(label="Тег объединенный вывод", initial=True, required=False,
+                                           help_text="Создает тег под названием merged для результатов поиска, которые будут объединены. Если для параметра Действие поиска установлено значение неактивно, неактивные результаты будут помечены как объединенные-неактивные.")
 
-    append_reference = forms.BooleanField(label="Append Reference", initial=True, required=False,
-                                            help_text="Reference in all findings will be appended into the merged finding.")
+    append_reference = forms.BooleanField(label="Добавить ссылку", initial=True, required=False,
+                                            help_text="Ссылка во всех выводах будет добавлена в объединенные выводы.")
 
     finding_action = forms.ChoiceField(
         required=True,
         choices=FINDING_ACTION,
-        label="Finding Action",
-        help_text="The action to take on the merged finding. Set the findings to inactive or delete the findings.")
+        label="В поисках действия",
+        help_text="Действие, чтобы взять на себя объединенное открытие.Установите результаты, чтобы неактивно или удалите выводы.")
 
     def __init__(self, *args, **kwargs):
         _ = kwargs.pop('finding')
@@ -698,11 +698,11 @@ class MergeFindings(forms.ModelForm):
         super(MergeFindings, self).__init__(*args, **kwargs)
 
         self.fields['finding_to_merge_into'] = forms.ModelChoiceField(
-            queryset=findings, initial=0, required="False", label="Finding to Merge Into", help_text="Findings selected below will be merged into this finding.")
+            queryset=findings, initial=0, required="False", label="Поиск, чтобы слиться в", help_text="Выбранные ниже выводы будут объединены в этот вывод.")
 
         # Exclude the finding to merge into from the findings to merge into
         self.fields['findings_to_merge'] = forms.ModelMultipleChoiceField(
-            queryset=findings, required=True, label="Findings to Merge",
+            queryset=findings, required=True, label="Результаты слияния",
             widget=forms.widgets.SelectMultiple(attrs={'size': 10}),
             help_text=('Select the findings to merge.'))
         self.field_order = ['finding_to_merge_into', 'findings_to_merge', 'append_description', 'add_endpoints', 'append_reference']
@@ -714,10 +714,10 @@ class MergeFindings(forms.ModelForm):
 
 class EditRiskAcceptanceForm(forms.ModelForm):
     # unfortunately django forces us to repeat many things here. choices, default, required etc.
-    recommendation = forms.ChoiceField(choices=Risk_Acceptance.TREATMENT_CHOICES, initial=Risk_Acceptance.TREATMENT_ACCEPT, widget=forms.RadioSelect, label="Security Recommendation")
+    recommendation = forms.ChoiceField(choices=Risk_Acceptance.TREATMENT_CHOICES, initial=Risk_Acceptance.TREATMENT_ACCEPT, widget=forms.RadioSelect, label="Рекомендация безопасности")
     decision = forms.ChoiceField(choices=Risk_Acceptance.TREATMENT_CHOICES, initial=Risk_Acceptance.TREATMENT_ACCEPT, widget=forms.RadioSelect)
 
-    path = forms.FileField(label="Proof", required=False, widget=forms.widgets.FileInput(attrs={"accept": ".jpg,.png,.pdf"}))
+    path = forms.FileField(label="Доказательство", required=False, widget=forms.widgets.FileInput(attrs={"accept": ".jpg,.png,.pdf"}))
     expiration_date = forms.DateTimeField(required=False, widget=forms.TextInput(attrs={'class': 'datepicker'}))
 
     class Meta:
@@ -726,13 +726,13 @@ class EditRiskAcceptanceForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['path'].help_text = 'Existing proof uploaded: %s' % self.instance.filename() if self.instance.filename() else 'None'
+        self.fields['path'].help_text="Существующее доказательство загружено: %s" % self.instance.filename() if self.instance.filename() else 'None'
         self.fields['expiration_date_warned'].disabled = True
         self.fields['expiration_date_handled'].disabled = True
 
 
 class RiskAcceptanceForm(EditRiskAcceptanceForm):
-    # path = forms.FileField(label="Proof", required=False, widget=forms.widgets.FileInput(attrs={"accept": ".jpg,.png,.pdf"}))
+    # path = forms.FileField(label="Доказательство", required=False, widget=forms.widgets.FileInput(attrs={"accept": ".jpg,.png,.pdf"}))
     # expiration_date = forms.DateTimeField(required=False, widget=forms.TextInput(attrs={'class': 'datepicker'}))
     accepted_findings = forms.ModelMultipleChoiceField(
         queryset=Finding.objects.none(), required=True,
@@ -740,7 +740,7 @@ class RiskAcceptanceForm(EditRiskAcceptanceForm):
         help_text=('Active, verified findings listed, please select to add findings.'))
     notes = forms.CharField(required=False, max_length=2400,
                             widget=forms.Textarea,
-                            label='Notes')
+                            label="Примечания")
 
     class Meta:
         model = Risk_Acceptance
@@ -754,7 +754,7 @@ class RiskAcceptanceForm(EditRiskAcceptanceForm):
             expiration_date = timezone.now().date() + relativedelta(days=expiration_delta_days)
             # logger.debug('setting default expiration_date: %s', expiration_date)
             self.fields['expiration_date'].initial = expiration_date
-        # self.fields['path'].help_text = 'Existing proof uploaded: %s' % self.instance.filename() if self.instance.filename() else 'None'
+        # self.fields['path'].help_text="Существующее доказательство загружено: %s" % self.instance.filename() if self.instance.filename() else 'None'
         self.fields['accepted_findings'].queryset = get_authorized_findings(Permissions.Risk_Acceptance)
 
 
@@ -778,7 +778,7 @@ ManageFileFormSet = modelformset_factory(FileUpload, extra=3, max_num=10, fields
 
 
 class ReplaceRiskAcceptanceProofForm(forms.ModelForm):
-    path = forms.FileField(label="Proof", required=True, widget=forms.widgets.FileInput(attrs={"accept": ".jpg,.png,.pdf"}))
+    path = forms.FileField(label="Доказательство", required=True, widget=forms.widgets.FileInput(attrs={"accept": ".jpg,.png,.pdf"}))
 
     class Meta:
         model = Risk_Acceptance
@@ -789,7 +789,7 @@ class AddFindingsRiskAcceptanceForm(forms.ModelForm):
     accepted_findings = forms.ModelMultipleChoiceField(
         queryset=Finding.objects.none(), required=True,
         widget=forms.widgets.SelectMultiple(attrs={'size': 10}),
-        help_text=('Select to add findings.'), label="Add findings as accepted:")
+        help_text=('Select to add findings.'), label="Добавить результаты, как принятые:")
 
     class Meta:
         model = Risk_Acceptance
@@ -836,11 +836,11 @@ class CheckForm(forms.ModelForm):
 class EngForm(forms.ModelForm):
     name = forms.CharField(
         max_length=300, required=False,
-        help_text="Add a descriptive name to identify this engagement. " +
+        help_text="Добавьте описательное имя, чтобы определить это взаимодействие." +
                   "Without a name the target start date will be set.")
     description = forms.CharField(widget=forms.Textarea(attrs={}),
-                                  required=False, help_text="Description of the engagement and details regarding the engagement.")
-    product = forms.ModelChoiceField(label='Product',
+                                  required=False, help_text="Описание взаимодействия и деталей, касающихся взаимодействия.")
+    product = forms.ModelChoiceField(label="Продукт",
                                        queryset=Product.objects.none(),
                                        required=True)
     target_start = forms.DateField(widget=forms.TextInput(
@@ -849,8 +849,8 @@ class EngForm(forms.ModelForm):
         attrs={'class': 'datepicker', 'autocomplete': 'off'}))
     lead = forms.ModelChoiceField(
         queryset=None,
-        required=True, label="Testing Lead")
-    test_strategy = forms.URLField(required=False, label="Test Strategy URL")
+        required=True, label="Тестирование лидерства")
+    test_strategy = forms.URLField(required=False, label="URL стратегии тестирования")
 
     def __init__(self, *args, **kwargs):
         cicd = False
@@ -868,7 +868,7 @@ class EngForm(forms.ModelForm):
         super(EngForm, self).__init__(*args, **kwargs)
 
         if product:
-            self.fields['preset'] = forms.ModelChoiceField(help_text="Settings and notes for performing this engagement.", required=False, queryset=Engagement_Presets.objects.filter(product=product))
+            self.fields['preset'] = forms.ModelChoiceField(help_text="Настройки и заметки для выполнения этого взаимодействия.", required=False, queryset=Engagement_Presets.objects.filter(product=product))
             self.fields['lead'].queryset = get_authorized_users_for_product_and_product_type(None, product, Permissions.Product_View).filter(is_active=True)
         else:
             self.fields['lead'].queryset = get_authorized_users(Permissions.Engagement_View).filter(is_active=True)
@@ -929,7 +929,7 @@ class TestForm(forms.ModelForm):
 
     lead = forms.ModelChoiceField(
         queryset=None,
-        required=False, label="Testing Lead")
+        required=False, label="Тестирование лидерства")
 
     def __init__(self, *args, **kwargs):
         obj = None
@@ -994,9 +994,9 @@ class AddFindingForm(forms.ModelForm):
     impact = forms.CharField(widget=forms.Textarea, required=False)
     request = forms.CharField(widget=forms.Textarea, required=False)
     response = forms.CharField(widget=forms.Textarea, required=False)
-    endpoints = forms.ModelMultipleChoiceField(Endpoint.objects.none(), required=False, label='Systems / Endpoints')
-    endpoints_to_add = forms.CharField(max_length=5000, required=False, label="Endpoints to add",
-                               help_text="The IP address, host name or full URL. You may enter one endpoint per line. "
+    endpoints = forms.ModelMultipleChoiceField(Endpoint.objects.none(), required=False, label="Системы / конечные точки")
+    endpoints_to_add = forms.CharField(max_length=5000, required=False, label="Конечные точки добавить",
+                               help_text="IP -адрес, имя хоста или полный URL.Вы можете ввести одну конечную точку на строку."
                                          "Each must be valid.",
                                widget=forms.widgets.Textarea(attrs={'rows': '3', 'cols': '400'}))
     references = forms.CharField(widget=forms.Textarea, required=False)
@@ -1075,9 +1075,9 @@ class AdHocFindingForm(forms.ModelForm):
     impact = forms.CharField(widget=forms.Textarea, required=False)
     request = forms.CharField(widget=forms.Textarea, required=False)
     response = forms.CharField(widget=forms.Textarea, required=False)
-    endpoints = forms.ModelMultipleChoiceField(queryset=Endpoint.objects.none(), required=False, label='Systems / Endpoints')
-    endpoints_to_add = forms.CharField(max_length=5000, required=False, label="Endpoints to add",
-                               help_text="The IP address, host name or full URL. You may enter one endpoint per line. "
+    endpoints = forms.ModelMultipleChoiceField(queryset=Endpoint.objects.none(), required=False, label="Системы / конечные точки")
+    endpoints_to_add = forms.CharField(max_length=5000, required=False, label="Конечные точки добавить",
+                               help_text="IP -адрес, имя хоста или полный URL.Вы можете ввести одну конечную точку на строку."
                                          "Each must be valid.",
                                widget=forms.widgets.Textarea(attrs={'rows': '3', 'cols': '400'}))
     references = forms.CharField(widget=forms.Textarea, required=False)
@@ -1152,9 +1152,9 @@ class PromoteFindingForm(forms.ModelForm):
             'invalid_choice': 'Select valid choice: Critical,High,Medium,Low'})
     mitigation = forms.CharField(widget=forms.Textarea, required=False)
     impact = forms.CharField(widget=forms.Textarea, required=False)
-    endpoints = forms.ModelMultipleChoiceField(Endpoint.objects.none(), required=False, label='Systems / Endpoints')
-    endpoints_to_add = forms.CharField(max_length=5000, required=False, label="Endpoints to add",
-                               help_text="The IP address, host name or full URL. You may enter one endpoint per line. "
+    endpoints = forms.ModelMultipleChoiceField(Endpoint.objects.none(), required=False, label="Системы / конечные точки")
+    endpoints_to_add = forms.CharField(max_length=5000, required=False, label="Конечные точки добавить",
+                               help_text="IP -адрес, имя хоста или полный URL.Вы можете ввести одну конечную точку на строку."
                                          "Each must be valid.",
                                widget=forms.widgets.Textarea(attrs={'rows': '3', 'cols': '400'}))
     references = forms.CharField(widget=forms.Textarea, required=False)
@@ -1196,7 +1196,7 @@ class PromoteFindingForm(forms.ModelForm):
 
 class FindingForm(forms.ModelForm):
     title = forms.CharField(max_length=1000)
-    group = forms.ModelChoiceField(required=False, queryset=Finding_Group.objects.none(), help_text='The Finding Group to which this finding belongs, leave empty to remove the finding from the group. Groups can only be created via Bulk Edit for now.')
+    group = forms.ModelChoiceField(required=False, queryset=Finding_Group.objects.none(), help_text="Группа поиска, к которой принадлежит этот вывод, оставьте пустым, чтобы удалить обнаружение из группы.Группы могут быть созданы только с помощью объема редактирования на данный момент.")
     date = forms.DateField(required=True,
                            widget=forms.TextInput(attrs={'class': 'datepicker', 'autocomplete': 'off'}))
     cwe = forms.IntegerField(required=False)
@@ -1213,14 +1213,14 @@ class FindingForm(forms.ModelForm):
     impact = forms.CharField(widget=forms.Textarea, required=False)
     request = forms.CharField(widget=forms.Textarea, required=False)
     response = forms.CharField(widget=forms.Textarea, required=False)
-    endpoints = forms.ModelMultipleChoiceField(queryset=Endpoint.objects.none(), required=False, label='Systems / Endpoints')
-    endpoints_to_add = forms.CharField(max_length=5000, required=False, label="Endpoints to add",
-                               help_text="The IP address, host name or full URL. You may enter one endpoint per line. "
+    endpoints = forms.ModelMultipleChoiceField(queryset=Endpoint.objects.none(), required=False, label="Системы / конечные точки")
+    endpoints_to_add = forms.CharField(max_length=5000, required=False, label="Конечные точки добавить",
+                               help_text="IP -адрес, имя хоста или полный URL.Вы можете ввести одну конечную точку на строку."
                                          "Each must be valid.",
                                widget=forms.widgets.Textarea(attrs={'rows': '3', 'cols': '400'}))
     references = forms.CharField(widget=forms.Textarea, required=False)
 
-    mitigated = forms.DateField(required=False, help_text='Date and time when the flaw has been fixed', widget=forms.TextInput(attrs={'class': 'datepicker', 'autocomplete': 'off'}))
+    mitigated = forms.DateField(required=False, help_text="Дата и время, когда недостаток был исправлен", widget=forms.TextInput(attrs={'class': 'datepicker', 'autocomplete': 'off'}))
     mitigated_by = forms.ModelChoiceField(required=False, queryset=Dojo_User.objects.none())
 
     publish_date = forms.DateField(widget=forms.TextInput(attrs={'class': 'datepicker', 'autocomplete': 'off'}), required=False)
@@ -1258,9 +1258,9 @@ class FindingForm(forms.ModelForm):
             del self.fields['risk_accepted']
         else:
             if self.instance.risk_accepted:
-                self.fields['risk_accepted'].help_text = "Uncheck to unaccept the risk. Use full risk acceptance from the dropdown menu if you need advanced settings such as an expiry date."
+                self.fields['risk_accepted'].help_text="Снимите, чтобы не принять риск.Используйте полное принятие риска из раскрывающегося меню, если вам нужны расширенные настройки, такие как дата истечения."
             elif self.instance.test.engagement.product.enable_simple_risk_acceptance:
-                self.fields['risk_accepted'].help_text = "Check to accept the risk. Use full risk acceptance from the dropdown menu if you need advanced settings such as an expiry date."
+                self.fields['risk_accepted'].help_text="Проверьте, чтобы принять риск.Используйте полное принятие риска из раскрывающегося меню, если вам нужны расширенные настройки, такие как дата истечения."
 
         # self.fields['tags'].widget.choices = t
         if req_resp:
@@ -1268,9 +1268,9 @@ class FindingForm(forms.ModelForm):
             self.fields['response'].initial = req_resp[1]
 
         if self.instance.duplicate:
-            self.fields['duplicate'].help_text = "Original finding that is being duplicated here (readonly). Use view finding page to manage duplicate relationships. Unchecking duplicate here will reset this findings duplicate status, but will trigger deduplication logic."
+            self.fields['duplicate'].help_text="Оригинальный вывод, который здесь дублируется (Readonly).Используйте страницу «Посмотреть поиск» для управления дублирующими отношениями.Неужелительное дублирование здесь сбросит этот статус дубликата, но запустит логику дедупликации."
         else:
-            self.fields['duplicate'].help_text = "You can mark findings as duplicate only from the view finding page."
+            self.fields['duplicate'].help_text="Вы можете отмечать результаты как дубликаты только со страницы поиска View."
 
         self.fields['sla_start_date'].disabled = True
         self.fields['sla_expiration_date'].disabled = True
@@ -1355,7 +1355,7 @@ class ApplyFindingTemplateForm(forms.Form):
 
     cwe = forms.IntegerField(label="CWE", required=False)
     vulnerability_ids = vulnerability_ids_field
-    cvssv3 = forms.CharField(label="CVSSv3", max_length=117, required=False, widget=forms.TextInput(attrs={'class': 'btn btn-secondary dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false'}))
+    cvssv3 = forms.CharField(label="CVSSV3", max_length=117, required=False, widget=forms.TextInput(attrs={'class': 'btn btn-secondary dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false'}))
 
     severity = forms.ChoiceField(required=False, choices=SEVERITY_CHOICES, error_messages={'required': 'Select valid choice: In Progress, On Hold, Completed', 'invalid_choice': 'Select valid choice: Critical,High,Medium,Low'})
 
@@ -1364,7 +1364,7 @@ class ApplyFindingTemplateForm(forms.Form):
     impact = forms.CharField(widget=forms.Textarea, required=False)
     references = forms.CharField(widget=forms.Textarea, required=False)
 
-    tags = TagField(required=False, help_text="Add tags that help describe this finding template. Choose from the list or add new tags. Press Enter key to add.", initial=Finding.tags.tag_model.objects.all().order_by('name'))
+    tags = TagField(required=False, help_text="Добавьте теги, которые помогают описать этот шаблон обнаружения.Выберите из списка или добавьте новые теги.Нажмите клавишу Enter, чтобы добавить.", initial=Finding.tags.tag_model.objects.all().order_by('name'))
 
     def __init__(self, template=None, *args, **kwargs):
         super(ApplyFindingTemplateForm, self).__init__(*args, **kwargs)
@@ -1390,7 +1390,7 @@ class ApplyFindingTemplateForm(forms.Form):
 
 
 class FindingTemplateForm(forms.ModelForm):
-    apply_to_findings = forms.BooleanField(required=False, help_text="Apply template to all findings that match this CWE. (Update will overwrite mitigation, impact and references for any active, verified findings.)")
+    apply_to_findings = forms.BooleanField(required=False, help_text="Примените шаблон ко всем выводам, которые соответствуют этой CWE.(Обновление будет перезаписать смягчение, воздействие и ссылки для любых активных, проверенных результатов.)")
     title = forms.CharField(max_length=1000, required=True)
 
     cwe = forms.IntegerField(label="CWE", required=False)
@@ -1518,15 +1518,15 @@ class EditEndpointForm(forms.ModelForm):
 
 
 class AddEndpointForm(forms.Form):
-    endpoint = forms.CharField(max_length=5000, required=True, label="Endpoint(s)",
-                               help_text="The IP address, host name or full URL. You may enter one endpoint per line. "
+    endpoint = forms.CharField(max_length=5000, required=True, label="Конечная точка (ы)",
+                               help_text="IP -адрес, имя хоста или полный URL.Вы можете ввести одну конечную точку на строку."
                                          "Each must be valid.",
                                widget=forms.widgets.Textarea(attrs={'rows': '15', 'cols': '400'}))
     product = forms.CharField(required=True,
-                              widget=forms.widgets.HiddenInput(), help_text="The product this endpoint should be "
+                              widget=forms.widgets.HiddenInput(), help_text="Продукт, который должен быть эта конечная точка"
                                                                             "associated with.")
     tags = TagField(required=False,
-                    help_text="Add tags that help describe this endpoint.  "
+                    help_text="Добавьте теги, которые помогают описать эту конечную точку."
                               "Choose from the list or add new tags. Press Enter key to add.")
 
     def __init__(self, *args, **kwargs):
@@ -1592,7 +1592,7 @@ class DeleteEndpointForm(forms.ModelForm):
 
 class NoteForm(forms.ModelForm):
     entry = forms.CharField(max_length=2400, widget=forms.Textarea(attrs={'rows': 4, 'cols': 15}),
-                            label='Notes:')
+                            label="Примечания:")
 
     class Meta:
         model = Notes
@@ -1604,7 +1604,7 @@ class TypedNoteForm(NoteForm):
     def __init__(self, *args, **kwargs):
         queryset = kwargs.pop('available_note_types')
         super(TypedNoteForm, self).__init__(*args, **kwargs)
-        self.fields['note_type'] = forms.ModelChoiceField(queryset=queryset, label='Note Type', required=True)
+        self.fields['note_type'] = forms.ModelChoiceField(queryset=queryset, label="Примечание типа", required=True)
 
     class Meta():
         model = Notes
@@ -1623,16 +1623,16 @@ class DeleteNoteForm(forms.ModelForm):
 class CloseFindingForm(forms.ModelForm):
     entry = forms.CharField(
         required=True, max_length=2400,
-        widget=forms.Textarea, label='Notes:',
+        widget=forms.Textarea, label="Примечания:",
         error_messages={'required': ('The reason for closing a finding is '
                                      'required, please use the text area '
                                      'below to provide documentation.')})
 
-    mitigated = forms.DateField(required=False, help_text='Date and time when the flaw has been fixed', widget=forms.TextInput(attrs={'class': 'datepicker', 'autocomplete': 'off'}))
+    mitigated = forms.DateField(required=False, help_text="Дата и время, когда недостаток был исправлен", widget=forms.TextInput(attrs={'class': 'datepicker', 'autocomplete': 'off'}))
     mitigated_by = forms.ModelChoiceField(required=False, queryset=Dojo_User.objects.none())
-    false_p = forms.BooleanField(initial=False, required=False, label='False Positive')
-    out_of_scope = forms.BooleanField(initial=False, required=False, label='Out of Scope')
-    duplicate = forms.BooleanField(initial=False, required=False, label='Duplicate')
+    false_p = forms.BooleanField(initial=False, required=False, label="Ложно положительный")
+    out_of_scope = forms.BooleanField(initial=False, required=False, label="Вне сферы действия")
+    duplicate = forms.BooleanField(initial=False, required=False, label="Дублировать")
 
     def __init__(self, *args, **kwargs):
         queryset = kwargs.pop('missing_note_types')
@@ -1640,7 +1640,7 @@ class CloseFindingForm(forms.ModelForm):
         if len(queryset) == 0:
             self.fields['note_type'].widget = forms.HiddenInput()
         else:
-            self.fields['note_type'] = forms.ModelChoiceField(queryset=queryset, label='Note Type', required=True)
+            self.fields['note_type'] = forms.ModelChoiceField(queryset=queryset, label="Примечание типа", required=True)
 
         self.can_edit_mitigated_data = kwargs.pop('can_edit_mitigated_data') if 'can_edit_mitigated_data' in kwargs \
             else False
@@ -1692,7 +1692,7 @@ class DefectFindingForm(forms.ModelForm):
 
     entry = forms.CharField(
         required=True, max_length=2400,
-        widget=forms.Textarea, label='Notes:',
+        widget=forms.Textarea, label="Примечания:",
         error_messages={'required': ('The reason for closing a finding is '
                                      'required, please use the text area '
                                      'below to provide documentation.')})
@@ -1705,8 +1705,8 @@ class DefectFindingForm(forms.ModelForm):
 class ClearFindingReviewForm(forms.ModelForm):
     entry = forms.CharField(
         required=True, max_length=2400,
-        help_text='Please provide a message.',
-        widget=forms.Textarea, label='Notes:',
+        help_text="Пожалуйста, предоставьте сообщение.",
+        widget=forms.Textarea, label="Примечания:",
         error_messages={'required': ('The reason for clearing a review is '
                                      'required, please use the text area '
                                      'below to provide documentation.')})
@@ -1725,14 +1725,14 @@ class ReviewFindingForm(forms.Form):
     )
     entry = forms.CharField(
         required=True, max_length=2400,
-        help_text="Please provide a message for reviewers.",
-        widget=forms.Textarea, label="Notes:",
+        help_text="Пожалуйста, предоставьте сообщение для рецензентов.",
+        widget=forms.Textarea, label="Примечания:",
         error_messages={"required": ("The reason for requesting a review is "
                                      "required, please use the text area "
                                      "below to provide documentation.")})
     allow_all_reviewers = forms.BooleanField(
         required=False,
-        label="Allow All Eligible Reviewers",
+        label="Разрешить всем подходящим рецензентам",
         help_text=("Checking this box will allow any user in the drop down "
                    "above to provide a review for this finding"))
 
@@ -1804,25 +1804,25 @@ class SimpleSearchForm(forms.Form):
 
 
 class DateRangeMetrics(forms.Form):
-    start_date = forms.DateField(required=True, label="To",
+    start_date = forms.DateField(required=True, label="К",
                                  widget=forms.TextInput(attrs={'class': 'datepicker', 'autocomplete': 'off'}))
     end_date = forms.DateField(required=True,
-                               label="From",
+                               label="От",
                                widget=forms.TextInput(attrs={'class': 'datepicker', 'autocomplete': 'off'}))
 
 
 class MetricsFilterForm(forms.Form):
     start_date = forms.DateField(required=False,
-                                 label="To",
+                                 label="К",
                                  widget=forms.TextInput(attrs={'class': 'datepicker', 'autocomplete': 'off'}))
     end_date = forms.DateField(required=False,
-                               label="From",
+                               label="От",
                                widget=forms.TextInput(attrs={'class': 'datepicker', 'autocomplete': 'off'}))
     finding_status = forms.MultipleChoiceField(
         required=False,
         widget=forms.CheckboxSelectMultiple,
         choices=FINDING_STATUS,
-        label="Status")
+        label="Положение дел")
     severity = forms.MultipleChoiceField(required=False,
                                          choices=(('Low', 'Low'),
                                                   ('Medium', 'Medium'),
@@ -1865,7 +1865,7 @@ class DeleteGroupForm(forms.ModelForm):
 
 
 class Add_Group_MemberForm(forms.ModelForm):
-    users = forms.ModelMultipleChoiceField(queryset=Dojo_Group_Member.objects.none(), required=True, label='Users')
+    users = forms.ModelMultipleChoiceField(queryset=Dojo_Group_Member.objects.none(), required=True, label="Пользователи")
 
     def __init__(self, *args, **kwargs):
         super(Add_Group_MemberForm, self).__init__(*args, **kwargs)
@@ -1882,7 +1882,7 @@ class Add_Group_MemberForm(forms.ModelForm):
 
 
 class Add_Group_Member_UserForm(forms.ModelForm):
-    groups = forms.ModelMultipleChoiceField(queryset=Dojo_Group.objects.none(), required=True, label='Groups')
+    groups = forms.ModelMultipleChoiceField(queryset=Dojo_Group.objects.none(), required=True, label="Группа")
 
     def __init__(self, *args, **kwargs):
         super(Add_Group_Member_UserForm, self).__init__(*args, **kwargs)
@@ -1915,7 +1915,7 @@ class Delete_Group_MemberForm(Edit_Group_MemberForm):
 
 
 class Add_Product_GroupForm(forms.ModelForm):
-    groups = forms.ModelMultipleChoiceField(queryset=Dojo_Group.objects.none(), required=True, label='Groups')
+    groups = forms.ModelMultipleChoiceField(queryset=Dojo_Group.objects.none(), required=True, label="Группа")
 
     def __init__(self, *args, **kwargs):
         super(Add_Product_GroupForm, self).__init__(*args, **kwargs)
@@ -1931,7 +1931,7 @@ class Add_Product_GroupForm(forms.ModelForm):
 
 
 class Add_Product_Group_GroupForm(forms.ModelForm):
-    products = forms.ModelMultipleChoiceField(queryset=Product.objects.none(), required=True, label='Products')
+    products = forms.ModelMultipleChoiceField(queryset=Product.objects.none(), required=True, label="Продукты")
 
     def __init__(self, *args, **kwargs):
         super(Add_Product_Group_GroupForm, self).__init__(*args, **kwargs)
@@ -1964,7 +1964,7 @@ class Delete_Product_GroupForm(Edit_Product_Group_Form):
 
 
 class Add_Product_Type_GroupForm(forms.ModelForm):
-    groups = forms.ModelMultipleChoiceField(queryset=Dojo_Group.objects.none(), required=True, label='Groups')
+    groups = forms.ModelMultipleChoiceField(queryset=Dojo_Group.objects.none(), required=True, label="Группа")
 
     def __init__(self, *args, **kwargs):
         super(Add_Product_Type_GroupForm, self).__init__(*args, **kwargs)
@@ -1980,7 +1980,7 @@ class Add_Product_Type_GroupForm(forms.ModelForm):
 
 
 class Add_Product_Type_Group_GroupForm(forms.ModelForm):
-    product_types = forms.ModelMultipleChoiceField(queryset=Product_Type.objects.none(), required=True, label='Product Types')
+    product_types = forms.ModelMultipleChoiceField(queryset=Product_Type.objects.none(), required=True, label="Типы продукта")
 
     def __init__(self, *args, **kwargs):
         super(Add_Product_Type_Group_GroupForm, self).__init__(*args, **kwargs)
@@ -2036,7 +2036,7 @@ class ChangePasswordForm(forms.Form):
     confirm_password = forms.CharField(widget=forms.PasswordInput,
         required=True,
         validators=[validate_password],
-        help_text='Password must match the new password entered above.')
+        help_text="Пароль должен соответствовать новому паролю, введенному выше.")
 
     def __init__(self, *args, **kwargs):
         self.user = None
@@ -2178,11 +2178,11 @@ class APIKeyForm(forms.ModelForm):
 
 class ReportOptionsForm(forms.Form):
     yes_no = (('0', 'No'), ('1', 'Yes'))
-    include_finding_notes = forms.ChoiceField(choices=yes_no, label="Finding Notes")
-    include_finding_images = forms.ChoiceField(choices=yes_no, label="Finding Images")
-    include_executive_summary = forms.ChoiceField(choices=yes_no, label="Executive Summary")
-    include_table_of_contents = forms.ChoiceField(choices=yes_no, label="Table of Contents")
-    include_disclaimer = forms.ChoiceField(choices=yes_no, label="Disclaimer")
+    include_finding_notes = forms.ChoiceField(choices=yes_no, label="Нахождение заметок")
+    include_finding_images = forms.ChoiceField(choices=yes_no, label="Поиск изображений")
+    include_executive_summary = forms.ChoiceField(choices=yes_no, label="Управляющее резюме")
+    include_table_of_contents = forms.ChoiceField(choices=yes_no, label="Оглавление")
+    include_disclaimer = forms.ChoiceField(choices=yes_no, label="Отказ от ответственности")
     report_type = forms.ChoiceField(choices=(('HTML', 'HTML'), ('AsciiDoc', 'AsciiDoc')))
 
 
@@ -2190,7 +2190,7 @@ class CustomReportOptionsForm(forms.Form):
     yes_no = (('0', 'No'), ('1', 'Yes'))
     report_name = forms.CharField(required=False, max_length=100)
     include_finding_notes = forms.ChoiceField(required=False, choices=yes_no)
-    include_finding_images = forms.ChoiceField(choices=yes_no, label="Finding Images")
+    include_finding_images = forms.ChoiceField(choices=yes_no, label="Поиск изображений")
     report_type = forms.ChoiceField(choices=(('HTML', 'HTML'), ('AsciiDoc', 'AsciiDoc')))
 
 
@@ -2259,7 +2259,7 @@ class DeleteGITHUBConfForm(forms.ModelForm):
 
 class ExpressGITHUBForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, required=True)
-    issue_key = forms.CharField(required=True, help_text='A valid issue ID is required to gather the necessary information.')
+    issue_key = forms.CharField(required=True, help_text="Действительный идентификатор проблемы требуется для сбора необходимой информации.")
 
     class Meta:
         model = GITHUB_Conf
@@ -2300,7 +2300,7 @@ class JIRA_IssueForm(forms.ModelForm):
 class JIRAForm(forms.ModelForm):
     issue_template_dir = forms.ChoiceField(required=False,
                                        choices=JIRA_TEMPLATE_CHOICES,
-                                       help_text='Choose the folder containing the Django templates used to render the JIRA issue description. These are stored in dojo/templates/issue-trackers. Leave empty to use the default jira_full templates.')
+                                       help_text="Выберите папку, содержащую шаблоны Django, используемые для отображения описания выпуска JIRA.Они хранятся в додзё/шаблонах/пробных трекерах.Оставьте пустые, чтобы использовать шаблоны JIRA_FULL по умолчанию.")
 
     password = forms.CharField(widget=forms.PasswordInput, required=True)
 
@@ -2332,7 +2332,7 @@ class JIRAForm(forms.ModelForm):
 
 class ExpressJIRAForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, required=True)
-    issue_key = forms.CharField(required=True, help_text='A valid issue ID is required to gather the necessary information.')
+    issue_key = forms.CharField(required=True, help_text="Действительный идентификатор проблемы требуется для сбора необходимой информации.")
 
     class Meta:
         model = JIRA_Instance
@@ -2387,7 +2387,7 @@ class Product_API_Scan_ConfigurationForm(forms.ModelForm):
         super(Product_API_Scan_ConfigurationForm, self).__init__(*args, **kwargs)
 
     tool_configuration = forms.ModelChoiceField(
-        label='Tool Configuration',
+        label="Конфигурация инструмента",
         queryset=Tool_Configuration.objects.all().order_by('name'),
         required=True,
     )
@@ -2468,8 +2468,8 @@ class DeleteAppAnalysisForm(forms.ModelForm):
 
 
 class ToolConfigForm(forms.ModelForm):
-    tool_type = forms.ModelChoiceField(queryset=Tool_Type.objects.all(), label='Tool Type')
-    ssh = forms.CharField(widget=forms.Textarea(attrs={}), required=False, label='SSH Key')
+    tool_type = forms.ModelChoiceField(queryset=Tool_Type.objects.all(), label="Тип инструмента")
+    ssh = forms.CharField(widget=forms.Textarea(attrs={}), required=False, label="SSH -ключ")
 
     class Meta:
         model = Tool_Configuration
@@ -2541,7 +2541,7 @@ class DeleteToolProductSettingsForm(forms.ModelForm):
 
 
 class ToolProductSettingsForm(forms.ModelForm):
-    tool_configuration = forms.ModelChoiceField(queryset=Tool_Configuration.objects.all(), label='Tool Configuration')
+    tool_configuration = forms.ModelChoiceField(queryset=Tool_Configuration.objects.all(), label="Конфигурация инструмента")
 
     class Meta:
         model = Tool_Product_Settings
@@ -2569,7 +2569,7 @@ class ObjectSettingsForm(forms.ModelForm):
 
     # tags = forms.CharField(widget=forms.SelectMultiple(choices=[]),
     #                        required=False,
-    #                        help_text="Add tags that help describe this object.  "
+    #                        help_text="Добавьте теги, которые помогают описать этот объект."
     #                                  "Choose from the list or add new tags.  Press TAB key to add.")
 
     class Meta:
@@ -2588,7 +2588,7 @@ class ObjectSettingsForm(forms.ModelForm):
 
 class CredMappingForm(forms.ModelForm):
     cred_user = forms.ModelChoiceField(queryset=Cred_Mapping.objects.all().select_related('cred_id'), required=False,
-                                       label='Select a Credential')
+                                       label="Выберите учетные данные")
 
     class Meta:
         model = Cred_Mapping
@@ -2606,10 +2606,10 @@ class CredMappingFormProd(forms.ModelForm):
 class EngagementPresetsForm(forms.ModelForm):
 
     notes = forms.CharField(widget=forms.Textarea(attrs={}),
-                                  required=False, help_text="Description of what needs to be tested or setting up environment for testing")
+                                  required=False, help_text="Описание того, что необходимо протестировать или настраивать среда для тестирования")
 
     scope = forms.CharField(widget=forms.Textarea(attrs={}),
-                                  required=False, help_text="Scope of Engagement testing, IP's/Resources/URL's)")
+                                  required=False, help_text="Объем тестирования вовлеченности, IPs/Resources/URL's)")
 
     class Meta:
         model = Engagement_Presets
@@ -2694,7 +2694,7 @@ class AjaxChoiceField(forms.ChoiceField):
 class CredUserForm(forms.ModelForm):
     # selenium_script = forms.FileField(widget=forms.widgets.FileInput(
     #    attrs={"accept": ".py"}),
-    #    label="Select a Selenium Script", required=False)
+    #    label="Выберите сценарий селена", required=False)
 
     class Meta:
         model = Cred_User
@@ -2703,7 +2703,7 @@ class CredUserForm(forms.ModelForm):
 
 
 class GITHUB_Product_Form(forms.ModelForm):
-    git_conf = forms.ModelChoiceField(queryset=GITHUB_Conf.objects.all(), label='GITHUB Configuration', required=False)
+    git_conf = forms.ModelChoiceField(queryset=GITHUB_Conf.objects.all(), label="Конфигурация GitHub", required=False)
 
     class Meta:
         model = GITHUB_PKey
@@ -2711,11 +2711,11 @@ class GITHUB_Product_Form(forms.ModelForm):
 
 
 class JIRAProjectForm(forms.ModelForm):
-    inherit_from_product = forms.BooleanField(label='inherit JIRA settings from product', required=False)
-    jira_instance = forms.ModelChoiceField(queryset=JIRA_Instance.objects.all(), label='JIRA Instance', required=False)
+    inherit_from_product = forms.BooleanField(label="Унаследовать настройки JIRA от продукта", required=False)
+    jira_instance = forms.ModelChoiceField(queryset=JIRA_Instance.objects.all(), label="Джира экземпляр", required=False)
     issue_template_dir = forms.ChoiceField(required=False,
                                        choices=JIRA_TEMPLATE_CHOICES,
-                                       help_text='Choose the folder containing the Django templates used to render the JIRA issue description. These are stored in dojo/templates/issue-trackers. Leave empty to use the default jira_full templates.')
+                                       help_text="Выберите папку, содержащую шаблоны Django, используемые для отображения описания выпуска JIRA.Они хранятся в додзё/шаблонах/пробных трекерах.Оставьте пустые, чтобы использовать шаблоны JIRA_FULL по умолчанию.")
 
     prefix = 'jira-project-form'
 
@@ -2738,8 +2738,8 @@ class JIRAProjectForm(forms.ModelForm):
             product_name = self.product.name if self.product else self.engagement.product.name if self.engagement.product else ''
 
             self.fields['project_key'].widget = forms.TextInput(attrs={'placeholder': 'JIRA settings inherited from product ''%s''' % product_name})
-            self.fields['project_key'].help_text = 'JIRA settings are inherited from product ''%s'', unless configured differently here.' % product_name
-            self.fields['jira_instance'].help_text = 'JIRA settings are inherited from product ''%s'' , unless configured differently here.' % product_name
+            self.fields['project_key'].help_text="Настройки JIRA унаследованы от продукта"'%s'', unless configured differently here.' % product_name
+            self.fields['jira_instance'].help_text="Настройки JIRA унаследованы от продукта"'%s'' , unless configured differently here.' % product_name
 
             # if we don't have an instance, django will insert a blank empty one :-(
             # so we have to check for id to make sure we only trigger this when there is a real instance from db
@@ -2751,7 +2751,7 @@ class JIRAProjectForm(forms.ModelForm):
                 # once a jira project config is attached to an engagement, we can't go back to inheriting
                 # because the config needs to remain in place for the existing jira issues
                 self.fields['inherit_from_product'].disabled = True
-                self.fields['inherit_from_product'].help_text = 'Once an engagement has a JIRA Project stored, you cannot switch back to inheritance to avoid breaking existing JIRA issues'
+                self.fields['inherit_from_product'].help_text="После того, как участие сохранилось проект JIRA, вы не можете вернуться к наследству, чтобы избежать нарушения существующих проблем JIRA"
                 self.fields['jira_instance'].disabled = False
                 self.fields['project_key'].disabled = False
                 self.fields['issue_template_dir'].disabled = False
@@ -2839,7 +2839,7 @@ class GITHUBFindingForm(forms.Form):
         super(GITHUBFindingForm, self).__init__(*args, **kwargs)
         self.fields['push_to_github'] = forms.BooleanField()
         self.fields['push_to_github'].required = False
-        self.fields['push_to_github'].help_text = "Checking this will overwrite content of your Github issue, or create one."
+        self.fields['push_to_github'].help_text="Проверка этого будет перезаписать содержание вашей проблемы GitHub или создаст его."
 
     push_to_github = forms.BooleanField(required=False)
 
@@ -2860,11 +2860,11 @@ class JIRAFindingForm(forms.Form):
         self.fields['push_to_jira'] = forms.BooleanField()
         self.fields['push_to_jira'].required = False
         if is_finding_groups_enabled():
-            self.fields['push_to_jira'].help_text = "Checking this will overwrite content of your JIRA issue, or create one. If this finding is part of a Finding Group, the group will pushed instead of the finding."
+            self.fields['push_to_jira'].help_text="Проверка это будет перезаписать содержание вашей проблемы Jira или создаст ее.Если этот вывод является частью группы поиска, группа будет выдвинуть вместо вывода."
         else:
-            self.fields['push_to_jira'].help_text = "Checking this will overwrite content of your JIRA issue, or create one."
+            self.fields['push_to_jira'].help_text="Проверка это будет перезаписать содержание вашей проблемы Jira или создаст ее."
 
-        self.fields['push_to_jira'].label = "Push to JIRA"
+        self.fields['push_to_jira'].label="Толк к Джире"
         if self.push_all:
             # This will show the checkbox as checked and greyed out, this way the user is aware
             # that issues will be pushed to JIRA, given their product-level settings.
@@ -2885,7 +2885,7 @@ class JIRAFindingForm(forms.Form):
 
         if self.instance and hasattr(self.instance, 'has_jira_group_issue') and self.instance.has_jira_group_issue:
             self.fields['push_to_jira'].widget.attrs['checked'] = 'checked'
-            self.fields['jira_issue'].help_text = 'Changing the linked JIRA issue for finding groups is not (yet) supported.'
+            self.fields['jira_issue'].help_text="Изменение связанной проблемы Jira для поиска групп не поддерживается (пока)."
             self.initial['jira_issue'] = self.instance.finding_group.jira_issue.jira_key
             self.fields['jira_issue'].disabled = True
 
@@ -2956,11 +2956,11 @@ class JIRAFindingForm(forms.Form):
                 if len(jira_issues) > 0:
                     raise ValidationError('JIRA issue ' + jira_issue_key_new + ' already linked to ' + reverse('view_finding', args=(jira_issues[0].finding_id,)))
 
-    jira_issue = forms.CharField(required=False, label="Linked JIRA Issue",
+    jira_issue = forms.CharField(required=False, label="Связанный выпуск Jira",
                 validators=[validators.RegexValidator(
                     regex=r'^[A-Z][A-Z_0-9]+-\d+$',
                     message='JIRA issue key must be in XXXX-nnnn format ([A-Z][A-Z_0-9]+-\\d+)')])
-    push_to_jira = forms.BooleanField(required=False, label="Push to JIRA")
+    push_to_jira = forms.BooleanField(required=False, label="Толк к Джире")
 
 
 class JIRAImportScanForm(forms.Form):
@@ -2977,7 +2977,7 @@ class JIRAImportScanForm(forms.Form):
             self.fields['push_to_jira'].widget.attrs['checked'] = 'checked'
             self.fields['push_to_jira'].disabled = True
 
-    push_to_jira = forms.BooleanField(required=False, label="Push to JIRA", help_text="Checking this will create a new jira issue for each new finding.")
+    push_to_jira = forms.BooleanField(required=False, label="Толк к Джире", help_text="Проверка этого создаст новую проблему Jira для каждого нового вывода.")
 
 
 class JIRAEngagementForm(forms.Form):
@@ -2991,25 +2991,25 @@ class JIRAEngagementForm(forms.Form):
         if self.instance:
             if self.instance.has_jira_issue:
                 self.fields['push_to_jira'].widget.attrs['checked'] = 'checked'
-                self.fields['push_to_jira'].label = 'Update JIRA Epic'
-                self.fields['push_to_jira'].help_text = 'Checking this will update the existing EPIC in JIRA.'
+                self.fields['push_to_jira'].label="Обновление Jira Epic"
+                self.fields['push_to_jira'].help_text="Проверка этого обновит существующий Epic в Jira."
 
-    push_to_jira = forms.BooleanField(required=False, label="Create EPIC", help_text="Checking this will create an EPIC in JIRA for this engagement.")
-    epic_name = forms.CharField(max_length=200, required=False, help_text="EPIC name in JIRA. If not specified, it defaults to the engagement name")
-    epic_priority = forms.CharField(max_length=200, required=False, help_text="EPIC priority. If not specified, the JIRA default priority will be used")
+    push_to_jira = forms.BooleanField(required=False, label="Создать Epic", help_text="Проверка этого создаст эпос в Джире для этого помолвки.")
+    epic_name = forms.CharField(max_length=200, required=False, help_text="Эпическое имя в Джире.Если не указано, это по умолчанию на имя помолвки")
+    epic_priority = forms.CharField(max_length=200, required=False, help_text="Эпический приоритет.Если не указано, будет использоваться приоритет по умолчанию JIRA")
 
 
 class LoginBanner(forms.Form):
     banner_enable = forms.BooleanField(
-        label="Enable login banner",
+        label="Включить баннер входа в систему",
         initial=False,
         required=False,
-        help_text='Tick this box to enable a text banner on the login page'
+        help_text="Узнайте этот флажок, чтобы включить текстовый баннер на странице входа в систему"
     )
 
     banner_message = forms.CharField(
         required=False,
-        label="Сообщение для отображения на странице входа в систему"
+        label="СООБЛЯТЬСЯ"
     )
 
     def clean(self):
@@ -3211,7 +3211,7 @@ class Add_Questionnaire_Form(forms.ModelForm):
         queryset=Engagement_Survey.objects.all(),
         required=True,
         widget=forms.widgets.Select(),
-        help_text='Select the Questionnaire to add.')
+        help_text="Выберите вопросник, чтобы добавить.")
 
     class Meta:
         model = Answered_Survey
@@ -3227,7 +3227,7 @@ class AddGeneralQuestionnaireForm(forms.ModelForm):
         queryset=Engagement_Survey.objects.all(),
         required=True,
         widget=forms.widgets.Select(),
-        help_text='Select the Questionnaire to add.')
+        help_text="Выберите вопросник, чтобы добавить.")
     expiration = forms.DateField(widget=forms.TextInput(
         attrs={'class': 'datepicker', 'autocomplete': 'off'}))
 
@@ -3287,7 +3287,7 @@ with warnings.catch_warnings(action="ignore", category=ManagerInheritanceWarning
         questions = forms.ModelMultipleChoiceField(
             Question.polymorphic.all(),
             required=True,
-            help_text="Select questions to include on this questionnaire.  Field can be used to search available questions.",
+            help_text="Выберите вопросы, чтобы включить в эту анкету.Поле может использоваться для поиска доступных вопросов.",
             widget=MultipleSelectWithPop(attrs={'size': '11'}))
 
         class Meta:
@@ -3301,14 +3301,14 @@ class CreateQuestionForm(forms.Form):
     order = forms.IntegerField(
         min_value=1,
         widget=forms.TextInput(attrs={'data-type': 'both'}),
-        help_text="The order the question will appear on the questionnaire")
-    optional = forms.BooleanField(help_text="If selected, user doesn't have to answer this question",
+        help_text="Заказ, который будет показан в вопроснике")
+    optional = forms.BooleanField(help_text="Если выбрано, пользователь не делает должен ответить на этот вопрос",
                                   initial=False,
                                   required=False,
                                   widget=forms.CheckboxInput(attrs={'data-type': 'both'}))
     text = forms.CharField(widget=forms.Textarea(attrs={'data-type': 'text'}),
-                           label="Question Text",
-                           help_text="The actual question.")
+                           label="Вопрос текст",
+                           help_text="Фактический вопрос.")
 
 
 class CreateTextQuestionForm(forms.Form):
@@ -3357,7 +3357,7 @@ class CreateChoiceQuestionForm(forms.Form):
     multichoice = forms.BooleanField(required=False,
                                      initial=False,
                                      widget=forms.CheckboxInput(attrs={'data-type': 'choice'}),
-                                     help_text="Can more than one choice can be selected?")
+                                     help_text="Можно ли выбрать более одного выбора?")
 
     answer_choices = MultiExampleField(required=False, widget=MultiWidgetBasic(attrs={'data-type': 'choice'}))
 
@@ -3382,7 +3382,7 @@ class EditChoiceQuestionForm(EditQuestionForm):
     choices = forms.ModelMultipleChoiceField(
         Choice.objects.all(),
         required=True,
-        help_text="Select choices to include on this question.  Field can be used to search available choices.",
+        help_text="Выберите выбор, чтобы включить в этот вопрос.Поле может использоваться для поиска доступных вариантов.",
         widget=MultipleSelectWithPop(attrs={'size': '11'}))
 
     class Meta:
@@ -3406,7 +3406,7 @@ class AssignUserForm(forms.ModelForm):
             assignee = kwargs.pop('asignees')
         super(AssignUserForm, self).__init__(*args, **kwargs)
         if assignee is None:
-            self.fields['assignee'] = forms.ModelChoiceField(queryset=get_authorized_users(Permissions.Engagement_View), empty_label='Not Assigned', required=False)
+            self.fields['assignee'] = forms.ModelChoiceField(queryset=get_authorized_users(Permissions.Engagement_View), empty_label="Не назначен", required=False)
         else:
             self.fields['assignee'].initial = assignee
 
@@ -3420,7 +3420,7 @@ class AddEngagementForm(forms.Form):
         queryset=Product.objects.none(),
         required=True,
         widget=forms.widgets.Select(),
-        help_text='Select which product to attach Engagement')
+        help_text="Выберите, какой продукт для прикрепления взаимодействия")
 
     def __init__(self, *args, **kwargs):
         super(AddEngagementForm, self).__init__(*args, **kwargs)

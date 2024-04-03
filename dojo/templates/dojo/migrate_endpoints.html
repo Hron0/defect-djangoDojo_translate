@@ -9,7 +9,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading tight">
                     <h3 class="has-filters">
-                        {{ name }}
+                        перенос конечных точек
                     </h3>
                 </div>
                 <div id="the-filters" class="is-filters panel-body collapse">
@@ -20,7 +20,7 @@
                 <form class="form-horizontal" method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit" name="run_migration">Run migration</button>
+                        <button class="btn btn-primary" type="submit" name="run_migration">Запустить миграцию</button>
                     </div>
                 </form>
             </div>
@@ -29,8 +29,8 @@
                     {% for log in html_log %}
                         <li>
                             {% if 'message' in log.keys %}
-                                <a href="{{ log.view }}">Endpoint</a> {{ log.message }}. It is not possible to migrate it.
-                                  <a href="{{ log.delete }}">Delete</a> or <a href="{{ log.edit }}">edit</a> this endpoint.
+                                <a href="{{ log.view }}">Конечная точка</a> {{ log.message }}. Перенести его невозможно.
+                                  <a href="{{ log.delete }}">Удалить</a> or <a href="{{ log.edit }}">Изменить</a> эту конечную точку.
                             {% else %}
                                 {{ log }}
                             {% endif %}
@@ -38,7 +38,7 @@
                     {% endfor %}
                 </ul>
             {% else %}
-                No changes or broken endpoints detected.
+                Никаких изменений или сбоев в работе конечных точек не обнаружено.
             {% endif %}
         </div>
     </div>
