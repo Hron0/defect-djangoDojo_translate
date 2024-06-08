@@ -6,7 +6,7 @@
 {% block add_styles %}
     {{ block.super }}
     .chart {height: 300px}
-    .status .panel {min-height: 140px;background-color: #f5f5f5;}
+    .status .panel {min-height: 167px;background-color: #f5f5f5;border-radius: 10px !important; padding:0px 1px;}
     #punchcard {height: 350px}
 {% endblock %}
 
@@ -116,8 +116,8 @@
         <div class="row">
             {% block historical_finding_severity %}
                 <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="panel panel-default border_radius">
+                        <div class="panel-heading backgroud_transparent border_radius" >
                             {% trans "Historical Finding Severity" %}
                         </div>
                         <!-- /.panel-heading -->
@@ -131,8 +131,8 @@
             {% endblock %}
             {% block reported_finding_severity_by_month %}
                 <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="panel panel-default border_radius">
+                        <div class="panel-heading backgroud_transparent border_radius" >
                             {% trans "Reported Finding Severity by Month" %}
                         </div>
                         <!-- /.panel-heading -->

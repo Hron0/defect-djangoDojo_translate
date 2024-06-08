@@ -101,7 +101,7 @@
         <div id="wrapper">
             {% block navigation %}
                 <!-- Navigation -->
-                <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+                <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
@@ -111,7 +111,7 @@
                         </button>
                         <a class="navbar-brand" href="{% url 'home' %}">
                         {% block header_logo %}
-                            <img src="{% static "dojo/img/logo.png" %}" alt="DefectDojo Logo" width="240"/>
+                            <img src="{% static "dojo/img/logo.svg" %}" alt="DefectDojo Logo" width="135" height="22"/>
                         {% endblock %}
                         </a>
 
@@ -211,16 +211,22 @@
                             <div class="sidebar-nav navbar-collapse">
                                 <ul class="nav" id="side-menu">
                                     {% block sidebar-items %}
+                                    <li>
+                                        <a href="#" aria-disabled="true" aria-expanded="false" aria-label="Dashboard">
+                                            <img class="side-menu-main-img-width" src="{% static 'dojo/img/menu-header-icon.png' %}" />
+                                            
+                                        </a>
+                                    </li>
                                         <li>
                                             <a href="{% url 'dashboard' %}" aria-disabled="true" aria-expanded="false" aria-label="Dashboard">
-                                                <i class="fa-solid fa-gauge fa-fw"></i>
-                                                <span>{% trans "Dashboard" %}</span>
+                                                <img class="side-menu-first-button-img-width" src="{% static 'dojo/img/main-page-icon.png' %}"/>
+                                                
                                             </a>
                                         </li>
                                         <li>
                                             <a id="product-side-menu" href="{% url 'product' %}" aria-expanded="false" aria-label="Products">
                                                 <i class="fa-solid fa-list-ul fa-fw"></i>
-                                                <span>{% trans "Products" %}</span>
+                                                
                                                 <span class="glyphicon arrow"></span>
                                             </a>
                                             <ul class="nav nav-second-level">
@@ -254,7 +260,7 @@
                                         <li>
                                             <a href="{% url 'engagement' %}" aria-expanded="false" aria-label="Engagements">
                                                 <i class="fa-solid fa-inbox fa-fw"></i>
-                                                <span>{% trans "Engagements" %}</span>
+                                              
                                                 <span class="glyphicon arrow"></span>
                                             </a>
                                             <ul class="nav nav-second-level">
@@ -289,7 +295,7 @@
                                         <li>
                                             <a href="{% url 'open_findings' %}" aria-expanded="false" aria-label="Findings">
                                                 <i class="fa-solid fa-bug fa-fw"></i>
-                                                <span>{% trans "Findings" %}</span>
+                                               
                                                 <span class="glyphicon arrow"></span>
                                             </a>
                                             <ul class="nav nav-second-level">
@@ -326,7 +332,7 @@
                                         <li>
                                             <a href="{% url 'components' %}" id="product_component_view" aria-expanded="false"  aria-label="Components">
                                                 <i class="fa-solid fa-table-cells-large fa-fw"></i>
-                                                <span>{% trans "Components" %}</span>
+                                               
                                             </a>
                                             <ul class="nav nav-second-level">
                                                 <li>
@@ -339,7 +345,7 @@
                                         <li>
                                             <a href="{% url 'endpoint' %}" aria-expanded="false" aria-label="Endpoints">
                                                 <i class="fa-solid fa-sitemap fa-fw"></i>
-                                                <span>{% trans "Endpoints" %}</span>
+                                                
                                                 <span class="glyphicon arrow"></span>
                                             </a>
                                             <ul class="nav nav-second-level">
@@ -375,7 +381,7 @@
                                         <li>
                                             <a href="{% url 'report_builder' %}" aria-expanded="false" aria-label="Reports">
                                                 <i class="fa-solid fa-file-lines fa-fw"></i>
-                                                <span>{% trans "Reports" %}</span>
+                                               
                                                 <span class="glyphicon arrow"></span>
                                             </a>
                                             <!-- /.nav-second-level -->
@@ -383,7 +389,7 @@
                                         <li>
                                             <a href="{% url 'metrics' %}?date=5&view=dashboard" aria-expanded="false" aria-label="Metrics">
                                                 <i class="fa-solid fa-chart-column fa-fw"></i>
-                                                <span>{% trans "Metrics" %}</span>
+                                                
                                                 <span class="glyphicon arrow"></span>
                                             </a>
                                             <ul class="nav nav-second-level">
@@ -429,7 +435,7 @@
                                             <li>
                                                 <a href="{% url 'users' %}" aria-disabled="true" aria-expanded="false" aria-label="Users" id="id_user_menu">
                                                     <i class="fa-solid fa-user fa-fw"></i>
-                                                    <span>{% trans "Users" %}</span>
+                                                
                                                     <span class="glyphicon arrow"></span>
                                                 </a>
                                                 <ul class="nav nav-second-level">
@@ -454,7 +460,7 @@
                                         <li>
                                             <a href="{% url 'engagement_calendar' %}" aria-disabled="true" aria-expanded="false" aria-label="Calendar">
                                                 <i class="fa-solid fa-calendar-days fa-fw"></i>
-                                                <span>{% trans "Calendar" %}</span>
+                                           
                                             </a>
                                         </li>
                                         {% endif %}
@@ -463,7 +469,7 @@
                                                 <li>
                                                     <a href="#">
                                                         <i class="fa-solid fa-house-medical-flag fa-fw"></i>
-                                                        <span>{% trans "Questionnaires" %}</span>
+                                                      
                                                         <span class="glyphicon arrow"></span>
                                                     </a>
                                                     <ul class="nav nav-second-level">
@@ -489,7 +495,7 @@
                                         <li id="menu_configuration">
                                             <a href="#" aria-expanded="false" aria-label="Configuration">
                                                 <i class="fa-solid fa-gear fa-fw"></i>
-                                                <span>{% trans "Configuration" %}</span>
+                                               
                                             </a>
                                             <ul class="nav nav-second-level nav-up">
                                                 {% if "dojo.change_announcement"|has_configuration_permission:request %}
@@ -579,14 +585,14 @@
                                         <li>
                                             <a href="{% url 'support' %}" aria-disabled="true" aria-expanded="false" aria-label="Support">
                                                 <i class="fa-solid fa-life-ring fa-fw"></i>
-                                                <span>{% trans "Get Support" %}</span>
+                                              
                                             </a>
                                         </li>
                                     {% endblock %}
                                     <li id="min-menu">
                                         <a href="#" id="minimize-menu" title="Expand/Collapse Menu" aria-label="Expand/Collapse Menu">
                                             <i id="nav-minimize-menu-li" class="fa-solid fa-circle-right fa-fw"></i>
-                                            <span>{% trans "Collapse Menu" %}</span>
+                                            
                                         </a>
                                     </li>
                                 </ul>
@@ -601,7 +607,7 @@
             <div id="page-wrapper">
                 {% if request.user.is_authenticated and announcement %}
                     {% load announcement_banner_tags %}
-                    <div role="alert" class="announcement-banner alert alert-{{ announcement.style }} {% if announcement.dismissable %}alert-dismissible{% endif %} show">
+                    <div style="display: none !important;" role="alert" class="announcement-banner alert alert-{{ announcement.style }} {% if announcement.dismissable %}alert-dismissible{% endif %} show">
                     {% if announcement.dismissable %}
                         <a href="{% url 'dismiss_announcement' %}" class="close" aria-label="Close">
                             <span aria-hidden="true">×</span>
@@ -1030,22 +1036,22 @@
                             <div class="col-md-12 text-center text-">
                                 <p>
                                     <a href="{% url 'home' %}">
-                                        <img class="logo" src="{% static "dojo/img/chop.png" %}" alt="{% trans "DefectDojo Chop" %}" height="45"/>
+                                        <img class="logo" src="{% static "dojo/img/chop.svg" %}" alt="{% trans "DefectDojo Chop" %}" height="57"/>
                                     </a>
                                     <br/>
                                     <br/>
                                     {% dojo_version %} ( {% dojo_current_hash %} )
                                 </p>
-                                <p>
+                                <p >
                                     Detailed DefectDojo documentation can be found in our <a
                                         href="{% dojo_docs_url %}">GitHub Pages</a>.
                                 </p>
-                                <p>
+                                <p >
                                     DefectDojo is licensed under the <a
                                         href="https://github.com/DefectDojo/django-DefectDojo/blob/master/LICENSE.md">3-Clause BSD
                             License</a>. | <a href="https://github.com/DefectDojo/django-DefectDojo/blob/master/NOTICE"> Dependencies Notice.</a>
                                 </p>
-                                <p>
+                                <p >
                                     &copy; 2015-{% now "Y" %} DefectDojo, Inc. All rights reserved. DefectDojo is trademark of DefectDojo, Inc.
                                 </p>
                             </div>
