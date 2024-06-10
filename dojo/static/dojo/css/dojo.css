@@ -18,6 +18,11 @@ textarea,
 .panel>.table:first-child {
     border-radius: 10px !important;
 }
+.pagination-sm>li:first-child>a,
+.pagination-sm>li:first-child>span{
+    border-radius: 10px 0px 0px 10px  !important;
+}
+
 .panel{
     border-radius: 20px 20px 0px 0px !important;
     border: 0px !important;
@@ -51,7 +56,7 @@ textarea,
 }
 
 a {
-    color: #828282;
+    color: #4B5669;
 }
 
 .panel-default .btn-primary {
@@ -61,11 +66,7 @@ a {
     
 }
 
-.panel-default .btn-primary:hover {
-    background-color: transparent !important;
-    color: #fff !important;
-    border: 1px solid #fff !important;
-}
+
 
 .btn-primary {
     color: #fff;
@@ -79,9 +80,11 @@ a {
 
 .btn-secondary {
     color: #fff;
-    background: linear-gradient(180deg,rgb(38,49,67) 0%, rgb(99,85,134) 100%);
-    border-style: none !important;border-radius: 10px;
-    height: 37px;
+background: linear-gradient(180deg,rgb(38,49,67) 0%, rgb(99,85,134) 100%);
+border-radius: 10px;
+height: 37px;
+border: 1px solid;
+border-color: #f28238;
 }
 
 .btn-secondary:hover {
@@ -297,7 +300,7 @@ body #header form#api_selector .input input#input_apiKey {
 }
 
 .breadcrumb a.active {
-    color: #777 !important;
+    color: #253042 !important;
 }
 
 .badge.badge-count {
@@ -656,9 +659,9 @@ form ul#id_accepted_findings input {
 }
 
 .pagination {
-    margin: 30px;
+    margin: 30px;display: flex;align-items: center;
 }
-
+ul.pagination{margin-top: 20px;}
 .pagination>.active>a,
 .pagination>.active>a:focus,
 .pagination>.active>a:hover,
@@ -1219,10 +1222,7 @@ div.custom-search-form {
         margin: 0 0 0 100px;
     }
 
-    #footer-wrapper {
-       
-        border-left: 1px solid #e7e7e7;
-    }
+  
 
     li#minimize-menu-li {
         display: inline-block;
@@ -1295,13 +1295,11 @@ div.custom-search-form {
     }
 
     body.min #page-wrapper {
-        margin: 0 0 0 50px;
-        border-left: 1px solid #e7e7e7;
+        margin: 0 0 0 60px;
+
     }
 
-    body.min #footer-wrapper {
-        margin: 0 0 0 50px;
-    }
+
 
     body.min div.navbar-default.sidebar {
         width: 50px;
@@ -1419,8 +1417,9 @@ div.custom-search-form {
 .panel-heading h3,
 .panel-heading h4,
 .panel-heading h5 {
-    margin-top: 11px;color: #fff;
-    margin-bottom: 0;
+    margin-top: 5px;color: #fff;
+    margin-bottom: 0;display: flex;justify-content: space-between;width: 100%;
+    align-items: center;
 }
 
 .panel-heading .btn {
@@ -1967,3 +1966,11 @@ input[type=number]::-webkit-outer-spin-button {
 .backgroud_transparent{background: transparent !important;}
 #page-wrapper{border-left: 0px;background-color: #FEF9F6;}
 .border_radius{border-radius: 20px !important;color: #253042 !important;}
+.fz_14{font-size: 14px;}
+.fz_40{font-size: 40px;}
+.white-icon{color:#A9A9A9 ;}
+.fz_16{font-size: 16px;font-family: "Montserrat";font-weight:600;}
+.orange-icon{color:#F18135;}
+.min-width-180{min-width: 180px;}
+.table-striped>tbody>tr:nth-of-type(odd){background-color: #FEF9F6;}
+.color-828282{color: #828282;}

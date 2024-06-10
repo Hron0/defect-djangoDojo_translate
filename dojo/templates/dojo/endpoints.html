@@ -139,9 +139,7 @@
                         {% endfor %}
                     </table>
                 </div>
-                <div class="clearfix">
-                    {% include "dojo/paging_snippet.html" with page=endpoints page_size=True %}
-                </div>
+               
             {% else %}
                 {% if host_view %}
                   <div id="no_hosts"><p class="text-center">Хосты не найдены.</p></div>

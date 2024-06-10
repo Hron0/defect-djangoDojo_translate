@@ -225,7 +225,7 @@
                                         </li>
                                         <li>
                                             <a id="product-side-menu" href="{% url 'product' %}" aria-expanded="false" aria-label="Products">
-                                                <i class="fa-solid fa-list-ul fa-fw"></i>
+                                                <i class="fa-solid fa-list-ul fa-fw white-icon"></i>
                                                 
                                                 <span class="glyphicon arrow"></span>
                                             </a>
@@ -259,7 +259,7 @@
                                         </li>
                                         <li>
                                             <a href="{% url 'engagement' %}" aria-expanded="false" aria-label="Engagements">
-                                                <i class="fa-solid fa-inbox fa-fw"></i>
+                                                <i class="fa-solid fa-inbox fa-fw white-icon"></i>
                                               
                                                 <span class="glyphicon arrow"></span>
                                             </a>
@@ -294,7 +294,7 @@
                                         </li>
                                         <li>
                                             <a href="{% url 'open_findings' %}" aria-expanded="false" aria-label="Findings">
-                                                <i class="fa-solid fa-bug fa-fw"></i>
+                                                <i class="fa-solid fa-bug fa-fw white-icon"></i>
                                                
                                                 <span class="glyphicon arrow"></span>
                                             </a>
@@ -331,7 +331,7 @@
                                         </li>
                                         <li>
                                             <a href="{% url 'components' %}" id="product_component_view" aria-expanded="false"  aria-label="Components">
-                                                <i class="fa-solid fa-table-cells-large fa-fw"></i>
+                                                <i class="fa-solid fa-table-cells-large fa-fw white-icon"></i>
                                                
                                             </a>
                                             <ul class="nav nav-second-level">
@@ -344,7 +344,7 @@
                                         </li>
                                         <li>
                                             <a href="{% url 'endpoint' %}" aria-expanded="false" aria-label="Endpoints">
-                                                <i class="fa-solid fa-sitemap fa-fw"></i>
+                                                <i class="fa-solid fa-sitemap fa-fw white-icon"></i>
                                                 
                                                 <span class="glyphicon arrow"></span>
                                             </a>
@@ -380,7 +380,7 @@
                                         </li>
                                         <li>
                                             <a href="{% url 'report_builder' %}" aria-expanded="false" aria-label="Reports">
-                                                <i class="fa-solid fa-file-lines fa-fw"></i>
+                                                <i class="fa-solid fa-file-lines fa-fw white-icon"></i>
                                                
                                                 <span class="glyphicon arrow"></span>
                                             </a>
@@ -388,7 +388,7 @@
                                         </li>
                                         <li>
                                             <a href="{% url 'metrics' %}?date=5&view=dashboard" aria-expanded="false" aria-label="Metrics">
-                                                <i class="fa-solid fa-chart-column fa-fw"></i>
+                                                <i class="fa-solid fa-chart-column fa-fw white-icon"></i>
                                                 
                                                 <span class="glyphicon arrow"></span>
                                             </a>
@@ -434,7 +434,7 @@
                                         {% if "auth.view_user"|has_configuration_permission:request or "auth.view_group"|has_configuration_permission:request %}
                                             <li>
                                                 <a href="{% url 'users' %}" aria-disabled="true" aria-expanded="false" aria-label="Users" id="id_user_menu">
-                                                    <i class="fa-solid fa-user fa-fw"></i>
+                                                    <i class="fa-solid fa-user fa-fw white-icon"></i>
                                                 
                                                     <span class="glyphicon arrow"></span>
                                                 </a>
@@ -459,7 +459,7 @@
                                         {% if system_settings.enable_calendar %}
                                         <li>
                                             <a href="{% url 'engagement_calendar' %}" aria-disabled="true" aria-expanded="false" aria-label="Calendar">
-                                                <i class="fa-solid fa-calendar-days fa-fw"></i>
+                                                <i class="fa-solid fa-calendar-days fa-fw white-icon"></i>
                                            
                                             </a>
                                         </li>
@@ -468,7 +468,7 @@
                                             {% if "dojo.view_engagement_survey"|has_configuration_permission:request or "dojo.view_question"|has_configuration_permission:request %}
                                                 <li>
                                                     <a href="#">
-                                                        <i class="fa-solid fa-house-medical-flag fa-fw"></i>
+                                                        <i class="fa-solid fa-house-medical-flag fa-fw white-icon"></i>
                                                       
                                                         <span class="glyphicon arrow"></span>
                                                     </a>
@@ -494,7 +494,7 @@
                                         {% endif %}
                                         <li id="menu_configuration">
                                             <a href="#" aria-expanded="false" aria-label="Configuration">
-                                                <i class="fa-solid fa-gear fa-fw"></i>
+                                                <i class="fa-solid fa-gear fa-fw white-icon"></i>
                                                
                                             </a>
                                             <ul class="nav nav-second-level nav-up">
@@ -584,14 +584,14 @@
                                     {% block support-tab %}
                                         <li>
                                             <a href="{% url 'support' %}" aria-disabled="true" aria-expanded="false" aria-label="Support">
-                                                <i class="fa-solid fa-life-ring fa-fw"></i>
+                                                <i class="fa-solid fa-life-ring fa-fw white-icon"></i>
                                               
                                             </a>
                                         </li>
                                     {% endblock %}
                                     <li id="min-menu">
                                         <a href="#" id="minimize-menu" title="Expand/Collapse Menu" aria-label="Expand/Collapse Menu">
-                                            <i id="nav-minimize-menu-li" class="fa-solid fa-circle-right fa-fw"></i>
+                                            <i id="nav-minimize-menu-li" class="fa-solid fa-circle-right fa-fw white-icon"></i>
                                             
                                         </a>
                                     </li>
@@ -1043,13 +1043,13 @@
                                     {% dojo_version %} ( {% dojo_current_hash %} )
                                 </p>
                                 <p >
-                                    Detailed DefectDojo documentation can be found in our <a
+                                    Detailed DefectDojo documentation can be found in our <a class="color-828282" 
                                         href="{% dojo_docs_url %}">GitHub Pages</a>.
                                 </p>
                                 <p >
-                                    DefectDojo is licensed under the <a
+                                    DefectDojo is licensed under the <a class="color-828282" 
                                         href="https://github.com/DefectDojo/django-DefectDojo/blob/master/LICENSE.md">3-Clause BSD
-                            License</a>. | <a href="https://github.com/DefectDojo/django-DefectDojo/blob/master/NOTICE"> Dependencies Notice.</a>
+                            License</a>. | <a class="color-828282" href="https://github.com/DefectDojo/django-DefectDojo/blob/master/NOTICE"> Dependencies Notice.</a>
                                 </p>
                                 <p >
                                     &copy; 2015-{% now "Y" %} DefectDojo, Inc. All rights reserved. DefectDojo is trademark of DefectDojo, Inc.
