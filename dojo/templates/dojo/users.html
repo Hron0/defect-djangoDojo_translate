@@ -37,7 +37,7 @@
                         </div>
                     </h3>
                 </div>
-                <div id="the-filters" class="is-filters panel-body collapse {% if filtered.form.has_changed %}in{% endif %}">
+                <div id="the-filters" class="is-filters panel-body collaps {% if filtered.form.has_changed %}in{% endif %}">
                     {% include "dojo/filter_snippet.html" with form=filtered.form %}
                 </div>
             </div>
@@ -96,7 +96,7 @@
                                                             <i class="fa-solid fa-clock-rotate-left"></i> {% trans "View History" %}
                                                         </a>
                                                         </li>
-                                                        {% if "auth.delete_user"|has_configuration_permission:request и u.id != request.user.id %}
+                                                        {% if "auth.delete_user"|has_configuration_permission:request and u.id != request.user.id %}
                                                         <li role="separator" class="divider"></li>
                                                         <li role="presentation">
                                                             <a class="" href="{% url 'delete_user' u.id %}">

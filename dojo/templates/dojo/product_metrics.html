@@ -7,10 +7,10 @@
 {% endblock %}
 {% block content %}
     {{ block.super }}
-    <div class="panel panel-default">
+    <div style="border-radius:20px !important" class="panel panel-default">
         <div class="panel-heading tight">
-            <div class="clearfix">
-              <h3 class="has-filters">
+            <div class="clearfix align-100">
+              <h3 style="justify-content:space-between;" class="has-filters">
                     Обзор метрик
                 <div class="dropdown pull-right ">
                     <button id="show-filters" data-toggle="collapse" data-target="#the-filters" class="btn btn-primary toggle-filters"> <i class="fa-solid fa-filter"></i> <i class="caret"></i> </button>
@@ -44,27 +44,29 @@
         <div class="panel-body product-graphs-overview">
             <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-12">
+                    <div class="panel-heading min-height bgc-metrics-cards">
+                        <div class="row"><div class="metric-header-icon">
+                            <div class="col-xs-12 metrics-header">
                                 <i class="fa-solid fa-crosshairs fa-2x"></i>
 
-                                <div class="pull-right inline-block text-right">
+                                <div class="pull-right inline-block text-right metrics-header">
                                     <span class=" fa-2x">{{ verified_objs|length }}</span>
                                     <span><a
                                             href="{% url 'product_verified_findings' prod.id %}?test__engagement__product={{ prod.id }}"
                                             title="Findings that are open/active and verified">Проверенный
-                                        {{ view }}{{ verified_objs|length|pluralize }} <i
-                                                class="fa-solid fa-circle-right"></i></a>
-                                    </span>
+                                            {{ view }}{{ verified_objs|length|pluralize }}</a> 
+                                        </span>
                                 </div>
                             </div>
+                            <i
+                                                    class="fa-solid fa-circle-right"></i>
+                        </div>
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body metrics-bgc">
                         <div id="verified_objs" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics">
                         <i title="Since {{ start_date }}."
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Проверено с тех пор, как {{ start_date|date:"D., M. d, Y" }}</small>
@@ -73,26 +75,26 @@
             </div>
             <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-12">
+                    <div class="panel-heading min-height bgc-metrics-cards">
+                        <div class="row"><div class="metric-header-icon">
+                            <div class="col-xs-12 metrics-header">
                                 <i class="fa-solid fa-bug fa-2x"></i>
 
-                                <div class="pull-right inline-block text-right">
+                                <div class="pull-right inline-block text-right metrics-header">
                                     <span class=" fa-2x">{{ open_objs|length }}</span>
                                     <span><a href="{% url 'product_open_findings' prod.id %}?test__engagement__product={{ prod.id }}"
                                         title="Findings that are open/active, but not (yet) verified">Открыть
-                                        {{ view }}{{ open_objs|length|pluralize }} <i
-                                                class="fa-solid fa-circle-right"></i></a>
+                                        {{ view }}{{ open_objs|length|pluralize }} </a>
                                     </span>
                                 </div>
-                            </div>
+                            </div><i
+                            class="fa-solid fa-circle-right"></i></div>
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body metrics-bgc">
                         <div id="open_objs" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics">
                         <i title="Opened since {{ start_date }}"
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Открыт с тех пор, как {{ start_date|date:"D., M. d, Y" }}</small>
@@ -101,26 +103,31 @@
             </div>
             <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-12">
+                    <div class="panel-heading min-height bgc-metrics-cards">
+                        <div class="row"><div class="metric-header-icon">
+                            <div class="col-xs-12 metrics-header">
+                               
                                 <i class="fa-solid fa-check fa-2x"></i>
 
                                 <div class="pull-right text-right">
                                     <span class="fa-2x">{{ accepted_objs|length }}</span>
+                                </div>
                                     <span><a
                                             href="{% url 'accepted_findings' %}?test__engagement__product={{ prod.id }}"
                                             title="Findings that have been accepted in a risk acceptance.">Принятый риск
-                                    {{ view }}s <i class="fa-solid fa-circle-right"></i></a>
+                                    {{ view }}s </a>
                                 </span>
-                                </div>
+                                
+                                
                             </div>
+                            <i class="fa-solid fa-circle-right"></i>
+                        </div>
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body metrics-bgc">
                         <div id="accepted_objs" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics">
                         <i title="Accepted since {{ start_date }}"
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Риск, принятый с тех пор, как {{ start_date|date:"D., M. d, Y" }}</small>
@@ -129,26 +136,27 @@
             </div>
             <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading min-height bgc-metrics-cards">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="metric-header-icon">
+                            <div class="col-xs-12 metrics-header">
                                 <i class="fa-solid fa-fire-extinguisher fa-2x"></i>
 
-                                <div class="text-right pull-right">
+                                <div class="text-right pull-right metrics-header">
                                     <span class="fa-2x">{{ closed_objs|length }}</span>
                                     <span><a href="{% url 'closed_findings' %}?test__engagement__product={{ prod.id }}"
                                              title="Findings that are closed and mitigated.">Закрытый
-                                        {{ view }}{{ closed_objs|length|pluralize }} <i
-                                                class="fa-solid fa-circle-right"></i></a>
+                                        {{ view }}{{ closed_objs|length|pluralize }} </a>
                                     </span>
                                 </div>
-                            </div>
+                            </div><i
+                            class="fa-solid fa-circle-right"></i></div>
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body metrics-bgc">
                         <div id="closed_objs" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics">
                         <i title="Closed since {{ start_date }}"
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Закрыт с тех пор, как {{ start_date|date:"D., M. d, Y" }}</small>
@@ -157,26 +165,29 @@
             </div>
             <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading min-height bgc-metrics-cards">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="metric-header-icon">
+                            <div class="col-xs-12 metrics-header">
                                 <i class="fa-solid fa-fire-extinguisher fa-2x"></i>
 
-                                <div class="text-right pull-right">
+                                <div class="text-right pull-right metrics-header">
                                     <span class="fa-2x">{{ false_positive_objs|length }}</span>
                                     <span><a href="{% url 'product_false_positive_findings' prod.id %}?test__engagement__product={{ prod.id }}"
                                              title="Findings that are marked as false postive.">Ложноположительный
-                                        {{ view }}{{ false_positive_objs|length|pluralize }} <i
-                                                class="fa-solid fa-circle-right"></i></a>
+                                        {{ view }}{{ false_positive_objs|length|pluralize }} </a>
                                     </span>
                                 </div>
                             </div>
+                            <i
+                            class="fa-solid fa-circle-right"></i>
+                        </div>
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body metrics-bgc">
                         <div id="false_positive_objs" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics">
                         <i title="Flagged since {{ start_date }}"
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Отмечен с тех пор, как {{ start_date|date:"D., M. d, Y" }}</small>
@@ -185,27 +196,30 @@
             </div>
             <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading min-height bgc-metrics-cards">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="metric-header-icon">
+                            <div class="col-xs-12 metrics-header">
                                 <i class="fa-solid fa-fire-extinguisher fa-2x"></i>
 
-                                <div class="pull-right inline-block text-right">
+                                <div class="pull-right inline-block text-right metrics-header">
                                     <span class=" fa-2x">{{ out_of_scope_objs|length }}</span>
                                     <span><a
                                             href="{% url 'product_out_of_scope_findings' prod.id %}?test__engagement__product={{ prod.id }}"
                                             title="Findings that are marked as out of scope.">Вне сферы охвата
-                                        {{ view }}{{ out_of_scope_objs|length|pluralize }} <i
-                                                class="fa-solid fa-circle-right"></i></a>
+                                        {{ view }}{{ out_of_scope_objs|length|pluralize }} </a>
                                     </span>
                                 </div>
                             </div>
+                            <i
+                            class="fa-solid fa-circle-right"></i>
+                        </div>
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body metrics-bgc">
                         <div id="out_of_scope_objs" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics">
                         <i title="Since {{ start_date }}."
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>С {{ start_date|date:"D., M. d, Y" }}.</small>
@@ -214,12 +228,13 @@
             </div>
             <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading min-height bgc-metrics-cards">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="metric-header-icon">
+                            <div class="col-xs-12 metrics-header">
                                 <i class="fa-solid fa-bullseye fa-2x"></i>
 
-                                <div class="text-right pull-right">
+                                <div class="text-right pull-right metrics-header">
                                     <span class="fa-2x">{{ all_objs|length }}</span>
                                     <span><a href="{% url 'product_all_findings' prod.id %}?test__engagement__product={{ prod.id }}"
                                             title="All findings.">Весь
@@ -228,12 +243,15 @@
                                     </span>
                                 </div>
                             </div>
+                            <i
+                            class="fa-solid fa-circle-right"></i>
+                        </div>
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body metrics-bgc">
                         <div id="all_objs" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics">
                         <i title="Since {{ start_date }}"
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>С {{ start_date|date:"D., M. d, Y" }}</small>
@@ -242,26 +260,30 @@
             </div>
             <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading min-height bgc-metrics-cards">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="metric-header-icon">
+                            <div class="col-xs-12 metrics-header">
                                 <i class="fa-solid fa-bug fa-2x"></i>
 
-                                <div class="pull-right inline-block text-right">
+                                <div class="pull-right inline-block text-right metrics-header">
                                     <span class=" fa-2x">{{ inactive_objs|length }}</span>
                                     <span><a href="{% url 'product_inactive_findings' prod.id %}?test__engagement__product={{ prod.id }}"
                                              title="Findings that are not active but not mitigated for some reason">Неактивный
-                                        {{ view }}{{ inactive_objs|length|pluralize }} <i
-                                                class="fa-solid fa-circle-right"></i></a>
+                                        {{ view }}{{ inactive_objs|length|pluralize }} </a>
                                     </span>
                                 </div>
                             </div>
+                            <i
+                            class="fa-solid fa-circle-right"></i>
+                        
+                        </div>
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body metrics-bgc">
                         <div id="inactive_objs" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics">
                         <i title="Ingested since {{ start_date }}"
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Проглоченный с тех пор, как {{ start_date|date:"D., M. d, Y" }}</small>
@@ -271,7 +293,7 @@
         </div>
     </div>
 
-    <div class="panel panel-default">
+    <div style="border-radius:20px !important;" class="panel panel-default">
         <div class="panel-heading tight">
             <div class="clearfix">
                 <h3 class="pull-left">
@@ -289,13 +311,13 @@
                 </div>
             </div>
         </div>
-        <div class="panel-body product-graphs">
+        <div style="border-radius:20px !important;background-color:#fff;" class="panel-body product-graphs">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading panel-header-metrics bgc-metrics-cards">
                         Открыт изо дня в день в зависимости от степени тяжести
                         <i title="Days are only displayed if findings are available."
-                           class="text-info fa-solid fa-circle-info"></i>
+                           class="text-info fa-solid fa-circle-info orange-icon"></i>
                     </div>
                     <div class="panel-body text-center">
                         <div id="id_open_findings_burndown_loader" class="graph-loader">
@@ -304,7 +326,7 @@
                         </div>
                         <div id="open_findings_burndown" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics-other-height">
                         <i class="text-info fa-solid fa-circle-info"></i>
                         <small>Дни отображаются только в том случае, если результаты доступны.</small>
                     </div>
@@ -312,15 +334,15 @@
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading panel-header-metrics bgc-metrics-cards">
                         Открытые, закрытые и принимаемые на себя риски из недели в неделю
                         <i title="Weeks are only displayed if findings are available."
-                           class="text-info fa-solid fa-circle-info"></i>
+                           class="text-info fa-solid fa-circle-info orange-icon"></i>
                     </div>
                     <div class="panel-body">
                         <div id="open_close_weekly" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics-other-height">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Недели отображаются только в том случае, если результаты доступны.</small>
@@ -329,15 +351,15 @@
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading panel-header-metrics bgc-metrics-cards">
                         От недели к неделе в разбивке по степени тяжести
                         <i title="Weeks are only displayed if findings are available."
-                           class="text-info fa-solid fa-circle-info"></i>
+                           class="text-info fa-solid fa-circle-info orange-icon"></i>
                     </div>
                     <div class="panel-body">
                         <div id="severity_weekly" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics-other-height">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Недели отображаются только в том случае, если результаты доступны.</small>
@@ -346,15 +368,15 @@
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading panel-header-metrics bgc-metrics-cards">
                         Критическая неделя за неделей
                         <i title="Weeks are only displayed if findings are available."
-                           class="text-info fa-solid fa-circle-info"></i>
+                           class="text-info fa-solid fa-circle-info orange-icon"></i>
                     </div>
                     <div class="panel-body">
                         <div id="severity_critical" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics-other-height">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Недели отображаются только в том случае, если результаты доступны.</small>
@@ -363,15 +385,15 @@
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading panel-header-metrics bgc-metrics-cards">
                         Высокий уровень от недели к неделе
                         <i title="Weeks are only displayed if findings are available."
-                           class="text-info fa-solid fa-circle-info"></i>
+                           class="text-info fa-solid fa-circle-info orange-icon"></i>
                     </div>
                     <div class="panel-body">
                         <div id="severity_high" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics-other-height">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Недели отображаются только в том случае, если результаты доступны.</small>
@@ -380,15 +402,15 @@
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading panel-header-metrics bgc-metrics-cards">
                         В среднем от недели к неделе
                         <i title="Weeks are only displayed if findings are available."
-                           class="text-info fa-solid fa-circle-info"></i>
+                           class="text-info fa-solid fa-circle-info orange-icon"></i>
                     </div>
                     <div class="panel-body">
                         <div id="severity_medium" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics-other-height">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Недели отображаются только в том случае, если результаты доступны.</small>
@@ -397,13 +419,13 @@
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading panel-header-metrics bgc-metrics-cards">
                         Определение возраста
                     </div>
                     <div class="panel-body">
                         <div id="finding_age" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics-other-height">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Определение возраста {{ open_objs|length|apnumber }} открыть
@@ -413,15 +435,15 @@
             </div>
             <div class="col-md-7">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading panel-header-metrics bgc-metrics-cards">
                         Еженедельная информация о результатах исследования
                             <i title="Weeks are only displayed if findings are available."
-                            class="text-info fa-solid fa-circle-info"></i>
+                            class="text-info fa-solid fa-circle-info orange-icon"></i>
                     </div>
                     <div class="panel-body">
                         <div class="graph" id="punchcard"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics-other-height">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Недели отображаются только в том случае, если результаты доступны.</small>
@@ -430,15 +452,15 @@
             </div>
             <div class="col-md-5">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading panel-header-metrics bgc-metrics-cards">
                         Результаты в разбивке по типу теста
                         <i title="Test Types shown only if available."
-                           class="text-info fa-solid fa-circle-info"></i>
+                           class="text-info fa-solid fa-circle-info orange-icon"></i>
                     </div>
                     <div class="panel-body">
                         <div class="graph" id="test_type"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics-other-height">
                         <i title="Weeks are only displayed if findings are available."
                            class="text-info fa-solid fa-circle-info"></i>
                         <small>Типы тестов отображаются только в том случае, если они доступны.</small>
@@ -448,13 +470,13 @@
 
             <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading panel-header-metrics bgc-metrics-cards">
                         Открытые уязвимости CWE
                     </div>
                     <div class="panel-body">
                         <div id="open_vulnerabilities" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics-other-height">
                         <i class="text-info fa-solid fa-circle-info"></i>
                         <small>Показ {{ open_vulnerabilities|length|apnumber }}
                             уязвимость{{ open_vulnerabilities|length|pluralize:"y,ies"}} из открытых данных</small>
@@ -463,13 +485,13 @@
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading panel-header-metrics bgc-metrics-cards">
                         Общее количество уязвимостей CWE
                     </div>
                     <div class="panel-body">
                         <div id="all_vulnerabilities" class="graph"></div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer panel-footer-metrics-other-height">
                         <i class="text-info fa-solid fa-circle-info"></i>
                         <small>Показ {{ all_vulnerabilities|length|apnumber }}
                             уязвимость{{ all_vulnerabilities|length|pluralize:"y,ies"}} из открытых данных</small>

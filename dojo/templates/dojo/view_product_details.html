@@ -14,7 +14,7 @@
   <div class="col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading tight">
-        <div class="clearfix">
+        <div class="clearfix align-100">
           <h3 class="pull-left">{% trans "Description" %}</h3>
           <div class="dropdown pull-right">
             <div class="btn-group">
@@ -118,11 +118,11 @@
 
 <div class="row">
 <div class="col-md-12">
-  <div class="panel panel-default">
+  <div style="border-radius: 20px 20px 20px 20px !important" class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title"><span class="fa-solid fa-chart-pie" aria-hidden="true"></span>{% trans "Metrics" %}</h3>
+      <h3 class="panel-title flex-start"><span class="fa-solid fa-chart-pie" aria-hidden="true"></span>{% trans "Metrics" %}</h3>
     </div>
-    <table class="table table-condensed">
+    <table  class="table table-condensed">
       <tbody>
         <tr>
           <td class="col-sm-2 bg-vuln-critical vuln-count text-center">{{ critical }}<span class="hidden-xs"><br><small>{% trans "CRITICAL" %}</small></span></td>
@@ -144,7 +144,7 @@
       <div class="panel-heading">
         <h3 class="panel-title"><span class="fa-solid fa-bolt" aria-hidden="true"></span>{% trans "Technologies" %} {% if app_analysis %}({{ app_analysis.count }}){% endif %}
             {% if prod|has_object_permission:"Technology_Add" %}
-            <a title="{% trans "Add new Technology" %}" class="pull-right btn btn-sm btn-primary" href="/product/{{ prod.id }}/new_technology" id="addTechnology"><span class="fa-solid fa-plus"></span> </a>
+            <a title="{% trans "Add new Technology" %}" style="margin: 0px 0px 0px 70%" class="pull-right btn btn-sm btn-primary" href="/product/{{ prod.id }}/new_technology" id="addTechnology"><span class="fa-solid fa-plus"></span> </a>
             {% endif %}
         </h3>
       </div>
@@ -190,7 +190,7 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><span class="fa-solid fa-gavel" aria-hidden="true"></span>{% trans "Regulations" %} {% if prod.regulations.count > 0%}({{ prod.regulations.count }}){%endif%}</h3>
+        <h3 class="panel-title flex-start"><span class="fa-solid fa-gavel" aria-hidden="true"></span>{% trans "Regulations" %} {% if prod.regulations.count > 0%}({{ prod.regulations.count }}){%endif%}</h3>
       </div>
       <ul class="list-group">
       {% for regulation in prod.regulations.all %}
@@ -210,7 +210,7 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><span class ="fa-solid fa-scale-balanced" aria-hidden="true"></span>{% trans "Benchmark Progress" %}</h3>
+        <h3 class="panel-title flex-start"><span class ="fa-solid fa-scale-balanced" aria-hidden="true"></span>{% trans "Benchmark Progress" %}</h3>
       </div>
         <ul class="list-group">
           {% for benchmark in benchmarks_percents %}
@@ -254,7 +254,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <div class="clearfix">
+            <div class="clearfix align-100">
                 <h4 class="pull-left">{% trans "Members" %}</h4>
                 &nbsp;
                 <a href="https://documentation.defectdojo.com/usage/permissions/" target="_blank">
@@ -342,11 +342,12 @@
 
       <div class="panel panel-default">
           <div class="panel-heading">
-              <div class="clearfix">
-                  <h4 class="pull-left">{% trans "Groups" %}</h4>
-                  &nbsp;
+              <div class="clearfix align-100">
+                
+                <h4 class="pull-left">{% trans "Groups" %}</h4>
                   <a href="https://documentation.defectdojo.com/usage/permissions/" target="_blank">
                       <i class="fa-solid fa-circle-question"></i></a>
+                 
                   {% if prod|has_object_permission:"Product_Group_Add" %}
                   <div class="dropdown pull-right">
                       <button class="btn btn-primary dropdown-toggle" label="Actions" type="button" id="dropdownMenuAddProductGroup"
@@ -432,7 +433,7 @@
 <div class="col-md-4">
   <div class="panel panel-default panel-default-secondary">
     <div class="panel-heading">
-      <h3 class="panel-title"><span class="fa-solid fa-circle-info fa-fw" aria-hidden="true"></span>{% trans "Metadata" %}</h3>
+      <h3 class="panel-title flex-start"><span class="fa-solid fa-circle-info fa-fw orange-icon" aria-hidden="true"></span>{% trans "Metadata" %}</h3>
     </div>
     <div class="table-responsive">
       <table class="table table-striped" id="set-width">
@@ -495,7 +496,7 @@
     {% if system_settings.enable_finding_sla %}
     <div class="panel panel-default panel-default-secondary">
     <div class="panel-heading">
-      <h3 class="panel-title"><span class="fa-solid fa-calendar-check fa-fw" aria-hidden="true"></span>&nbsp;Service Level Agreement</h3>
+      <h3 class="panel-title flex-start"><span class="fa-solid fa-calendar-check fa-fw" aria-hidden="true"></span>&nbsp;Service Level Agreement</h3>
     </div><div class="panel-body">
         <p>{{ sla.name }}</p>
         <p>{{ sla.description }}</p>
@@ -574,7 +575,7 @@
 <!-- Contacts -->
   <div class="panel panel-default panel-default-secondary">
     <div class="panel-heading">
-      <h3 class="panel-title"><span class="fa-solid fa-users fa-fw" aria-hidden="true"></span>{% trans "Contacts" %}</h3>
+      <h3 class="panel-title flex-start"><span class="fa-solid fa-users fa-fw" aria-hidden="true"></span>{% trans "Contacts" %}</h3>
     </div>
     <div class="table-responsive">
       <table class="table table-striped">
@@ -601,7 +602,7 @@
   <div class="panel-heading">
     {% url 'notifications' as notifications_url %}
     <h3 class="panel-title"><span class="fa-solid fa-users fa-fw" aria-hidden="true"></span>{% trans "Notifications" %}
-      <i class="fa-solid fa-circle-question has-popover" data-trigger="hover" data-content="{% trans "These are your personal settings for this product." %}" data-placement="right" data-container="body"></i>
+      <i style="margin: 0 0 0 70%" class="fa-solid fa-circle-question has-popover" data-trigger="hover" data-content="{% trans "These are your personal settings for this product." %}" data-placement="right" data-container="body"></i>
     </h3>
   </div>
   <form id="edit_notifications_form" class="form-horizontal" method="post" action="{% url 'edit_notifications' prod.id %}">{% csrf_token %}

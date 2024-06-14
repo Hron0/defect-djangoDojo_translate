@@ -7,7 +7,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading tight">
-                    <h3 class="has-filters">
+                    <h3 class="has-filters" style="justify-content:space-between;">
                         Components
                         <div class="dropdown pull-right">
                             <button id="show-filters" data-toggle="collapse" data-target="#the-filters" class="btn btn-primary toggle-filters"> <i class="fa-solid fa-filter"></i> <i class="caret"></i> </button>
@@ -75,9 +75,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="clearfix">
-            {% include "dojo/paging_snippet.html" with page=result page_size=True %}
-        </div>
+       
     </div>
 </div>
 {% endblock %}
