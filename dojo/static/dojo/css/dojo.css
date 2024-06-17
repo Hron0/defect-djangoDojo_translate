@@ -968,6 +968,10 @@ table.centered td {
     color: #546474
 }
 
+.text-left{
+    text-align: left;
+}
+
 input[type="checkbox"] {
     display: inline;
     width: 22px;
@@ -992,7 +996,7 @@ input[type="checkbox"] {
 .footer p {
     color: #fff;
 }
-#footer-wrapper {}
+#footer-wrapper {margin-top: auto !important; width: 100%;}
 .footer img.logo {
     width: 5%;
     height: 5%;
@@ -2013,3 +2017,32 @@ input[type=number]::-webkit-outer-spin-button {
 
 .flex-start{justify-content: start !important;grid-gap: 10px;}
 .bgc-metrics-cards{background: #635586 !important;}
+.page-wrapper{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px 10px 5px 10px;
+}
+.metrics-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.metrics-nav{
+  display: flex;
+  flex-direction: row;
+  margin-right: 15px;
+}
+.metrics-title{
+    border-bottom: none !important;
+}
+.notification-element{
+  padding: 3px 10px !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.notification-element span {
+ margin-left: auto;
+}

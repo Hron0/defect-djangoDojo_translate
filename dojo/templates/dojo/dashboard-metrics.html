@@ -28,8 +28,10 @@
     {{ block.super }}
     <div class="row navbar-fixed-top">
         <div class="col-md-12">
-            <h2>{% blocktrans with start_date=start_date.date end_date=end_date.date%} показатели панели мониторинга for {{ start_date }} - {{ end_date }}{% endblocktrans %}
-                <a class="btn close pull-right" href="{% url 'metrics' %}" aria-hidden="true">&times;</a>
+66            <div class="metrics-header">
+            <h2 class="metrics-title">{% blocktrans with start_date=start_date.date end_date=end_date.date%} Показатели панели мониторинга на {{ start_date }} - {{ end_date }}{% endblocktrans %}
+            </h2>
+            <div class="metrics-nav">
                 <div class="dropdown pull-right">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1"
                             data-toggle="dropdown" label="view_selector" aria-label="view_selector" aria-expanded="true">
@@ -49,7 +51,11 @@
                         </li>
                     </ul>
                 </div>
-            </h2>
+                
+                <a class="btn close" href="{% url 'metrics' %}" aria-hidden="true">&times;</a>
+            </div>
+
+            </div>
         </div>
     </div>
     <div class="row metric-data">
