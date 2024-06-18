@@ -2068,3 +2068,16 @@ input[type=number]::-webkit-outer-spin-button {
 .navbar-top-links .dropdown-menu li a{
     padding: 3px 10px 3px 20px !important;
 }
+.sidebar-link{
+    display: inline-block;
+}
+.panel-default > .panel-heading a:hover{
+    color: white !important;
+}
+.dropdown #dropdownMenu1 {
+    margin-top: 5px;
+}
+.fc-event-container .fc-day-grid-event,
+.fc-event-container .fc-event{
+    width: fit-content !important;
+}
