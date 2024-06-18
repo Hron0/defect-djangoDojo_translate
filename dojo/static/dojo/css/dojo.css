@@ -2022,7 +2022,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 10px 10px 5px 10px;
+/*  padding: 10px 10px 5px 10px;  ?*/
 }
 .metrics-header{
   display: flex;
@@ -2032,17 +2032,39 @@ input[type=number]::-webkit-outer-spin-button {
 .metrics-nav{
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   margin-right: 15px;
 }
 .metrics-title{
     border-bottom: none !important;
+    background-color: transparent !important;
 }
 .notification-element{
   padding: 3px 10px !important;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
 }
 .notification-element span {
  margin-left: auto;
+}
+.metrics-panel-fix{
+    display: block !important;
+}
+.metrics-sidebar{
+    width: 98.2%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar-fixed-top .panel-heading{
+    border-color: transparent !important;
+}
+.dropdown-menu .active a{
+    background-color: white !important;
+}
+#side-menu li:nth-child(15) a{
+    padding: 12px 15px 19px 15px !important;
+}
+.navbar-top-links .dropdown-menu li a{
+    padding: 3px 10px 3px 20px !important;
 }
