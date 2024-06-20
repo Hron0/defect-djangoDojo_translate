@@ -24,8 +24,8 @@
     <!--Test Header begin -->
     <div class="panel panel-default">
         <div class="panel-heading">
-            <div class="clearfix">
-                <h3 class="pull-left">
+            <div class="clearfix panel-nav">
+                <h3 class="pull-left" style="justify-content:flex-start !important;gap:10px;align-items:baseline;">
                     {{ test }}
                     {% include "dojo/snippets/tags.html" with tags=test.tags.all %}
                     <small>{% trans "Updated" %} {{ test.updated|naturaltime|default_if_none:"" }}, {% trans "Created" %} {{ test.created|naturaltime|default_if_none:"" }}</small>
@@ -191,8 +191,8 @@
     {% if 'TRACK_IMPORT_HISTORY'|setting_enabled and test.total_reimport_count %}
         <div class="panel panel-default collapse in">
             <div class="panel-heading">
-                <div class="clearfix">
-                    <h4 class="has-filters">
+                <div class="clearfix panel-nav">
+                    <h4 class="has-filters" style="justify-content:flex-start !important;gap:10px;">
                         {% trans "Import History" %} ({{  test.total_reimport_count }})
                         <i class="fa-solid fa-circle-question has-popover"
                         data-trigger="hover"
@@ -202,7 +202,8 @@
                         data-original-title=""
                         title="">
                         </i>
-                        <div class="dropdown pull-right">
+                        </h4>
+                        <div class="dropdown pull-right" style="display:flex;">
                             <button id="show-filters"
                                     data-toggle="collapse"
                                     data-target="#import-history-filters"
@@ -216,7 +217,7 @@
                                 </a>
                             </span>
                         </div>
-                    </h4>
+                    
                 </div>
             </div>
             <div id="import-history-filters" class="is-filters panel-body collapse">
@@ -296,7 +297,7 @@
         <div class="panel panel-default">
             <div class="panel-heading tight">
                 <div class="clearfix">
-                    <h4>
+                    <h4 style="gap:10px;">
                         {% trans "Groups" %} ({{ finding_groups|length }})
                         <div class="dropdown pull-right">
                             <span class="pull-right">
@@ -507,11 +508,11 @@
     <!-- Findings begin-->
     <div class="panel panel-default">
         <div class="panel-heading tight">
-            <div class="clearfix">
-                <h4 class="has-filters">
+            <div class="clearfix panel-nav">
+                <h4 class="has-filters" style="justify-content:flex-start !important;gap:15px;">
                     {% trans "Findings" %} ({{ findings.total_count }}) <small>{{ test.id|get_severity_count:"test" }}</small>
-                    <div class="dropdown pull-right"></div>
-                    <div id="test-pulldown" class="dropdown pull-right">
+                </h4>
+                    <div id="test-pulldown" class="dropdown pull-right" style="display:flex;">
                         &nbsp;
                         <button id="show-filters"
                                 data-toggle="collapse"
@@ -543,9 +544,7 @@
                                 </li>
                             </ul>
                         {% endif %}
-                    </div>
                     &nbsp;
-                    <div id="test-pulldown" class="dropdown pull-right">
                         <button class="btn btn-primary dropdown-toggle"
                                 type="button"
                                 id="dropdownMenu1"
@@ -574,7 +573,6 @@
                             </li>
                         </ul>
                     </div>
-                </h4>
             </div>
         </div>
         <div id="the-filters" class="is-filters panel-body collapse">
@@ -1269,9 +1267,6 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                <div class="clearfix pagination-in-panel">
-                    {% include "dojo/paging_snippet.html" with page=findings prefix='findings' page_size=True %}
-                </div>
             </div>
         {% else %}
             <div class="panel-body">
@@ -1285,7 +1280,7 @@
     <!-- Stub Findings begin -->
     <div class="panel panel-default table-responsive potential-finding">
         <div class="panel-heading">
-            <div class="clearfix">
+            <div class="clearfix panel-nav">
                 <h4 class="pull-left">
                     {% trans "Potential Findings" %}
                 </h4>

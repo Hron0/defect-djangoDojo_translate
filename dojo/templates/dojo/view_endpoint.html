@@ -17,7 +17,7 @@
     {{ block.super }}
     <div class="panel panel-default">
         <div class="panel-heading">
-            <div class="clearfix">
+            <div class="clearfix panel-nav">
                 <h4 class="pull-left finding-title">
                     {% if host_view %}
                       Host: {{ endpoint.host }} -
@@ -38,7 +38,7 @@
 
 
                 <div class="dropdown pull-right">
-                    <div class="btn-group">
+                    <div class="btn-group" style="display:flex;">
                         <button class="btn btn-primary clickable panel-collapsed">
                             <span><i class="fa-solid fa-chart-column"></i></span>
                         </button>
@@ -299,9 +299,7 @@
                 </tbody>
             </table>
         </div>
-    <div class="clearfix pagination-in-panel">
-        {% include "dojo/paging_snippet.html" with page=findings page_size=True %}
-    </div>
+
     {% else %}
         <p class="text-center">No findings found.</p>
     {% endif %}

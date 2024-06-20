@@ -14,7 +14,7 @@
         <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <div class="clearfix">
+                    <div class="clearfix panel-nav">
                         <h4 class="pull-left">
                             Description
                         </h4>
@@ -190,10 +190,11 @@
                 <div id="tests" class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="clearfix">
-                                <h4>
+                            <div class="clearfix panel-nav">
+                                <h4 class="h4-fix">
                                     Tests ({{tests.paginator.count}}) <small>{{ eng.id|get_severity_count:"engagement" }}</small>
-                                    <div class="dropdown pull-right">
+                                </h4>
+                                    <div class="dropdown pull-right" style="display:flex;flex-direction:row;align-items:center;">
                                         <button id="show-filters" data-toggle="collapse" data-target="#the-filters" class="btn btn-primary toggle-filters"> <i class="fa-solid fa-filter"></i> <i class="caret"></i> </button>
                                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1"
                                             data-toggle="dropdown" aria-expanded="true">
@@ -228,7 +229,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </h4>
+                                
                             </div>
                         </div>
                         <div id="the-filters" class="is-filters panel-body collapse {% if filter.form.has_changed %}in{% endif %}">
@@ -354,9 +355,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="clearfix pagination-in-panel">
-                            {% include "dojo/paging_snippet.html" with page=tests page_size=True %}
-                        </div>
+
                     {% else %}
                         <div class="panel-body">
                             <small class="text-muted"><em>No Tests found.</em></small>
@@ -711,7 +710,7 @@
             <!-- Sidebar -->
         </div>
         <div class="col-md-4">
-            <div class="panel panel-default-secondary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title"><span class="fa-solid fa-circle-info fa-fw orange-icon" aria-hidden="true"></span> 
                         {% if eng.name %}
@@ -860,7 +859,7 @@
             </div>
             {% if eng.engagement_type == "CI/CD" %}
                 <div>
-                    <div class="panel panel-default-secondary">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title"><span class="fa-solid fa-server" aria-hidden="true"></span>
                                 CI/CD Engagement Details
@@ -919,7 +918,7 @@
             {% endif %}
             {% if system_settings.enable_credentials %}
                 <div>
-                    <div class="panel panel-default-secondary">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4><span class="fa-solid fa-key orange-icon" aria-hidden="true"></span>
                                 Credentials

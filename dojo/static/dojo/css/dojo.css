@@ -1991,7 +1991,9 @@ input[type=number]::-webkit-outer-spin-button {
     align-items: center;
     justify-content: space-between;
     width: 20vw;}
-
+@media(width <= 985px){
+    .metric-header-icon{width: 100%}
+}
 .min-height{
     min-height: 67px;
 }
@@ -2027,7 +2029,7 @@ input[type=number]::-webkit-outer-spin-button {
 .metrics-header{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .metrics-nav{
   display: flex;
@@ -2080,4 +2082,18 @@ input[type=number]::-webkit-outer-spin-button {
 .fc-event-container .fc-day-grid-event,
 .fc-event-container .fc-event{
     width: fit-content !important;
+}
+.panel-nav{
+    display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.h4-fix{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start !important;
+    gap: 5px;
 }
